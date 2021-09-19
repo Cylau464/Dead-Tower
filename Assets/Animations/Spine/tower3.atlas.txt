@@ -1,0 +1,146 @@
+
+tower3.png
+size: 1292,499
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cannonball2
+  rotate: true
+  xy: 953, 291
+  size: 28, 27
+  orig: 30, 29
+  offset: 1, 1
+  index: -1
+Cannonball3
+  rotate: false
+  xy: 922, 290
+  size: 29, 29
+  orig: 31, 31
+  offset: 1, 1
+  index: -1
+arrow_button
+  rotate: false
+  xy: 1001, 94
+  size: 72, 52
+  orig: 72, 52
+  offset: 0, 0
+  index: -1
+boom0001
+  rotate: true
+  xy: 1001, 148
+  size: 171, 72
+  orig: 629, 121
+  offset: 0, 27
+  index: -1
+boom0002
+  rotate: false
+  xy: 769, 2
+  size: 162, 78
+  orig: 629, 121
+  offset: 1, 22
+  index: -1
+boom0003
+  rotate: true
+  xy: 1075, 194
+  size: 132, 98
+  orig: 629, 121
+  offset: 43, 21
+  index: -1
+boom0004
+  rotate: false
+  xy: 1075, 94
+  size: 120, 98
+  orig: 629, 121
+  offset: 59, 23
+  index: -1
+boom0005
+  rotate: true
+  xy: 1175, 211
+  size: 115, 96
+  orig: 629, 121
+  offset: 67, 24
+  index: -1
+boom0006
+  rotate: true
+  xy: 1197, 389
+  size: 108, 93
+  orig: 629, 121
+  offset: 74, 28
+  index: -1
+boom0007
+  rotate: false
+  xy: 933, 2
+  size: 103, 85
+  orig: 629, 121
+  offset: 78, 35
+  index: -1
+boom0008
+  rotate: true
+  xy: 1197, 107
+  size: 102, 91
+  orig: 629, 121
+  offset: 81, 29
+  index: -1
+button
+  rotate: false
+  xy: 1197, 12
+  size: 93, 93
+  orig: 93, 93
+  offset: 0, 0
+  index: -1
+flag
+  rotate: false
+  xy: 769, 286
+  size: 151, 211
+  orig: 151, 212
+  offset: 0, 1
+  index: -1
+grid
+  rotate: false
+  xy: 769, 82
+  size: 110, 202
+  orig: 110, 202
+  offset: 0, 0
+  index: -1
+gun
+  rotate: true
+  xy: 922, 321
+  size: 176, 109
+  orig: 178, 130
+  offset: 1, 20
+  index: -1
+inside
+  rotate: false
+  xy: 881, 89
+  size: 118, 195
+  orig: 135, 198
+  offset: 10, 2
+  index: -1
+pinion1
+  rotate: true
+  xy: 1033, 328
+  size: 169, 162
+  orig: 170, 162
+  offset: 0, 0
+  index: -1
+prop
+  rotate: false
+  xy: 1121, 33
+  size: 50, 59
+  orig: 52, 61
+  offset: 1, 1
+  index: -1
+tower_full
+  rotate: true
+  xy: 2, 18
+  size: 479, 765
+  orig: 534, 1000
+  offset: 0, 84
+  index: -1
+wheel
+  rotate: false
+  xy: 1038, 11
+  size: 81, 81
+  orig: 83, 83
+  offset: 1, 1
+  index: -1
