@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,21 +11,25 @@ public class Enemy : MonoBehaviour
     private Rewards _rewards;
     private SkeletonDataAsset _skeletonData;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public Action OnDead;
 
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.position += Vector3.right * Time.deltaTime;
+        transform.position += Vector3.left * Time.deltaTime;
     }
 
     public void GetHit(int damage)
     {
+        _stats.Health -= damage;
 
+        if (_stats.Health <= 0)
+            Dead();
+    }
+
+    private void Dead()
+    {
+        Destroy(gameObject);
+        OnDead?.Invoke();
     }
 
     public void Init(EnemyConfig config)

@@ -1,0 +1,237 @@
+
+samurai.png
+size: 652,1032
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+L_hand
+  rotate: false
+  xy: 521, 358
+  size: 122, 121
+  orig: 123, 121
+  offset: 1, 0
+  index: -1
+L_palm
+  rotate: false
+  xy: 43, 358
+  size: 65, 80
+  orig: 67, 82
+  offset: 1, 1
+  index: -1
+L_plam
+  rotate: false
+  xy: 535, 823
+  size: 109, 95
+  orig: 111, 97
+  offset: 1, 1
+  index: -1
+L_shoe
+  rotate: false
+  xy: 535, 920
+  size: 113, 110
+  orig: 113, 110
+  offset: 0, 0
+  index: -1
+R_finger
+  rotate: true
+  xy: 336, 3
+  size: 21, 29
+  orig: 23, 31
+  offset: 1, 1
+  index: -1
+R_hand
+  rotate: false
+  xy: 521, 481
+  size: 122, 149
+  orig: 122, 149
+  offset: 0, 0
+  index: -1
+R_hand_2
+  rotate: true
+  xy: 438, 76
+  size: 96, 180
+  orig: 203, 180
+  offset: 0, 0
+  index: -1
+R_shoe
+  rotate: false
+  xy: 142, 9
+  size: 92, 117
+  orig: 92, 117
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: true
+  xy: 2, 65
+  size: 373, 39
+  orig: 375, 41
+  offset: 1, 1
+  index: -1
+body
+  rotate: true
+  xy: 438, 174
+  size: 161, 195
+  orig: 165, 208
+  offset: 4, 0
+  index: -1
+body2
+  rotate: false
+  xy: 288, 337
+  size: 219, 101
+  orig: 219, 101
+  offset: 0, 0
+  index: -1
+bow
+  rotate: true
+  xy: 2, 716
+  size: 314, 531
+  orig: 317, 533
+  offset: 1, 1
+  index: -1
+bowstring
+  rotate: true
+  xy: 2, 440
+  size: 274, 517
+  orig: 274, 517
+  offset: 0, 0
+  index: -1
+collar
+  rotate: false
+  xy: 534, 13
+  size: 91, 56
+  orig: 94, 58
+  offset: 1, 1
+  index: -1
+death/death_trash0001
+  rotate: true
+  xy: 43, 67
+  size: 59, 97
+  orig: 102, 112
+  offset: 26, 2
+  index: -1
+death/death_trash0002
+  rotate: false
+  xy: 236, 22
+  size: 98, 104
+  orig: 102, 112
+  offset: 3, 7
+  index: -1
+death/death_trash0003
+  rotate: true
+  xy: 535, 632
+  size: 97, 106
+  orig: 102, 112
+  offset: 3, 3
+  index: -1
+death/death_trash0004
+  rotate: true
+  xy: 535, 731
+  size: 90, 109
+  orig: 102, 112
+  offset: 12, 3
+  index: -1
+death/death_trash0005
+  rotate: true
+  xy: 336, 26
+  size: 100, 91
+  orig: 102, 112
+  offset: 0, 3
+  index: -1
+death/death_trash0006
+  rotate: false
+  xy: 2, 2
+  size: 95, 61
+  orig: 102, 112
+  offset: 1, 0
+  index: -1
+death/death_trash0007
+  rotate: true
+  xy: 110, 364
+  size: 74, 66
+  orig: 102, 112
+  offset: 21, 1
+  index: -1
+death/death_trash0008
+  rotate: true
+  xy: 178, 364
+  size: 74, 40
+  orig: 102, 112
+  offset: 20, 3
+  index: -1
+death/death_trash0009
+  rotate: true
+  xy: 260, 369
+  size: 69, 26
+  orig: 102, 112
+  offset: 21, 3
+  index: -1
+death/death_trash0010
+  rotate: false
+  xy: 367, 5
+  size: 69, 19
+  orig: 102, 112
+  offset: 32, 5
+  index: -1
+death/death_trash0011
+  rotate: true
+  xy: 521, 671
+  size: 43, 12
+  orig: 102, 112
+  offset: 40, 6
+  index: -1
+eye
+  rotate: false
+  xy: 220, 366
+  size: 38, 72
+  orig: 40, 74
+  offset: 1, 1
+  index: -1
+head
+  rotate: false
+  xy: 43, 128
+  size: 225, 228
+  orig: 238, 236
+  offset: 11, 1
+  index: -1
+mouth
+  rotate: true
+  xy: 521, 634
+  size: 35, 9
+  orig: 37, 11
+  offset: 1, 1
+  index: -1
+mouth2
+  rotate: true
+  xy: 620, 137
+  size: 35, 30
+  orig: 35, 30
+  offset: 0, 0
+  index: -1
+mouth3
+  rotate: true
+  xy: 99, 7
+  size: 58, 30
+  orig: 60, 32
+  offset: 1, 1
+  index: -1
+mustache
+  rotate: true
+  xy: 620, 71
+  size: 64, 29
+  orig: 66, 31
+  offset: 1, 1
+  index: -1
+quiver_of_arrows
+  rotate: false
+  xy: 270, 128
+  size: 157, 207
+  orig: 160, 209
+  offset: 1, 1
+  index: -1
+tail
+  rotate: true
+  xy: 438, 5
+  size: 64, 94
+  orig: 64, 94
+  offset: 0, 0
+  index: -1

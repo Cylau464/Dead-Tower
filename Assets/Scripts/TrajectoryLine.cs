@@ -14,6 +14,7 @@ public class TrajectoryLine : MonoBehaviour
     private void Start()
     {
         _gravity = Mathf.Abs(Physics2D.gravity.y);
+        gameObject.SetActive(false);
     }
 
     public void UpdateLine(Vector2 velocity, Vector2 shootPoint)
