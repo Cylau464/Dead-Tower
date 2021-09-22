@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fd564c2f3dc7849bf1bf09572d7609, type: 3}
   m_Name: Barbarian Weapon
   m_EditorClassIdentifier: 
-  Skeleton: {fileID: 0}
-  AnimatorController: {fileID: 0}
+  Skeleton: {fileID: 11400000, guid: 730589ca763b0804cbb01694a87f9427, type: 2}
+  AnimatorController: {fileID: 9100000, guid: ea71de10efcb9554e916fc1758147e61, type: 2}
   ProjectilePrefab: {fileID: 2569940788971668910, guid: b5b72671fd79d8b49a3e99c6921378c2, type: 3}

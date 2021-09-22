@@ -8,21 +8,30 @@ public class TrajectoryLine : MonoBehaviour
     [SerializeField] private LineRenderer _line = null;
     [SerializeField] private float _yLimit;
     [SerializeField] private LayerMask _targetLayer = 0;
+    [SerializeField] private float _textureOffsetSpeed = 2f;
     private float _gravity;
     private Vector2 _velocity, _shootPoint;
+    private Material _lineMaterial;
 
     private void Start()
     {
+        _lineMaterial = _line.material;
         _gravity = Mathf.Abs(Physics2D.gravity.y);
         gameObject.SetActive(false);
     }
 
-    public void UpdateLine(Vector2 velocity, Vector2 shootPoint)
+    public void UpdateLine(Vector2 velocity, Vector2 shootPoint, bool textureOffset = false)
     {
         _velocity = velocity;
         _shootPoint = shootPoint;
         _line.positionCount = _resolution + 1;
         _line.SetPositions(CalculateLineArray());
+
+        if(textureOffset == true)
+        {
+            Vector2 offset = Vector2.left * _textureOffsetSpeed * Time.deltaTime;
+            _lineMaterial.SetTextureOffset("_MainTex", _lineMaterial.GetTextureOffset("_MainTex") + offset);
+        }
     }
 
     private Vector3[] CalculateLineArray()

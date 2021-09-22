@@ -5,11 +5,17 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D _rigidBody = null;
     [SerializeField] protected Collider2D _collider = null;
-    
+    [SerializeField] protected Renderer _renderer;
+
     [Space]
     [SerializeField] private LayerMask _targetLayer = 0;
     [SerializeField] private LayerMask _environmentLayer = 0;
+    [SerializeField] protected string _towerSortingLayer;
+    [SerializeField] protected string _projectileSortingLayer;
     protected bool _hasHit;
+
+    [Space]
+    [SerializeField] private float _lifetime = 10f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,8 +28,11 @@ public abstract class Projectile : MonoBehaviour
             HitToEnvironment(collision.gameObject);
         }
     }
+    public virtual void Launch(Vector2 velocity)
+    {
+        Destroy(gameObject, _lifetime);
+    }
 
     protected abstract void HitToTarget(GameObject target);
     protected abstract void HitToEnvironment(GameObject target);
-    public abstract void SetVelocity(Vector2 velocity);
 }

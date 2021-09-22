@@ -1,0 +1,83 @@
+
+bullet.png
+size: 1093,173
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/Cannonball
+  rotate: false
+  xy: 794, 11
+  size: 29, 29
+  orig: 31, 31
+  offset: 1, 1
+  index: -1
+images/explow/10001
+  rotate: true
+  xy: 2, 2
+  size: 169, 157
+  orig: 173, 163
+  offset: 2, 0
+  index: -1
+images/explow/10002
+  rotate: true
+  xy: 904, 18
+  size: 153, 90
+  orig: 173, 163
+  offset: 9, 15
+  index: -1
+images/explow/10003
+  rotate: true
+  xy: 996, 28
+  size: 143, 95
+  orig: 173, 163
+  offset: 11, 10
+  index: -1
+images/explow/10004
+  rotate: true
+  xy: 674, 20
+  size: 151, 118
+  orig: 173, 163
+  offset: 5, 10
+  index: -1
+images/explow/10005
+  rotate: true
+  xy: 161, 5
+  size: 166, 134
+  orig: 173, 163
+  offset: 3, 6
+  index: -1
+images/explow/10006
+  rotate: true
+  xy: 297, 3
+  size: 168, 129
+  orig: 173, 163
+  offset: 0, 20
+  index: -1
+images/explow/10007
+  rotate: true
+  xy: 428, 19
+  size: 152, 125
+  orig: 173, 163
+  offset: 6, 34
+  index: -1
+images/explow/10008
+  rotate: true
+  xy: 555, 10
+  size: 161, 117
+  orig: 173, 163
+  offset: 8, 42
+  index: -1
+images/explow/10009
+  rotate: true
+  xy: 794, 42
+  size: 129, 108
+  orig: 173, 163
+  offset: 23, 55
+  index: -1
+images/explow/10010
+  rotate: false
+  xy: 161, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1

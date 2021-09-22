@@ -6,9 +6,16 @@ public class Arrow : Projectile
     [SerializeField] private float _stuckDepth = .5f;
     private Vector2 _lastVelocity;
 
+    private void Awake()
+    {
+        _renderer.sortingLayerName = _towerSortingLayer;
+        _renderer.sortingOrder = 10;
+        _rigidBody.isKinematic = true;
+    }
+
     private void Update()
     {
-        if (_hasHit == false)
+        if (_rigidBody.isKinematic == false && _hasHit == false)
         {
             float angle = Mathf.Atan2(_rigidBody.velocity.y, _rigidBody.velocity.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -20,21 +27,30 @@ public class Arrow : Projectile
         _lastVelocity = _rigidBody.velocity;
     }
 
-    public override void SetVelocity(Vector2 velocity)
+    public override void Launch(Vector2 velocity)
     {
+        base.Launch(velocity);
+        _rigidBody.isKinematic = false;
         _rigidBody.velocity = velocity;
+        Invoke(nameof(SetSortLayer), .5f);
+    }
+
+    private void SetSortLayer()
+    {
+        _renderer.sortingLayerName = _projectileSortingLayer;
+        _renderer.sortingOrder = 0;
     }
 
     protected override void HitToEnvironment(GameObject target)
     {
-        StartCoroutine(Stuck(target));
+        StartCoroutine(Stuck());
     }
 
     protected override void HitToTarget(GameObject target)
     {
         if (target.TryGetComponent(out Enemy enemy))
         {
-            enemy.GetHit(1);
+            enemy.TakeDamage(1);
         }
         else
         {
@@ -44,9 +60,11 @@ public class Arrow : Projectile
         StartCoroutine(Stuck(target));
     }
 
-    protected IEnumerator Stuck(GameObject target)
+    protected IEnumerator Stuck(GameObject target = null)
     {
-        transform.parent = target.transform;
+        if(target != null)
+            transform.parent = target.transform;
+
         _hasHit = true;
         _collider.enabled = false;
         float duration = _stuckDepth / _lastVelocity.magnitude;

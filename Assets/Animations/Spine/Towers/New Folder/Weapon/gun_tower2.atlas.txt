@@ -1,0 +1,48 @@
+
+gun_tower2.png
+size: 204,261
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+base1
+  rotate: false
+  xy: 2, 86
+  size: 152, 82
+  orig: 152, 83
+  offset: 0, 0
+  index: -1
+base2
+  rotate: false
+  xy: 2, 2
+  size: 142, 82
+  orig: 144, 92
+  offset: 1, 1
+  index: -1
+base3
+  rotate: false
+  xy: 2, 170
+  size: 160, 89
+  orig: 160, 89
+  offset: 0, 0
+  index: -1
+mask1
+  rotate: false
+  xy: 146, 41
+  size: 21, 22
+  orig: 25, 31
+  offset: 0, 1
+  index: -1
+string
+  rotate: true
+  xy: 164, 143
+  size: 116, 38
+  orig: 116, 39
+  offset: 0, 1
+  index: -1
+string1_1
+  rotate: true
+  xy: 156, 65
+  size: 76, 45
+  orig: 76, 45
+  offset: 0, 0
+  index: -1

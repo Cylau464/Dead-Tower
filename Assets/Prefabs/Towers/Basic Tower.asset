@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Basic Tower
   m_EditorClassIdentifier: 
   MenuSprite: {fileID: 0}
-  Skeleton: {fileID: 11400000, guid: e1c7a6828eeec2c41a714946b51a4c74, type: 2}
+  Skeleton: {fileID: 11400000, guid: e60d4399951ac8240a56d49fa732318e, type: 2}
   AnimatorController: {fileID: 9100000, guid: 37dbc919a03bc3749a9d49da2d1d88cf, type: 2}
   AbilityPrefab: {fileID: 0}
   WeaponConfig: {fileID: 11400000, guid: 8e20b61915dcb4243bef82f4d404fb71, type: 2}

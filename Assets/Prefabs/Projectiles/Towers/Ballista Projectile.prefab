@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -672285517
-  m_SortingLayer: 1
+  m_SortingLayerID: -1569912621
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: eef5bfea5aa569848b11213fc1c52479, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -146,10 +146,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 2569940788971668912}
   _collider: {fileID: 2965902226181646407}
+  _renderer: {fileID: 2569940788971668913}
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128
   _environmentLayer:
     serializedVersion: 2
     m_Bits: 256
+  _towerSortingLayer: Tower
+  _projectileSortingLayer: Projectile
   _stuckDepth: 0.75

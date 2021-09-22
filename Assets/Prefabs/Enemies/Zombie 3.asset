@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Zombie 3
   m_EditorClassIdentifier: 
   Name: Zombie 3
-  Prefab: {fileID: 3706964457989367995, guid: b32501f308d764342bc1046318f762ed, type: 3}
-  SkeletonData: {fileID: 0}
+  Prefab: {fileID: 4140002623381893389, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  Skeleton: {fileID: 0}
+  AnimatorController: {fileID: 0}
   Stats:
     Damage: 3
     Health: 1
