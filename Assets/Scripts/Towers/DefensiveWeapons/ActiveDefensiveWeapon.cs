@@ -7,10 +7,12 @@ public class ActiveDefensiveWeapon : DefensiveWeapon
     protected int _attackSpeedParamID;
     protected int _attackParamID;
 
-    private void Start()
+    private new void Start()
     {
+        base.Start();
         _attackSpeedParamID = Animator.StringToHash("attackSpeed");
         _attackParamID = Animator.StringToHash("attack");
+        _animator.SetFloat(_attackSpeedParamID, 1f);
     }
 
     protected override void Attack(Enemy enemy)

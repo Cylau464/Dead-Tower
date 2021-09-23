@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134b6acd5967d59429d8330211078a1f, type: 3}
+  m_Name: Pale
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 5892673983033233357, guid: 1ecea986e6177f64e8d138f102deba4a, type: 3}
+  Skeleton: {fileID: 11400000, guid: ac256108a78c6ef4fa1c374a378cc0c7, type: 2}
+  AnimatorController: {fileID: 9100000, guid: 39880e1fea891b84d9967e71774bcd1d, type: 2}
+  Stats:
+    Health: 1
+    Damage: 2
+    MoveSpeed: 1.5

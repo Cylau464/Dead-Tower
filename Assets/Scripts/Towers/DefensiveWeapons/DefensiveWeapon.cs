@@ -13,7 +13,7 @@ public abstract class DefensiveWeapon : MonoBehaviour
     protected int _speedParamID;
     protected int _deadParamID;
 
-    private void Start()
+    protected void Start()
     {
         _speedParamID = Animator.StringToHash("speed");
         _deadParamID = Animator.StringToHash("dead");

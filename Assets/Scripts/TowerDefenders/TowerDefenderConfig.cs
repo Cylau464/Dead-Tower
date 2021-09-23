@@ -2,7 +2,7 @@
 using Spine.Unity;
 using UnityEditor.Animations;
 
-[CreateAssetMenu(fileName = "Tower Defender", menuName = "Tower Defender")]
+[CreateAssetMenu(fileName = "Tower Defender", menuName = "Tower/Defender")]
 public class TowerDefenderConfig : ScriptableObject
 {
     public Sprite MenuSprite;

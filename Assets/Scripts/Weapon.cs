@@ -127,6 +127,11 @@ public class Weapon : MonoBehaviour
         Shoot();
     }
 
+    private void OnMouseDrag()
+    {
+        StartCharge();
+    }
+
     private void OnDestroy()
     {
         if(_tower != null)

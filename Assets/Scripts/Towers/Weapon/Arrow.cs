@@ -4,6 +4,9 @@ using UnityEngine;
 public class Arrow : Projectile
 {
     [SerializeField] private float _stuckDepth = .5f;
+    [SerializeField] private float _dissolveDelay = 2f;
+    [SerializeField] private float _dissolveDuration = 1f;
+    private Material _material;
     private Vector2 _lastVelocity;
     private bool _isUnstucked;
 
@@ -12,6 +15,7 @@ public class Arrow : Projectile
         _renderer.sortingLayerName = _towerSortingLayer;
         _renderer.sortingOrder = 10;
         _rigidBody.isKinematic = true;
+        _material = GetComponent<Renderer>().material;
     }
 
     private void Update()
@@ -67,8 +71,9 @@ public class Arrow : Projectile
         CancelInvoke(nameof(SelfDestroy));
 
         if (activateTimer == true)
-            Destroy(gameObject, 2f);
+            StartCoroutine(Dissolve());
 
+        transform.parent = target.transform;
         _hasHit = true;
         _collider.enabled = false;
         float duration = _stuckDepth / _lastVelocity.magnitude;
@@ -90,5 +95,22 @@ public class Arrow : Projectile
         _rigidBody.AddForce(direction * 2f, ForceMode2D.Impulse);
         _rigidBody.AddTorque(Random.Range(-90f, 90f));
         _isUnstucked = true;
+    }
+
+    private IEnumerator Dissolve()
+    {
+        yield return new WaitForSeconds(_dissolveDelay);
+
+        float t = 1f;
+
+        while(t > 0f)
+        {
+            t -= Time.deltaTime / _dissolveDuration;
+            _material.SetFloat("_DissolveAmount", t);
+
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

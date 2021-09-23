@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4aea1e52e150f6e41a374e4b7dbeea11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,4 +155,5 @@ MonoBehaviour:
     m_Bits: 256
   _towerSortingLayer: Tower
   _projectileSortingLayer: Projectile
+  _lifetime: 10
   _stuckDepth: 0.75

@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - Tower Defender
   - Enemy
   - Environment
   - Tower
-  - 
+  - Defensive Weapon
   - 
   - 
   - 
@@ -47,12 +47,15 @@ TagManager:
   - name: Projectile
     uniqueID: 3622681779
     locked: 0
+  - name: Tower Defender
+    uniqueID: 1593939073
+    locked: 0
   - name: Tower
     uniqueID: 2725054675
     locked: 0
-  - name: Player
-    uniqueID: 1593939073
-    locked: 0
   - name: Enemy
     uniqueID: 1119690493
+    locked: 0
+  - name: Defensive Weapon
+    uniqueID: 3066259643
     locked: 0

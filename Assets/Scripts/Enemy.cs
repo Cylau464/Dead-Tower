@@ -126,10 +126,13 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if(target.TryGetComponent(out Tower tower))
-            tower.TakeDamage(this, _stats.Damage);
-        else if(target.TryGetComponent(out ActiveDefensiveWeapon defensiveWeapon))
-            defensiveWeapon.TakeDamage(_stats.Damage);
+        if (target != null)
+        {
+            if(target.TryGetComponent(out Tower tower))
+                tower.TakeDamage(this, _stats.Damage);
+            else if(target.TryGetComponent(out ActiveDefensiveWeapon defensiveWeapon))
+                defensiveWeapon.TakeDamage(_stats.Damage);
+        }
 
         Invoke(nameof(Move), .2f);
     }

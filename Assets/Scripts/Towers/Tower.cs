@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Spine.Unity;
 using System;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class Tower : MonoBehaviour
     [SerializeField] private Weapon _weaponPrefab;
     [SerializeField] private SkeletonMecanim _skeletonMecanim;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Button _defensiveWeaponButton;
+    [SerializeField] private Transform _defensiveWeaponSpawnPoint;
+
     public Transform DefenderPoint => _defenderPoint;
 
     private Weapon _weapon;
-    private GameObject _abilityPrefab;
     private TowerStats _stats;
+    private DefensiveWeaponConfig _defensiveWeaponConfig;
+    private bool _defensiveWeaponActivated;
 
     private int _openParamID;
     private int _closeParamID;
@@ -27,11 +32,12 @@ public class Tower : MonoBehaviour
         _openParamID = Animator.StringToHash("open");
         _closeParamID = Animator.StringToHash("close");
         _aimParamID = Animator.StringToHash("isAim");
+        _defensiveWeaponButton.onClick.AddListener(OpenGate);
     }
 
     public void Init(TowerConfig config)
     {
-        _abilityPrefab = config.AbilityPrefab;
+        _defensiveWeaponConfig = config.DefensiveWeaponConfig;
         _stats = config.Stats;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
@@ -71,5 +77,26 @@ public class Tower : MonoBehaviour
             _weapon.OnAimStart -= OnAimStart;
             _weapon.OnAimEnd -= OnAimEnd;
         }
+    }
+
+    private void OpenGate()
+    {
+        if (_defensiveWeaponActivated == true) return;
+
+        _animator.SetTrigger(_openParamID);
+        _defensiveWeaponButton.interactable = false;
+        _defensiveWeaponActivated = true;
+    }
+
+    public void GateOpened()
+    {
+        DefensiveWeapon weapon = Instantiate(_defensiveWeaponConfig.Prefab, _defensiveWeaponSpawnPoint.position, Quaternion.identity);
+        weapon.Init(_defensiveWeaponConfig);
+        Invoke(nameof(CloseGate), 1.5f);
+    }
+
+    private void CloseGate()
+    {
+        _animator.SetTrigger(_closeParamID);
     }
 }

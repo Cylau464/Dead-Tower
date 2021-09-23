@@ -1,4 +1,5 @@
-﻿public struct DefensiveWeaponStats
+﻿[System.Serializable]
+public struct DefensiveWeaponStats
 {
     public int Health;
     public int Damage;
