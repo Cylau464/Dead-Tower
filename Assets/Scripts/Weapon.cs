@@ -34,8 +34,8 @@ public class Weapon : MonoBehaviour
         _aimingParamID = Animator.StringToHash("isAim");
         _shootParamID = Animator.StringToHash("shoot");
         _takeDamageParamID = Animator.StringToHash("takeDamage");
-        _projectileBone = _skeletonMecanim.skeleton.FindBone("projectile_poin");
-        _shootPointBone = _skeletonMecanim.skeleton.FindBone("vector");
+        _projectileBone = _skeletonMecanim.skeleton.FindBone("projectile_point");
+        _shootPointBone = _skeletonMecanim.skeleton.FindBone("projectile_point2");
 
         if (transform.parent.TryGetComponent(out Tower tower))
         {
@@ -46,6 +46,8 @@ public class Weapon : MonoBehaviour
         {
             throw new Exception("Cant find a tower in parent object");
         }
+
+        _line.SetYLimit(_shootPointBone.GetWorldPosition(transform));
     } 
 
     private void Update()

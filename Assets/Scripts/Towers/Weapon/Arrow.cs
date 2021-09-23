@@ -5,6 +5,7 @@ public class Arrow : Projectile
 {
     [SerializeField] private float _stuckDepth = .5f;
     private Vector2 _lastVelocity;
+    private bool _isUnstucked;
 
     private void Awake()
     {
@@ -43,27 +44,30 @@ public class Arrow : Projectile
 
     protected override void HitToEnvironment(GameObject target)
     {
-        StartCoroutine(Stuck());
+        StartCoroutine(Stuck(target, true));
     }
 
     protected override void HitToTarget(GameObject target)
     {
         if (target.TryGetComponent(out Enemy enemy))
         {
-            enemy.TakeDamage(1);
+            if (_isUnstucked == true) return;
+
+            if(enemy.TakeDamage(1, this) == false)
+                StartCoroutine(Stuck(target, false));
         }
         else
         {
             Debug.LogError("Cant find Enemy component on " + target.name);
-        }
-
-        StartCoroutine(Stuck(target));
+        }            
     }
 
-    protected IEnumerator Stuck(GameObject target = null)
+    protected IEnumerator Stuck(GameObject target, bool activateTimer)
     {
-        if(target != null)
-            transform.parent = target.transform;
+        CancelInvoke(nameof(SelfDestroy));
+
+        if (activateTimer == true)
+            Destroy(gameObject, 2f);
 
         _hasHit = true;
         _collider.enabled = false;
@@ -72,6 +76,19 @@ public class Arrow : Projectile
         yield return new WaitForSeconds(duration);
 
         _rigidBody.velocity = Vector2.zero;
-        _rigidBody.isKinematic = true;
+        _rigidBody.simulated = false;
+    }
+
+    public override void Unstuck(Vector3 parentPosition)
+    {
+        transform.parent = null;
+        Vector2 direction = (transform.position - parentPosition).normalized;
+        _collider.enabled = true;
+        _rigidBody.constraints = RigidbodyConstraints2D.None;
+        _rigidBody.simulated = true;
+        _rigidBody.velocity = Vector2.zero;
+        _rigidBody.AddForce(direction * 2f, ForceMode2D.Impulse);
+        _rigidBody.AddTorque(Random.Range(-90f, 90f));
+        _isUnstucked = true;
     }
 }

@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     private int _deadParamID;
     private int _takeDamageParamID;
 
+    private List<Projectile> _stuckProjectiles;
+
     public Action<Rewards> OnDead;
 
     private void Start()
@@ -30,6 +32,7 @@ public class Enemy : MonoBehaviour
         _attackParamID = Animator.StringToHash("isAttack");
         _deadParamID = Animator.StringToHash("isDead");
         _takeDamageParamID = Animator.StringToHash("isTakeDamage");
+        _stuckProjectiles = new List<Projectile>();
     }
 
     private void LateUpdate()
@@ -38,7 +41,7 @@ public class Enemy : MonoBehaviour
         _animator.SetFloat(_speedParamID, normalizedSpeed);
     }
 
-    public void TakeDamage(int damage)
+    public bool TakeDamage(int damage)
     {
         if(damage < 0)
             throw new Exception("Attempt to deal negative damage");
@@ -46,9 +49,21 @@ public class Enemy : MonoBehaviour
         _stats.Health -= damage;
 
         if (_stats.Health <= 0)
+        {
             Dead();
-        //else
-        //    _animator.SetTrigger(_takeDamageParamID);
+            return true;
+        }
+        else
+        {
+            //_animator.SetTrigger(_takeDamageParamID);
+            return false;
+        }
+    }
+
+    public bool TakeDamage(int damage, Projectile projectile)
+    {
+        _stuckProjectiles.Add(projectile);
+        return TakeDamage(damage);
     }
 
     private void Attack()
@@ -69,6 +84,11 @@ public class Enemy : MonoBehaviour
         _rigidBody.simulated = false;
         _collider.enabled = false;
         this.enabled = false;
+
+        foreach(Projectile projectile in _stuckProjectiles)
+        {
+            projectile.Unstuck(transform.position);
+        }
     }
 
     public virtual void Init(EnemyConfig config)
@@ -108,7 +128,7 @@ public class Enemy : MonoBehaviour
 
         if(target.TryGetComponent(out Tower tower))
             tower.TakeDamage(this, _stats.Damage);
-        else if(target.TryGetComponent(out DefensiveWeapon defensiveWeapon))
+        else if(target.TryGetComponent(out ActiveDefensiveWeapon defensiveWeapon))
             defensiveWeapon.TakeDamage(_stats.Damage);
 
         Invoke(nameof(Move), .2f);

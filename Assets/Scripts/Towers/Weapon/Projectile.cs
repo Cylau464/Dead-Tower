@@ -28,11 +28,18 @@ public abstract class Projectile : MonoBehaviour
             HitToEnvironment(collision.gameObject);
         }
     }
-    public virtual void Launch(Vector2 velocity)
+
+    protected void SelfDestroy()
     {
-        Destroy(gameObject, _lifetime);
+        Destroy(gameObject);
     }
 
+    public virtual void Launch(Vector2 velocity)
+    {
+        Invoke(nameof(SelfDestroy), _lifetime);
+    }
+
+    public abstract void Unstuck(Vector3 parentPosition);
     protected abstract void HitToTarget(GameObject target);
     protected abstract void HitToEnvironment(GameObject target);
 }

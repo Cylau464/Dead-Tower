@@ -132,7 +132,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 1, g: 0.31764707, b: 0.31764707, a: 1}
       key3: {r: 1, g: 0.31764707, b: 0.31764707, a: 0}
@@ -149,7 +149,7 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 66
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -158,7 +158,7 @@ LineRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 4
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 1
@@ -185,6 +185,9 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
   _textureOffsetSpeed: 2
 --- !u!1 &4138166327034758081
 GameObject:
@@ -345,8 +348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeletonMecanim: {fileID: 4138166327034758078}
   _animator: {fileID: 4138166327034758079}
-  _minCharge: 8
-  _maxCharge: 20
+  _minCharge: 3
+  _maxCharge: 16
   _chargeSpeed: 6
   _line: {fileID: 4138166326749072773}
 --- !u!61 &3175756261353936531
@@ -362,7 +365,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4367299, y: 4.299364}
+  m_Offset: {x: 0.4367299, y: 3.6122072}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -373,5 +376,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.93569, y: 3.1997175}
+  m_Size: {x: 4.93569, y: 3.2426658}
   m_EdgeRadius: 0
