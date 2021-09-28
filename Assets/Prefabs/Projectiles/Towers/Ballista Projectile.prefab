@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2569940788971668914}
   - component: {fileID: 2569940788971668913}
   - component: {fileID: 2569940788971668912}
-  - component: {fileID: 2965902226181646407}
   - component: {fileID: 8728990395029971308}
+  - component: {fileID: 2735775324074460089}
   m_Layer: 0
   m_Name: Ballista Projectile
   m_TagString: Untagged
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1569912621
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: eef5bfea5aa569848b11213fc1c52479, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,32 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &2965902226181646407
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2569940788971668910}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.725942, y: 0.02990447}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.77, y: 0.94}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.29109764, y: 0.24477836}
-  m_EdgeRadius: 0
 --- !u!114 &8728990395029971308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 2569940788971668912}
-  _collider: {fileID: 2965902226181646407}
+  _collider: {fileID: 2735775324074460089}
   _renderer: {fileID: 2569940788971668913}
   _targetLayer:
     serializedVersion: 2
@@ -155,5 +129,41 @@ MonoBehaviour:
     m_Bits: 256
   _towerSortingLayer: Tower
   _projectileSortingLayer: Projectile
+  _towerSortingOrder: 10
+  _hitParticlePrefab: {fileID: 0}
   _lifetime: 10
   _stuckDepth: 0.75
+  _dissolveDelay: 2
+  _dissolveDuration: 1
+--- !u!60 &2735775324074460089
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2569940788971668910}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.77, y: 0.94}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.58013856, y: 0.1470277}
+      - {x: 0.5752014, y: 0.058816135}
+      - {x: -0.8829391, y: 0.045573477}
+      - {x: -0.8814874, y: -0.047634404}
+      - {x: 0.58618206, y: -0.036544725}
+      - {x: 0.6235713, y: -0.10114956}
+      - {x: 0.9014874, y: 0.022974899}

@@ -17,3 +17,7 @@ MonoBehaviour:
   AnimatorController: {fileID: 9100000, guid: e0e35cb56164f0b43b14afed220f794d, type: 2}
   ProjectilePrefab: {fileID: 0}
   Modifier: {fileID: 0}
+  Stats:
+    Damage: 1
+    Health: 3
+    ShootDistance: 1

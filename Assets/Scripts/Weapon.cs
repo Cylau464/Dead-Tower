@@ -8,9 +8,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private SkeletonMecanim _skeletonMecanim;
     [SerializeField] private Animator _animator;
 
-    [SerializeField] private float _minCharge = 4f;
-    [SerializeField] private float _maxCharge = 16f;
-    [SerializeField] private float _chargeSpeed = 1f;
     private float _charge;
     private bool _isCharging;
 
@@ -20,6 +17,7 @@ public class Weapon : MonoBehaviour
     private Spine.Bone _projectileBone;
     private Spine.Bone _shootPointBone;
     private Tower _tower;
+    private WeaponStats _stats;
 
     // Anim params
     private int _aimingParamID;
@@ -59,10 +57,9 @@ public class Weapon : MonoBehaviour
             if(_isCharging == true)
             {
                 bool lineTextureOffset = false;
-                _charge = Mathf.Min(_charge + _chargeSpeed * Time.deltaTime, _maxCharge);
+                _charge = Mathf.Min(_charge + _stats.ChargeSpeed * Time.deltaTime, _stats.MaxCharge);
 
-
-                if (_charge >= _maxCharge)
+                if (_charge >= _stats.MaxCharge)
                     lineTextureOffset = true;
 
                 _line.UpdateLine(_charge * _curProjectile.transform.right, _shootPointBone.GetWorldPosition(transform), lineTextureOffset);
@@ -79,9 +76,11 @@ public class Weapon : MonoBehaviour
         Vector2 pos = _projectileBone.GetWorldPosition(transform);
         Quaternion rot = Quaternion.Euler(0f, 0f, _projectileBone.Rotation);
         _curProjectile = Instantiate(_projectilePrefab, pos, rot).GetComponent<Projectile>();
+        ProjectileStats pStats = new ProjectileStats(_tower.Stats.Damage, null);
+        _curProjectile.Init(pStats);
 
         _isCharging = true;
-        _charge = _minCharge;
+        _charge = _stats.MinCharge;
         _line.gameObject.SetActive(true);
         _line.UpdateLine(_charge * _curProjectile.transform.right, _shootPointBone.GetWorldPosition(transform));
         _animator.SetTrigger(_aimingParamID);
@@ -110,6 +109,7 @@ public class Weapon : MonoBehaviour
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
+        _stats = config.Stats;
     }
 
     private void TakeDamage(int healthLeft)

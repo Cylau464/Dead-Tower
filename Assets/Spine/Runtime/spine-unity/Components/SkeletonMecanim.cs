@@ -39,6 +39,9 @@ namespace Spine.Unity {
 		public MecanimTranslator Translator { get { return translator; } }
 		private bool wasUpdatedAfterInit = true;
 
+		public delegate void OverrideAction();
+		public event OverrideAction OverrideBones;
+
 		#region Bone Callbacks (ISkeletonAnimation)
 		protected event UpdateBonesDelegate _BeforeApply;
 		protected event UpdateBonesDelegate _UpdateLocal;
@@ -91,6 +94,9 @@ namespace Spine.Unity {
 			if (updateMode <= UpdateMode.OnlyAnimationStatus)
 				return;
 			ApplyAnimation();
+
+			if (OverrideBones != null)
+				OverrideBones();
 		}
 
 		protected void ApplyAnimation () {

@@ -1,0 +1,62 @@
+
+gun_barbarian_tower.png
+size: 549,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow_button
+  rotate: true
+  xy: 500, 87
+  size: 65, 47
+  orig: 65, 47
+  offset: 0, 0
+  index: -1
+base
+  rotate: true
+  xy: 2, 8
+  size: 262, 157
+  orig: 262, 157
+  offset: 0, 0
+  index: -1
+button
+  rotate: true
+  xy: 383, 7
+  size: 116, 115
+  orig: 116, 115
+  offset: 0, 0
+  index: -1
+door
+  rotate: true
+  xy: 161, 2
+  size: 107, 220
+  orig: 108, 220
+  offset: 1, 0
+  index: -1
+starter
+  rotate: true
+  xy: 319, 125
+  size: 145, 124
+  orig: 153, 132
+  offset: 1, 7
+  index: -1
+tower_pinion1
+  rotate: false
+  xy: 161, 111
+  size: 156, 159
+  orig: 156, 159
+  offset: 0, 0
+  index: -1
+wheel1
+  rotate: true
+  xy: 445, 213
+  size: 57, 58
+  orig: 57, 58
+  offset: 0, 0
+  index: -1
+wheel2
+  rotate: false
+  xy: 445, 154
+  size: 57, 57
+  orig: 57, 57
+  offset: 0, 0
+  index: -1

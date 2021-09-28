@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using System;
+using Random = UnityEngine.Random;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageTaker
 {
-    [SerializeField] private SkeletonMecanim _skeletonMecanim;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private Renderer _renderer;
-    [SerializeField] private Rigidbody2D _rigidBody;
-    [SerializeField] private Collider2D _collider;
+    [SerializeField] protected SkeletonMecanim _skeletonMecanim;
+    [SerializeField] protected Animator _animator;
+    [SerializeField] protected Renderer _renderer;
+    [SerializeField] protected Rigidbody2D _rigidBody;
+    [SerializeField] private CapsuleCollider2D _collider;
     [SerializeField] private LayerMask _targetLayer;
 
-    private EnemyStats _stats;
+    protected EnemyStats _stats;
     public EnemyStats Stats => _stats;
     private Rewards _rewards;
 
@@ -26,13 +27,17 @@ public class Enemy : MonoBehaviour
 
     public Action<Rewards> OnDead;
 
-    private void Start()
+    protected void Start()
     {
         _speedParamID = Animator.StringToHash("speed");
         _attackParamID = Animator.StringToHash("isAttack");
         _deadParamID = Animator.StringToHash("isDead");
         _takeDamageParamID = Animator.StringToHash("isTakeDamage");
         _stuckProjectiles = new List<Projectile>();
+
+        Bounds bounds = GetComponent<MeshFilter>().sharedMesh.bounds;
+        _collider.offset = bounds.center;
+        _collider.size = bounds.size;
     }
 
     private void LateUpdate()
@@ -62,8 +67,12 @@ public class Enemy : MonoBehaviour
 
     public bool TakeDamage(int damage, Projectile projectile)
     {
-        _stuckProjectiles.Add(projectile);
-        return TakeDamage(damage);
+        bool dead = TakeDamage(damage);
+
+        if(dead == false)
+            _stuckProjectiles.Add(projectile);
+
+        return dead;
     }
 
     private void Attack()
@@ -72,7 +81,7 @@ public class Enemy : MonoBehaviour
         _animator.SetTrigger(_attackParamID);
     }
 
-    private void Move()
+    protected void Move()
     {
         _rigidBody.velocity = Vector2.left * _stats.MoveSpeed;
     }
@@ -84,6 +93,7 @@ public class Enemy : MonoBehaviour
         _rigidBody.simulated = false;
         _collider.enabled = false;
         this.enabled = false;
+        _renderer.sortingOrder--;
 
         foreach(Projectile projectile in _stuckProjectiles)
         {
@@ -101,14 +111,14 @@ public class Enemy : MonoBehaviour
         Spawned();
     }
 
-    public void Spawned()
+    public virtual void Spawned()
     {
         Move();
     }
 
     public void GiveDamage()
     {
-        Vector2 checkPos = (Vector2)transform.position + (Vector2.up * _renderer.bounds.size.y / 2f);
+        Vector2 checkPos = (Vector2)transform.position + Vector2.up * _renderer.bounds.size.y;
         Vector2 checkSize = _collider.bounds.size;
         checkSize.x *= 1.5f;
         Collider2D[] colliders = Physics2D.OverlapBoxAll(checkPos, checkSize, 0f, _targetLayer);
@@ -137,7 +147,15 @@ public class Enemy : MonoBehaviour
         Invoke(nameof(Move), .2f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if((1 << collision.gameObject.layer & _targetLayer) != 0)
+        {
+            Attack();
+        }
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if((1 << collision.gameObject.layer & _targetLayer) != 0)
         {

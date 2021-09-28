@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-
+﻿[System.Serializable]
 public struct TowerDefenderStats
 {
     public int Damage;

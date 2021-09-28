@@ -15,5 +15,9 @@ MonoBehaviour:
   MenuSprite: {fileID: 0}
   Skeleton: {fileID: 11400000, guid: 14442e06025548b45b038cdc4339935d, type: 2}
   AnimatorController: {fileID: 9100000, guid: c1a9fc87ec6ebea469aff7aa9dfd1746, type: 2}
-  ProjectilePrefab: {fileID: 0}
-  Modifier: {fileID: 0}
+  ProjectilePrefab: {fileID: 8728990395029971308, guid: f0032d52460395e4b937ed884089c36d, type: 3}
+  Modifier: {fileID: 11400000, guid: acccda952ca8222478e0006fde168a93, type: 2}
+  Stats:
+    Damage: 1
+    Health: 3
+    ShootDistance: 1

@@ -8,7 +8,7 @@ public class TowerDefenderConfig : ScriptableObject
     public Sprite MenuSprite;
     public SkeletonDataAsset Skeleton;
     public AnimatorController AnimatorController;
-    public GameObject ProjectilePrefab;
+    public Projectile ProjectilePrefab;
     public ModifierConfig Modifier;
     public TowerDefenderStats Stats;
 }

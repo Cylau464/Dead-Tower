@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455bcfaf825d4bb4f8c6d6789e225f5b, type: 3}
+  m_Name: Zombie Archer
+  m_EditorClassIdentifier: 
+  Name: Zombie Archer
+  Prefab: {fileID: 5532642196135197398, guid: 72d520112c9498f409bcd7c557bf3ea7, type: 3}
+  Skeleton: {fileID: 11400000, guid: 0b8f6e4ac9b270842adf9d46696c88cf, type: 2}
+  AnimatorController: {fileID: 9100000, guid: a7f3cdb62c59a8a499f4adb2e4d84f3b, type: 2}
+  Stats:
+    Damage: 1
+    Health: 1
+    MoveSpeed: 1
+    Power: 1
+  Rewards:
+    Gold: 50
+    Exp: 20
+    Wood: 10
+    Iron: 10
+    Stone: 0

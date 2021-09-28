@@ -1,0 +1,27 @@
+
+lever.png
+size: 284,115
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+base1
+  rotate: false
+  xy: 159, 3
+  size: 65, 110
+  orig: 68, 113
+  offset: 2, 2
+  index: -1
+base2
+  rotate: false
+  xy: 226, 8
+  size: 56, 105
+  orig: 60, 107
+  offset: 2, 1
+  index: -1
+switch
+  rotate: false
+  xy: 2, 2
+  size: 155, 111
+  orig: 161, 118
+  offset: 2, 5
+  index: -1

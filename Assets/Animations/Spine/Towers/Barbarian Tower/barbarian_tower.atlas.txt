@@ -1,0 +1,104 @@
+
+barbarian_tower.png
+size: 1714,538
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow_button
+  rotate: false
+  xy: 1407, 5
+  size: 65, 47
+  orig: 65, 47
+  offset: 0, 0
+  index: -1
+boards
+  rotate: true
+  xy: 1621, 92
+  size: 61, 76
+  orig: 62, 76
+  offset: 1, 0
+  index: -1
+button
+  rotate: false
+  xy: 1407, 54
+  size: 116, 115
+  orig: 116, 115
+  offset: 0, 0
+  index: -1
+chain1
+  rotate: false
+  xy: 1700, 360
+  size: 11, 87
+  orig: 11, 87
+  offset: 0, 0
+  index: -1
+chain2
+  rotate: false
+  xy: 1700, 449
+  size: 12, 87
+  orig: 12, 87
+  offset: 0, 0
+  index: -1
+door
+  rotate: false
+  xy: 1591, 316
+  size: 107, 220
+  orig: 108, 220
+  offset: 1, 0
+  index: -1
+door_close
+  rotate: true
+  xy: 1407, 370
+  size: 166, 182
+  orig: 166, 184
+  offset: 0, 1
+  index: -1
+full
+  rotate: true
+  xy: 718, 2
+  size: 534, 687
+  orig: 534, 1000
+  offset: 0, 48
+  index: -1
+inside
+  rotate: false
+  xy: 1407, 171
+  size: 146, 197
+  orig: 184, 203
+  offset: 12, 0
+  index: -1
+light
+  rotate: false
+  xy: 1525, 56
+  size: 94, 97
+  orig: 100, 105
+  offset: 4, 2
+  index: -1
+scull
+  rotate: false
+  xy: 1517, 4
+  size: 40, 48
+  orig: 40, 48
+  offset: 0, 0
+  index: -1
+scull2
+  rotate: false
+  xy: 1474, 3
+  size: 41, 49
+  orig: 41, 49
+  offset: 0, 0
+  index: -1
+tower_full
+  rotate: true
+  xy: 2, 2
+  size: 534, 714
+  orig: 534, 714
+  offset: 0, 0
+  index: -1
+tower_pinion1
+  rotate: false
+  xy: 1555, 155
+  size: 156, 159
+  orig: 156, 159
+  offset: 0, 0
+  index: -1

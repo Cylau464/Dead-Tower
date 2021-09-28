@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fd564c2f3dc7849bf1bf09572d7609, type: 3}
   m_Name: Basic Weapon
   m_EditorClassIdentifier: 
-  Skeleton: {fileID: 11400000, guid: 2f641c2392028cd43b5eec17ad6c2d54, type: 2}
-  AnimatorController: {fileID: 9100000, guid: f9ce21b9b7e2b6f4cb8ac403b58bd580, type: 2}
+  Skeleton: {fileID: 11400000, guid: 6542ef69f7c734e4a9a3242741adeabc, type: 2}
+  AnimatorController: {fileID: 9100000, guid: 7d5a99a1dfb2033419847816e967adb5, type: 2}
   ProjectilePrefab: {fileID: 2569940788971668910, guid: b5b72671fd79d8b49a3e99c6921378c2, type: 3}
+  Stats:
+    MinCharge: 3
+    MaxCharge: 16
+    ChargeSpeed: 6

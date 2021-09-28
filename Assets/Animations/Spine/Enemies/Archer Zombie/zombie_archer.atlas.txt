@@ -1,0 +1,216 @@
+
+zombie_archer.png
+size: 1361,395
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+L_hand
+  rotate: false
+  xy: 1025, 255
+  size: 114, 138
+  orig: 115, 138
+  offset: 1, 0
+  index: -1
+L_leg
+  rotate: false
+  xy: 1141, 255
+  size: 82, 138
+  orig: 82, 138
+  offset: 0, 0
+  index: -1
+L_palm
+  rotate: true
+  xy: 1025, 14
+  size: 162, 138
+  orig: 162, 139
+  offset: 0, 1
+  index: -1
+L_shoe
+  rotate: false
+  xy: 1265, 28
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+R_hand
+  rotate: false
+  xy: 745, 2
+  size: 85, 158
+  orig: 85, 158
+  offset: 0, 0
+  index: -1
+R_hand2
+  rotate: false
+  xy: 929, 199
+  size: 94, 194
+  orig: 94, 194
+  offset: 0, 0
+  index: -1
+R_leg
+  rotate: true
+  xy: 1225, 300
+  size: 93, 134
+  orig: 93, 134
+  offset: 0, 0
+  index: -1
+R_shoe
+  rotate: true
+  xy: 667, 4
+  size: 99, 76
+  orig: 100, 76
+  offset: 1, 0
+  index: -1
+acne
+  rotate: false
+  xy: 700, 105
+  size: 41, 41
+  orig: 44, 43
+  offset: 1, 1
+  index: -1
+arrow
+  rotate: false
+  xy: 2, 6
+  size: 314, 46
+  orig: 316, 48
+  offset: 1, 1
+  index: -1
+body
+  rotate: true
+  xy: 832, 11
+  size: 149, 191
+  orig: 149, 191
+  offset: 0, 0
+  index: -1
+bow
+  rotate: true
+  xy: 2, 54
+  size: 339, 306
+  orig: 342, 306
+  offset: 0, 0
+  index: -1
+bowstring
+  rotate: false
+  xy: 310, 67
+  size: 262, 326
+  orig: 262, 326
+  offset: 0, 0
+  index: -1
+death/death_trash_zombie0000
+  rotate: true
+  xy: 475, 6
+  size: 59, 97
+  orig: 102, 112
+  offset: 26, 2
+  index: -1
+death/death_trash_zombie0001
+  rotate: false
+  xy: 1165, 18
+  size: 98, 104
+  orig: 102, 112
+  offset: 3, 7
+  index: -1
+death/death_trash_zombie0002
+  rotate: true
+  xy: 1225, 201
+  size: 97, 106
+  orig: 102, 112
+  offset: 3, 3
+  index: -1
+death/death_trash_zombie0003
+  rotate: true
+  xy: 1265, 109
+  size: 90, 94
+  orig: 102, 112
+  offset: 12, 3
+  index: -1
+death/death_trash_zombie0004
+  rotate: true
+  xy: 574, 3
+  size: 100, 91
+  orig: 102, 112
+  offset: 0, 3
+  index: -1
+death/death_trash_zombie0005
+  rotate: false
+  xy: 318, 4
+  size: 95, 61
+  orig: 102, 112
+  offset: 1, 0
+  index: -1
+death/death_trash_zombie0006
+  rotate: true
+  xy: 1101, 179
+  size: 74, 66
+  orig: 102, 112
+  offset: 21, 1
+  index: -1
+death/death_trash_zombie0007
+  rotate: false
+  xy: 1025, 213
+  size: 74, 40
+  orig: 102, 112
+  offset: 20, 3
+  index: -1
+death/death_trash_zombie0008
+  rotate: false
+  xy: 929, 171
+  size: 69, 26
+  orig: 102, 112
+  offset: 21, 3
+  index: -1
+death/death_trash_zombie0009
+  rotate: false
+  xy: 1024, 178
+  size: 75, 19
+  orig: 102, 112
+  offset: 26, 5
+  index: -1
+death/death_trash_zombie0010
+  rotate: false
+  xy: 700, 148
+  size: 43, 12
+  orig: 102, 112
+  offset: 40, 6
+  index: -1
+earring
+  rotate: false
+  xy: 1000, 171
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: -1
+eye
+  rotate: true
+  xy: 415, 5
+  size: 60, 58
+  orig: 62, 60
+  offset: 1, 1
+  index: -1
+eyebrow
+  rotate: true
+  xy: 1169, 124
+  size: 86, 45
+  orig: 88, 53
+  offset: 1, 2
+  index: -1
+head
+  rotate: true
+  xy: 700, 162
+  size: 231, 227
+  orig: 234, 263
+  offset: 1, 1
+  index: -1
+mouth
+  rotate: false
+  xy: 1169, 212
+  size: 52, 41
+  orig: 54, 44
+  offset: 1, 2
+  index: -1
+quiver_of_arrows
+  rotate: false
+  xy: 574, 105
+  size: 124, 288
+  orig: 127, 291
+  offset: 1, 2
+  index: -1

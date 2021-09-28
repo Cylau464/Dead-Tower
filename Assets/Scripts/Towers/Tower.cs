@@ -11,13 +11,15 @@ public class Tower : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Button _defensiveWeaponButton;
     [SerializeField] private Transform _defensiveWeaponSpawnPoint;
+    [SerializeField] private LayerMask _defensiveWeaponLayer;
 
     public Transform DefenderPoint => _defenderPoint;
 
     private Weapon _weapon;
-    private TowerStats _stats;
     private DefensiveWeaponConfig _defensiveWeaponConfig;
     private bool _defensiveWeaponActivated;
+    private TowerStats _stats;
+    public TowerStats Stats => _stats;
 
     private int _openParamID;
     private int _closeParamID;
@@ -86,17 +88,26 @@ public class Tower : MonoBehaviour
         _animator.SetTrigger(_openParamID);
         _defensiveWeaponButton.interactable = false;
         _defensiveWeaponActivated = true;
+        _defensiveWeaponButton.GetComponent<SkeletonMecanim>().skeleton.SetColor(Color.gray);
     }
 
     public void GateOpened()
     {
         DefensiveWeapon weapon = Instantiate(_defensiveWeaponConfig.Prefab, _defensiveWeaponSpawnPoint.position, Quaternion.identity);
+        _defensiveWeaponConfig.Stats.Damage *= _stats.AbilityLevel;
         weapon.Init(_defensiveWeaponConfig);
-        Invoke(nameof(CloseGate), 1.5f);
     }
 
     private void CloseGate()
     {
         _animator.SetTrigger(_closeParamID);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if((1 << collision.gameObject.layer & _defensiveWeaponLayer) != 0)
+        {
+            CloseGate();
+        }
     }
 }

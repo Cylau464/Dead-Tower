@@ -58,8 +58,6 @@ public class TrajectoryLine : MonoBehaviour
             float t = i * lowestTimeValue;
             lineArray[i] = CalculateLinePoint(t);
         }
-        Vector2 textureTileScale = new Vector2(Mathf.FloorToInt(Vector3.Distance(lineArray[0], lineArray[lineArray.Length - 1])), 1f);
-        //_line.material.mainTextureScale = textureTileScale;
 
         return lineArray;
     }

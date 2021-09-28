@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5532642196135197398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141853532926929199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86320c52911b8b2418c94a933b9ce2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skeletonMecanim: {fileID: 5141853532926929195}
+  _animator: {fileID: 5141853532926929194}
+  _renderer: {fileID: 5141853532926929189}
+  _rigidBody: {fileID: 5141853532926929193}
+  _collider: {fileID: 5141853532926929198}
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _projectilePrefab: {fileID: 8728990395029971308, guid: 27a5dc5786e422446bf9750bbad0de5e, type: 3}
+  _minDistanceToShoot: 7
+  _attackCooldown: 5
+  _projectileFlightDuration: 1
+  _rotateToTargetDuration: 0.15
+--- !u!1001 &9092687349538527269
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4140002623381893376, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b048d2a50895745479f8a2a2995e8c7b, type: 2}
+    - target: {fileID: 4140002623381893377, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893378, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893386, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_Name
+      value: Archer Enemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140002623381893390, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b8f6e4ac9b270842adf9d46696c88cf, type: 2}
+    - target: {fileID: 4140002623381893391, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a7f3cdb62c59a8a499f4adb2e4d84f3b, type: 2}
+    m_RemovedComponents:
+    - {fileID: 4140002623381893389, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+--- !u!1 &5141853532926929199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4140002623381893386, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  m_PrefabInstance: {fileID: 9092687349538527269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5141853532926929189 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4140002623381893376, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  m_PrefabInstance: {fileID: 9092687349538527269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5141853532926929194 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4140002623381893391, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  m_PrefabInstance: {fileID: 9092687349538527269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5141853532926929195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4140002623381893390, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  m_PrefabInstance: {fileID: 9092687349538527269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141853532926929199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &5141853532926929193 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4140002623381893388, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  m_PrefabInstance: {fileID: 9092687349538527269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &5141853532926929198 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4140002623381893387, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
+  m_PrefabInstance: {fileID: 9092687349538527269}
+  m_PrefabAsset: {fileID: 0}

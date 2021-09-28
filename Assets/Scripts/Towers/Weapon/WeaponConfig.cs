@@ -8,4 +8,5 @@ public class WeaponConfig : ScriptableObject
     public SkeletonDataAsset Skeleton;
     public AnimatorController AnimatorController;
     public GameObject ProjectilePrefab;
+    public WeaponStats Stats;
 }

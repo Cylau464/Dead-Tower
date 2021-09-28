@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Modifier : MonoBehaviour
+public abstract class Modifier : MonoBehaviour
 {
     protected float _duration = 0f;
     protected float _value = 0f;
@@ -10,4 +10,18 @@ public class Modifier : MonoBehaviour
         _duration = duration;
         _value = value;
     }
+
+    private void LateUpdate()
+    {
+        Timer();
+    }
+
+    private void OnDestroy()
+    {
+        CancelEffect();
+    }
+
+    protected abstract void Timer();
+    protected abstract void ApplyEffect();
+    protected abstract void CancelEffect();
 }

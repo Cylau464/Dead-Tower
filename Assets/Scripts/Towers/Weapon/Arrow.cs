@@ -13,7 +13,7 @@ public class Arrow : Projectile
     private void Awake()
     {
         _renderer.sortingLayerName = _towerSortingLayer;
-        _renderer.sortingOrder = 10;
+        _renderer.sortingOrder = _towerSortingOrder;
         _rigidBody.isKinematic = true;
         _material = GetComponent<Renderer>().material;
     }
@@ -32,37 +32,34 @@ public class Arrow : Projectile
         _lastVelocity = _rigidBody.velocity;
     }
 
-    public override void Launch(Vector2 velocity)
-    {
-        base.Launch(velocity);
-        _rigidBody.isKinematic = false;
-        _rigidBody.velocity = velocity;
-        Invoke(nameof(SetSortLayer), .5f);
-    }
-
-    private void SetSortLayer()
-    {
-        _renderer.sortingLayerName = _projectileSortingLayer;
-        _renderer.sortingOrder = 0;
-    }
-
     protected override void HitToEnvironment(GameObject target)
     {
+        if (_hitParticlePrefab != null)
+            Instantiate(_hitParticlePrefab, transform.position, Quaternion.identity);
+
+        _hasHit = true;
         StartCoroutine(Stuck(target, true));
     }
 
     protected override void HitToTarget(GameObject target)
     {
-        if (target.TryGetComponent(out Enemy enemy))
+        if (target.TryGetComponent(out IDamageTaker damageTaker))
         {
             if (_isUnstucked == true) return;
 
-            if(enemy.TakeDamage(1, this) == false)
+            _hasHit = true;
+
+            if (damageTaker.TakeDamage(_stats.Damage, this) == false)
+            {
                 StartCoroutine(Stuck(target, false));
+
+                if (_stats.ModifierConfig != null)
+                    _stats.ModifierConfig.ApplyToTarget(target);
+            }
         }
         else
         {
-            Debug.LogError("Cant find Enemy component on " + target.name);
+            Debug.LogError("Cant find IDamageTaker component on " + target.name);
         }            
     }
 
@@ -74,7 +71,6 @@ public class Arrow : Projectile
             StartCoroutine(Dissolve());
 
         transform.parent = target.transform;
-        _hasHit = true;
         _collider.enabled = false;
         float duration = _stuckDepth / _lastVelocity.magnitude;
         
@@ -86,14 +82,15 @@ public class Arrow : Projectile
 
     public override void Unstuck(Vector3 parentPosition)
     {
+        StopAllCoroutines();
         transform.parent = null;
         Vector2 direction = (transform.position - parentPosition).normalized;
         _collider.enabled = true;
         _rigidBody.constraints = RigidbodyConstraints2D.None;
         _rigidBody.simulated = true;
         _rigidBody.velocity = Vector2.zero;
-        _rigidBody.AddForce(direction * 2f, ForceMode2D.Impulse);
-        _rigidBody.AddTorque(Random.Range(-90f, 90f));
+        _rigidBody.AddForce(direction * 6f, ForceMode2D.Impulse);
+        _rigidBody.AddTorque(Random.Range(5f, 20f) * (Random.Range(0, 2) * 2 - 1), ForceMode2D.Impulse);
         _isUnstucked = true;
     }
 
