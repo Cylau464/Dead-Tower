@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ActiveDefensiveWeapon : DefensiveWeapon
 {
@@ -24,19 +25,33 @@ public class ActiveDefensiveWeapon : DefensiveWeapon
 
     private void GiveDamage()
     {
-        if(_target != null)
+        if(_target != null && _isDead == false)
         {
             _target.TakeDamage(_stats.Damage);
             _animator.SetFloat(_attackSpeedParamID, _animator.GetFloat(_attackSpeedParamID) / 2f);
-            Invoke(nameof(Move), .5f);
         }
+
+        Invoke(nameof(Move), .5f);
     }
 
-    public override void TakeDamage(int damage)
+    public override bool TakeDamage(int damage)
     {
         _stats.Health -= damage;
+        OnHealthChange();
 
         if (_stats.Health <= 0)
             Dead();
+
+        return _stats.Health <= 0;
+    }
+
+    public override bool TakeDamage(int damage, Projectile projectile)
+    {
+        bool dead = TakeDamage(damage);
+
+        if (dead == false)
+            _stuckProjectiles.Add(projectile);
+
+        return dead;
     }
 }

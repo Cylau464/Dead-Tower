@@ -16,7 +16,9 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     protected EnemyStats _stats;
     public EnemyStats Stats => _stats;
+    private int _maxHealth;
     private Rewards _rewards;
+    private bool _isDead;
 
     private int _speedParamID;
     private int _attackParamID;
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
     private List<Projectile> _stuckProjectiles;
 
     public Action<Rewards> OnDead;
+    public event EventHandler<float> HealthChanged;
 
     protected void Start()
     {
@@ -52,6 +55,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
             throw new Exception("Attempt to deal negative damage");
 
         _stats.Health -= damage;
+        HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
 
         if (_stats.Health <= 0)
         {
@@ -68,7 +72,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
     public bool TakeDamage(int damage, Projectile projectile)
     {
         bool dead = TakeDamage(damage);
-
+        
         if(dead == false)
             _stuckProjectiles.Add(projectile);
 
@@ -93,6 +97,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
         _rigidBody.simulated = false;
         _collider.enabled = false;
         this.enabled = false;
+        _isDead = true;
         _renderer.sortingOrder--;
 
         foreach(Projectile projectile in _stuckProjectiles)
@@ -104,10 +109,12 @@ public class Enemy : MonoBehaviour, IDamageTaker
     public virtual void Init(EnemyConfig config)
     {
         _stats = config.Stats;
+        _maxHealth = _stats.Health;
         _rewards = config.Rewards;
         gameObject.name = config.Name;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
+        _animator.runtimeAnimatorController = config.AnimatorController;
         Spawned();
     }
 
@@ -118,7 +125,9 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     public void GiveDamage()
     {
-        Vector2 checkPos = (Vector2)transform.position + Vector2.up * _renderer.bounds.size.y;
+        if (_isDead == true) return;
+
+        Vector2 checkPos = (Vector2)transform.position + Vector2.up * _renderer.bounds.size.y / 2f;
         Vector2 checkSize = _collider.bounds.size;
         checkSize.x *= 1.5f;
         Collider2D[] colliders = Physics2D.OverlapBoxAll(checkPos, checkSize, 0f, _targetLayer);

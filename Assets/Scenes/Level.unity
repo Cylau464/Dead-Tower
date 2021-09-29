@@ -453,7 +453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689297928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: -4.2, z: 0}
+  m_LocalPosition: {x: -7, y: -4.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -491,7 +491,7 @@ MonoBehaviour:
   _towerPoint: {fileID: 689297929}
   _defenderPrefab: {fileID: 7770691424732660584, guid: 58b895a8583719c4587da07f62278efb, type: 3}
   _towerPrefab: {fileID: 7187629729043736150, guid: 8a266ddd492b47b4db4590e6990ebb4e, type: 3}
-  _towerConfig: {fileID: 11400000, guid: ce8f3a2fc8fd3b544a5bacfdc2676338, type: 2}
+  _towerConfig: {fileID: 11400000, guid: a176fdce8cf7d4941a68355107f07918, type: 2}
   _defenderConfig: {fileID: 11400000, guid: f5955a836a113eb4dbc222be40ff0640, type: 2}
 --- !u!4 &961034727
 Transform:
@@ -712,7 +712,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1800091799}
   - component: {fileID: 1800091798}
-  - component: {fileID: 1800091797}
   m_Layer: 8
   m_Name: Ground_Summer Back
   m_TagString: Untagged
@@ -720,32 +719,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &1800091797
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800091796}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.26475492}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 1.5}
-    newSize: {x: 19.2, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 18, y: 0.6904902}
-  m_EdgeRadius: 0
 --- !u!212 &1800091798
 SpriteRenderer:
   m_ObjectHideFlags: 0

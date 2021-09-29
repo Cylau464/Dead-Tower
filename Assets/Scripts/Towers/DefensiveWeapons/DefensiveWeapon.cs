@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using Spine.Unity;
+using System;
+using System.Collections.Generic;
 
-public abstract class DefensiveWeapon : MonoBehaviour
+public abstract class DefensiveWeapon : MonoBehaviour, IDamageTaker
 {
     [SerializeField] protected SkeletonMecanim _skeletonMecanim;
     [SerializeField] protected Animator _animator;
@@ -13,10 +15,18 @@ public abstract class DefensiveWeapon : MonoBehaviour
     protected int _speedParamID;
     protected int _deadParamID;
 
+    protected bool _isDead;
+    protected int _maxHealth;
+
+    protected List<Projectile> _stuckProjectiles;
+
+    public event EventHandler<float> HealthChanged;
+
     protected void Start()
     {
         _speedParamID = Animator.StringToHash("speed");
         _deadParamID = Animator.StringToHash("dead");
+        _stuckProjectiles = new List<Projectile>();
     }
 
     private void LateUpdate()
@@ -31,6 +41,7 @@ public abstract class DefensiveWeapon : MonoBehaviour
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
         _stats = config.Stats;
+        _maxHealth = _stats.Health;
         Move();
     }
 
@@ -41,9 +52,15 @@ public abstract class DefensiveWeapon : MonoBehaviour
 
     protected void Dead()
     {
+        _isDead = true;
         _rigidBody.simulated = false;
         _collider.enabled = false;
         _animator.SetTrigger(_deadParamID);
+
+        foreach (Projectile projectile in _stuckProjectiles)
+        {
+            projectile.Unstuck(transform.position);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,6 +72,12 @@ public abstract class DefensiveWeapon : MonoBehaviour
         }
     }
 
+    protected void OnHealthChange()
+    {
+        HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
+    }
+
     protected abstract void Attack(Enemy enemy);
-    public abstract void TakeDamage(int damage);
+    public abstract bool TakeDamage(int damage);
+    public abstract bool TakeDamage(int damage, Projectile projectile);
 }

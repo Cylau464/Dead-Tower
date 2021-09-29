@@ -6,8 +6,22 @@
         TakeDamage(int.MaxValue);
     }
 
-    public override void TakeDamage(int damage)
+    public override bool TakeDamage(int damage)
     {
+        _stats.Health = 0;
+        OnHealthChange();
         Dead();
+
+        return true;
+    }
+
+    public override bool TakeDamage(int damage, Projectile projectile)
+    {
+        bool dead = TakeDamage(damage);
+
+        if (dead == false)
+            _stuckProjectiles.Add(projectile);
+
+        return dead;
     }
 }

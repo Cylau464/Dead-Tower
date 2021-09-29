@@ -43,6 +43,8 @@ public class Arrow : Projectile
 
     protected override void HitToTarget(GameObject target)
     {
+        if (_hasHit == true) return;
+
         if (target.TryGetComponent(out IDamageTaker damageTaker))
         {
             if (_isUnstucked == true) return;
@@ -71,9 +73,11 @@ public class Arrow : Projectile
             StartCoroutine(Dissolve());
 
         transform.parent = target.transform;
+        Vector2 boundsSize = _collider.bounds.size;
         _collider.enabled = false;
-        float duration = _stuckDepth / _lastVelocity.magnitude;
-        
+
+        Vector2 distance = boundsSize * _lastVelocity.normalized * _stuckDepth;
+        float duration = distance.magnitude / _lastVelocity.magnitude;// _stuckDepth / _lastVelocity.magnitude;
         yield return new WaitForSeconds(duration);
 
         _rigidBody.velocity = Vector2.zero;

@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using System;
 
 public class TowerDefender : MonoBehaviour, IDamageTaker
 {
@@ -18,6 +19,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
     private Projectile _projectilePrefab;
     private ModifierConfig _modifierConfig;
     private TowerDefenderStats _stats;
+    private int _maxHealth;
 
     private int _attackParamID;
     private int _deadParamID;
@@ -31,8 +33,11 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
 
     private bool _isDead;
     public bool IsDead => _isDead;
+    private List<Projectile> _stuckProjectiles;
 
     public static TowerDefender Instance;
+
+    public event EventHandler<float> HealthChanged;
 
     private void Awake()
     {
@@ -58,9 +63,9 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 100f, _groundLayer);
 
         if(hit == true)
-        {
             _aimPosition = hit.point + Vector2.up * .25f;
-        }
+
+        _stuckProjectiles = new List<Projectile>();
     }
 
     private void Update()
@@ -110,6 +115,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
         _projectilePrefab = config.ProjectilePrefab;
         _modifierConfig = config.Modifier;
         _stats = config.Stats;
+        _maxHealth = _stats.Health;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
@@ -118,6 +124,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
     public bool TakeDamage(int damage)
     {
         _stats.Health -= damage;
+        HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
 
         if (_stats.Health <= 0)
             Dead();
@@ -127,13 +134,23 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
 
     public bool TakeDamage(int damage, Projectile projectile)
     {
-        return TakeDamage(damage);
+        bool dead = TakeDamage(damage);
+
+        if (dead == false)
+            _stuckProjectiles.Add(projectile);
+
+        return dead;
     }
 
     private void Dead()
     {
         _isDead = true;
         _animator.SetTrigger(_deadParamID);
+
+        foreach (Projectile projectile in _stuckProjectiles)
+        {
+            projectile.Unstuck(transform.position);
+        }
     }
 
     public void PullTheArrow()

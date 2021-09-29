@@ -132,10 +132,9 @@ MonoBehaviour:
   _towerSortingOrder: 0
   _hitParticlePrefab: {fileID: 0}
   _lifetime: 10
-  _stuckDepth: 0.75
+  _stuckDepth: 0.5
   _dissolveDelay: 2
   _dissolveDuration: 1
-  _rotateByScript: 0
 --- !u!60 &2735775324074460089
 PolygonCollider2D:
   m_ObjectHideFlags: 0
