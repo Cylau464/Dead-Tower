@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     private List<Projectile> _stuckProjectiles;
 
-    public Action<Rewards> OnDead;
+    public Action<Rewards, int> OnDead;
     public event EventHandler<float> HealthChanged;
 
     protected void Start()
@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     private void Dead()
     {
-        OnDead?.Invoke(_rewards);
+        OnDead?.Invoke(_rewards, _stats.Power);
         _animator.SetTrigger(_deadParamID);
         _rigidBody.simulated = false;
         _collider.enabled = false;

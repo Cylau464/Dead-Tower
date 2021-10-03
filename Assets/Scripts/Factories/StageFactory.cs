@@ -14,10 +14,10 @@ public class StageFactory : GameObjectFactory
         {
             LevelInfo levelInfo = new LevelInfo();
             Level level = null;
-            LevelStatus status = i == 0 ? LevelStatus.Opened : LevelStatus.Closed;
+            LevelStatus status = stageConfig.Index == 0 && i == 0 ? LevelStatus.Opened : LevelStatus.Closed;
             LevelConfig levelConfig = new LevelConfig(stageConfig.Index, i, status);
 
-            if ((i + 1) / stageConfig.BossInterval == 1)
+            if ((i + 1) % stageConfig.BossInterval == 0)
             {
                 levelInfo.BossLevel = true;
                 level = _bossLevel;

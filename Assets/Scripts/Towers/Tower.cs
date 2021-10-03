@@ -37,7 +37,7 @@ public class Tower : MonoBehaviour
         _defensiveWeaponButton.onClick.AddListener(OpenGate);
     }
 
-    public void Init(TowerConfig config)
+    public void Init(TowerConfig config, bool inMenu)
     {
         _defensiveWeaponConfig = config.DefensiveWeaponConfig;
         _stats = config.Stats;
@@ -45,11 +45,14 @@ public class Tower : MonoBehaviour
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
 
+        if (inMenu == true)
+            _defensiveWeaponButton.enabled = false;
+
         //Vector3 weaponPos = _skeletonMecanim.skeleton.FindBone("weaponPoint").GetWorldPosition(transform);
         Vector3 weaponPos = transform.position;
         weaponPos.z -= .01f; // for overlap collider
         _weapon = Instantiate(_weaponPrefab, weaponPos, Quaternion.identity, transform);
-        _weapon.Init(config.WeaponConfig);
+        _weapon.Init(config.WeaponConfig, inMenu);
         _weapon.OnAimStart += OnAimStart;
         _weapon.OnAimEnd += OnAimEnd;
     }

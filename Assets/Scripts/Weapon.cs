@@ -1,18 +1,19 @@
 using UnityEngine;
 using Spine.Unity;
-using UnityEngine.EventSystems;
 using System;
+using System.Linq;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private SkeletonMecanim _skeletonMecanim;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Collider2D _collider;
 
     private float _charge;
     private bool _isCharging;
 
     [SerializeField] private TrajectoryLine _line = null;
-    private GameObject _projectilePrefab;
+    private ProjectileConfig _projectileConfig;
     private Projectile _curProjectile;
     private Spine.Bone _projectileBone;
     private Spine.Bone _shootPointBone;
@@ -39,6 +40,8 @@ public class Weapon : MonoBehaviour
         {
             _tower = tower;
             _tower.OnTakeDamage += TakeDamage;
+            ProjectileStats pStats = new ProjectileStats(_tower.Stats.Damage, null);
+            _projectileConfig.Stats = pStats;
         }
         else
         {
@@ -70,14 +73,13 @@ public class Weapon : MonoBehaviour
 
     private void StartCharge()
     {
-        if (_curProjectile != null)
+        if (_curProjectile != null || SLS.Data.Game.ProjectilesCount.Value[_projectileConfig.Index] <= 0)
             return;
 
         Vector2 pos = _projectileBone.GetWorldPosition(transform);
         Quaternion rot = Quaternion.Euler(0f, 0f, _projectileBone.Rotation);
-        _curProjectile = Instantiate(_projectilePrefab, pos, rot).GetComponent<Projectile>();
-        ProjectileStats pStats = new ProjectileStats(_tower.Stats.Damage, null);
-        _curProjectile.Init(pStats);
+        _curProjectile = Instantiate(_projectileConfig.Prefab, pos, rot).GetComponent<Projectile>();
+        _curProjectile.Init(_projectileConfig.Stats);
 
         _isCharging = true;
         _charge = _stats.MinCharge;
@@ -101,15 +103,22 @@ public class Weapon : MonoBehaviour
     {
         _curProjectile.Launch(_curProjectile.transform.right * _charge);
         _curProjectile = null;
+        int[] projectilesCount = SLS.Data.Game.ProjectilesCount.Value.ToArray();
+        projectilesCount[_projectileConfig.Index]--;
+        Debug.Log(SLS.Data.Game.ProjectilesCount.Value[_projectileConfig.Index]);
+        SLS.Data.Game.ProjectilesCount.Value = projectilesCount;
     }
 
-    public void Init(WeaponConfig config)
+    public void Init(WeaponConfig config, bool inMenu)
     {
-        _projectilePrefab = config.ProjectilePrefab;
+        _projectileConfig = config.ProjectileConfig;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
         _stats = config.Stats;
+
+        if (inMenu == true)
+            _collider.enabled = false;
     }
 
     private void TakeDamage(int healthLeft)

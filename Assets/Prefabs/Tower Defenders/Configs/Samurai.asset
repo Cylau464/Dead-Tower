@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c585e57d7e1e04a4fa92d7c4b7826bae, type: 3}
   m_Name: Samurai
   m_EditorClassIdentifier: 
+  Index: 1
   MenuSprite: {fileID: 0}
   Skeleton: {fileID: 11400000, guid: a6bd469f6f81fbb4b865b888afdf3458, type: 2}
   AnimatorController: {fileID: 9100000, guid: e0e35cb56164f0b43b14afed220f794d, type: 2}
   ProjectilePrefab: {fileID: 0}
   Modifier: {fileID: 0}
   Stats:
-    Damage: 1
-    Health: 3
-    ShootDistance: 1
+    _health: 5
+    _damage: 2
+    _shootDistance: 4
+  PurchaseStats:
+    IsPurchased: 0
+    Cost: 200
+    DiamondCost: 0

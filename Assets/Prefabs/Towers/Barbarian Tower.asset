@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ab176fb294d241a6e2ec3d4d0af38, type: 3}
   m_Name: Barbarian Tower
   m_EditorClassIdentifier: 
+  Index: 1
   MenuSprite: {fileID: 0}
   Skeleton: {fileID: 11400000, guid: 400fc40a401eba141b55aa6671cc3b2c, type: 2}
   AnimatorController: {fileID: 9100000, guid: 29a3fa39873f4f94e9f85e981793c7ac, type: 2}
   DefensiveWeaponConfig: {fileID: 11400000, guid: 10fd32e3ffc556147b07c6e797258162, type: 2}
   WeaponConfig: {fileID: 11400000, guid: 12c604587ab99a6458a6ec5c15a59cbb, type: 2}
   Stats:
-    Health: 4
-    Damage: 2
-    AbilityLevel: 1
+    _health: 5
+    _damage: 2
+    _abilityLevel: 1
+  PurchaseStats:
+    IsPurchased: 0
+    Cost: 200
+    DiamondCost: 0

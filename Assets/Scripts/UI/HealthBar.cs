@@ -74,6 +74,7 @@ public class HealthBar : MonoBehaviour
 
     private void OnDestroy()
     {
-        _damageTaker.HealthChanged -= UpdateBar;
+        if(_damageTaker != null)
+            _damageTaker.HealthChanged -= UpdateBar;
     }
 }

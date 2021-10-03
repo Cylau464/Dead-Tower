@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
 
     public static LevelInfo LevelInfo;
     public static LevelConfig LevelConfig;
+
+    public static Action<Enemy> OnEnemySpawned;
 
     private void Start()
     {
@@ -28,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
             Enemy enemy = _factory.Get(Mathf.Min(LevelInfo.MaxEnemyPower, LevelInfo.PowerReserve));
             enemy.transform.position = transform.position;
             LevelInfo.PowerReserve -= enemy.Stats.Power;
+            OnEnemySpawned?.Invoke(enemy);
             Debug.Log(enemy.name + " was spawned");
 
             yield return new WaitForSeconds(_respawnCooldown);

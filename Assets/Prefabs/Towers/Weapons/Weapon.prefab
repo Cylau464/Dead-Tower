@@ -348,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeletonMecanim: {fileID: 4138166327034758078}
   _animator: {fileID: 4138166327034758079}
+  _collider: {fileID: 3175756261353936531}
   _line: {fileID: 4138166326749072773}
 --- !u!61 &3175756261353936531
 BoxCollider2D:

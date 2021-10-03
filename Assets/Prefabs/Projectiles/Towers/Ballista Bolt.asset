@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413a300f8acd16348a64f14818c3d0f4, type: 3}
+  m_Name: Ballista Bolt
+  m_EditorClassIdentifier: 
+  Index: 0
+  Title: Bolt
+  Prefab: {fileID: 8728990395029971308, guid: b5b72671fd79d8b49a3e99c6921378c2, type: 3}
+  Icon: {fileID: 21300000, guid: 1337f831b5930a2498c9bcbfad04b668, type: 3}
+  Recipe:
+    ForgeIcon: {fileID: 21300000, guid: 51c5cdeb9bd2adc41b1496f2852042b4, type: 3}
+    Cost: 5
+    Resources:
+    - Type: 0
+      Count: 1
+    - Type: 1
+      Count: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Skeleton: {fileID: 11400000, guid: 510c5ceb53844af4ba8be61e041d44f0, type: 2}
   AnimatorController: {fileID: 9100000, guid: 156b0a13770243b4e92bdf74992ce692, type: 2}
-  ProjectilePrefab: {fileID: 2569940788971668910, guid: 28358291c2078864baca49818ff2df7e, type: 3}
+  ProjectileConfig: {fileID: 11400000, guid: f48ad0e2d8d791b4a867bec7aa6d3af0, type: 2}
   Stats:
     MinCharge: 6
     MaxCharge: 12

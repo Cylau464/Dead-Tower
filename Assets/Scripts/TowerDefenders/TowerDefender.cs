@@ -7,12 +7,17 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
 {
     [SerializeField] private SkeletonMecanim _skeletonMecanim;
     [SerializeField] private Animator _animator;
+    [Space]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _targetLayer;
+    [Space]
     [SerializeField] private float _minAttackDistance = 3f;
     [SerializeField] private float _maxAttackDistance = 5f;
     [SerializeField] private float _projectileFlightDuration = 1f;
     [SerializeField] private float _shotCooldown = 1f;
+    [Space]
+    [SerializeField] private GameObject _hpCanvas;
+
     private float _curShotCooldown;
     private Vector2 _aimPosition;
 
@@ -110,7 +115,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
         }
     }
 
-    public void Init(TowerDefenderConfig config)
+    public void Init(TowerDefenderConfig config, bool inMenu)
     {
         _projectilePrefab = config.ProjectilePrefab;
         _modifierConfig = config.Modifier;
@@ -119,6 +124,9 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
+
+        if (inMenu == true)
+            _hpCanvas.SetActive(false);
     }
 
     public bool TakeDamage(int damage)

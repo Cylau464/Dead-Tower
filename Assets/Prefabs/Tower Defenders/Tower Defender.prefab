@@ -652,6 +652,7 @@ MonoBehaviour:
   _maxAttackDistance: 5
   _projectileFlightDuration: 1
   _shotCooldown: 2
+  _hpCanvas: {fileID: 7374406546151544450}
 --- !u!70 &1003193830188234227
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

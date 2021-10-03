@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public struct ProjectileStats
+﻿public struct ProjectileStats
 {
     public int Damage;
     public ModifierConfig ModifierConfig;
