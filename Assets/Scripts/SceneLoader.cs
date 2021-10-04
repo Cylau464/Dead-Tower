@@ -6,22 +6,23 @@ public static class SceneLoader
 {
     private static int _menuSceneIndex = 0;
     private static int _levelSceneIndex = 1;
-    public static Action OnSceneLoad;
+    public static Action OnSceneLoadStart;
+    public static Action OnSceneLoadComplete;
 
-    public static Action LoadLevel()
+    public static void LoadLevel()
     {
         Load(_levelSceneIndex);
-        return OnSceneLoad;
     }
 
-    public static Action LoadMenu()
+    public static void LoadMenu()
     {
         Load(_menuSceneIndex);
-        return OnSceneLoad;
+        MenuSwitcher.OpenMapAfterLoad = true;
     }
 
     private static void Load(int index)
     {
+        OnSceneLoadStart?.Invoke();
         AsyncOperation operation = SceneManager.LoadSceneAsync(index);
         //operation.allowSceneActivation = false;
         operation.completed += AsyncLoadComplete;
@@ -31,6 +32,6 @@ public static class SceneLoader
     {
         //operation.allowSceneActivation = true;
         operation.completed -= AsyncLoadComplete;
-        OnSceneLoad?.Invoke();
+        OnSceneLoadComplete?.Invoke();
     }
 }

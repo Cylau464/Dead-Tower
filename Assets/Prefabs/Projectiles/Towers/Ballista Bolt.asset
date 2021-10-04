@@ -20,7 +20,7 @@ MonoBehaviour:
     ForgeIcon: {fileID: 21300000, guid: 51c5cdeb9bd2adc41b1496f2852042b4, type: 3}
     Cost: 5
     Resources:
-    - Type: 0
-      Count: 1
     - Type: 1
+      Count: 1
+    - Type: 2
       Count: 1

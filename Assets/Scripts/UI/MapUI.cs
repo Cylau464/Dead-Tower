@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MapUI : CanvasGroupUI
 {
     [Space]
-    [SerializeField] private MainMenuUI _mainMenu;
+    [SerializeField] private StartMenuUI _startMenu;
     [SerializeField] private ForgeUI _forgeUI;
     [Space]
     [SerializeField] private Button _backBtn;
@@ -16,7 +16,7 @@ public class MapUI : CanvasGroupUI
     [Space]
     [SerializeField] private Button _buyCurrencyBtn;
 
-    private void Start()
+    protected override void Init()
     {
         _backBtn.onClick.AddListener(BackToMenu);
 
@@ -27,18 +27,20 @@ public class MapUI : CanvasGroupUI
         _projectilesBtn.onClick.AddListener(OpenForge);
 
         _buyCurrencyBtn.onClick.AddListener(OpenCurrencyShop);
+
+        base.Init();
     }
 
     private void BackToMenu()
     {
         Hide();
-        _mainMenu.Show();
+        MenuSwitcher.Instance.OpenStartMenu();
     }
 
     private void OpenForge()
     {
         Hide();
-        _forgeUI.Show();
+        MenuSwitcher.Instance.OpenForge();
     }
 
     private void OpenShop()

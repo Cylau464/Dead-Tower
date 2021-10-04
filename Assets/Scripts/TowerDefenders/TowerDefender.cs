@@ -36,6 +36,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
     private Rigidbody2D _target;
     private Spine.Bone _handBone;
 
+    private bool _canShoot;
     private bool _isDead;
     public bool IsDead => _isDead;
     private List<Projectile> _stuckProjectiles;
@@ -71,11 +72,14 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
             _aimPosition = hit.point + Vector2.up * .25f;
 
         _stuckProjectiles = new List<Projectile>();
+
+        _canShoot = true;
+        Game.Instance.OnLevelEnd += OnLevelEnd;
     }
 
     private void Update()
     {
-        if(_isDead == false && _curShotCooldown <= Time.time)
+        if(_canShoot == true && _isDead == false && _curShotCooldown <= Time.time)
         {
             RaycastHit2D[] hits = new RaycastHit2D[10];
             float shootDistance = _maxAttackDistance + _stats.ShootDistance;
@@ -177,5 +181,22 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
         _projectile.transform.rotation = Quaternion.Euler(velocity);
         _projectile.Launch(velocity);
         _projectile = null;
+    }
+
+    private void OnLevelEnd(bool victory)
+    {
+        _canShoot = false;
+
+        if (_isDead == true) return;
+
+        if (victory == true)
+            _animator.SetTrigger(_victoryParamID);
+        else
+            _animator.SetTrigger(_defeatParamID);
+    }
+
+    private void OnDestroy()
+    {
+        Game.Instance.OnLevelEnd -= OnLevelEnd;
     }
 }

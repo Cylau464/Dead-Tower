@@ -14,7 +14,7 @@ public class ExplosiveProjectile : Projectile
 
     private void Update()
     {
-        transform.Rotate(Vector3.forward, _rigidBody.velocity.magnitude * _rotationMultiplier * Time.deltaTime);
+        transform.Rotate(Vector3.back, _rigidBody.velocity.magnitude * _rotationMultiplier * Time.deltaTime);
     }
 
     private void Explode()

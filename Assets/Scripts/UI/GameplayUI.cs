@@ -4,12 +4,17 @@ using TMPro;
 
 public class GameplayUI : MonoBehaviour
 {
+    [SerializeField] private WinUI _winUI;
+    [SerializeField] private CanvasGroupUI _loseUI;
+    [SerializeField] private CanvasGroupUI _pauseUI;
+    [Space]
     [SerializeField] private Button _pauseBtn;
     [SerializeField] private Image _projectileIcon;
     [SerializeField] private TextMeshProUGUI _projectileCountText;
     [SerializeField] private TextMeshProUGUI _progressText;
     [SerializeField] private TextMeshProUGUI _towerHealthText;
 
+    private Rewards _rewards;
     private int _projectileIndex;
     private Tower _tower;
     private int _startLevelPower;
@@ -45,11 +50,11 @@ public class GameplayUI : MonoBehaviour
     private void Pause()
     {
         Time.timeScale = 0f;
+        _pauseUI.Show();
     }
 
     private void UpdateProjectileCount(int[] value)
     {
-        Debug.Log(value.Length);
         _projectileCountText.text = value[_projectileIndex].ToString();
     }
 
@@ -58,6 +63,13 @@ public class GameplayUI : MonoBehaviour
         _levelProgress += value;
         int progress = Mathf.Min(Mathf.CeilToInt((float)_levelProgress / _startLevelPower * 100), 100);
         _progressText.text = progress.ToString() + "%";
+        _rewards += rewards;
+
+        if (progress >= 100)
+        {
+            Game.Instance.LevelEnd(true);
+            _winUI.Show(_rewards);
+        }
     }
 
     private void OnTowerTakeDamage(int value)

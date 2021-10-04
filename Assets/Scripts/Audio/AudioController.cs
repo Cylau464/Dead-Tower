@@ -33,8 +33,21 @@ public class AudioController : MonoBehaviour
 
     private void Start()
     {
+        SceneLoader.OnSceneLoadStart += PauseMusic;
+        SceneLoader.OnSceneLoadComplete += ResumeMusic;
+
         _musicSource.clip = _musicClips[Random.Range(0, _musicClips.Length)];
         _musicSource.loop = true;
+        _musicSource.Play();
+    }
+
+    private void PauseMusic()
+    {
+        _musicSource.Pause();
+    }
+
+    private void ResumeMusic()
+    {
         _musicSource.Play();
     }
 
@@ -48,5 +61,11 @@ public class AudioController : MonoBehaviour
     {
         _sfxSource.enabled = !_sfxSource.enabled;
         return _sfxSource.enabled;
+    }
+
+    private void OnDestroy()
+    {
+        SceneLoader.OnSceneLoadStart -= PauseMusic;
+        SceneLoader.OnSceneLoadComplete -= ResumeMusic;
     }
 }

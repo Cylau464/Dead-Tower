@@ -63,6 +63,9 @@ public class Tower : MonoBehaviour
         OnTakeDamage?.Invoke(_stats.Health);
         _animator.SetTrigger(_takeDamageParamID);
         attacker.TakeDamage(int.MaxValue);
+
+        if(_stats.Health <= 0)
+            Game.Instance.LevelEnd(false);
     }
 
     private void OnAimStart()

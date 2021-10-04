@@ -49,6 +49,8 @@ public class Weapon : MonoBehaviour
         }
 
         _line.SetYLimit(_shootPointBone.GetWorldPosition(transform));
+
+        Game.Instance.OnLevelEnd += OnLevelEnd;
     } 
 
     private void Update()
@@ -105,7 +107,6 @@ public class Weapon : MonoBehaviour
         _curProjectile = null;
         int[] projectilesCount = SLS.Data.Game.ProjectilesCount.Value.ToArray();
         projectilesCount[_projectileConfig.Index]--;
-        Debug.Log(SLS.Data.Game.ProjectilesCount.Value[_projectileConfig.Index]);
         SLS.Data.Game.ProjectilesCount.Value = projectilesCount;
     }
 
@@ -141,9 +142,16 @@ public class Weapon : MonoBehaviour
         StartCharge();
     }
 
+    private void OnLevelEnd(bool victory)
+    {
+        _collider.enabled = false;
+    }
+
     private void OnDestroy()
     {
         if(_tower != null)
             _tower.OnTakeDamage -= TakeDamage;
+
+        Game.Instance.OnLevelEnd -= OnLevelEnd;
     }
 }

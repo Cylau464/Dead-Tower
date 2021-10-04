@@ -24,6 +24,8 @@ MonoBehaviour:
   Rewards:
     Gold: 50
     Exp: 20
-    Wood: 10
-    Iron: 10
-    Stone: 0
+    Resources:
+    - Type: 1
+      Count: 5
+    - Type: 2
+      Count: 5

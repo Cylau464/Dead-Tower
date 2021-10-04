@@ -23,9 +23,7 @@ public class SettingsUI : CanvasGroupUI
     private const string EnabledState = "Enabled";
     private const string DisabledState = "Disabled";
 
-    public Action OnHide;
-
-    private void Start()
+    protected override void Init()
     {
         _musicBtn.onClick.AddListener(ToggleMusic);
         _soundBtn.onClick.AddListener(ToggleSFX);
@@ -38,12 +36,14 @@ public class SettingsUI : CanvasGroupUI
 
         _exitBtn.onClick.AddListener(Hide);
         _backBtn.onClick.AddListener(Hide);
+
+        base.Init();
     }
 
     public override void Hide()
     {
         base.Hide();
-        OnHide?.Invoke();
+        MenuSwitcher.Instance.OpenStartMenu();
     }
 
     private void ToggleMusic()

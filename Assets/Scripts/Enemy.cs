@@ -41,6 +41,8 @@ public class Enemy : MonoBehaviour, IDamageTaker
         Bounds bounds = GetComponent<MeshFilter>().sharedMesh.bounds;
         _collider.offset = bounds.center;
         _collider.size = bounds.size;
+
+        Game.Instance.OnLevelEnd += OnLevelEnd;
     }
 
     private void LateUpdate()
@@ -92,12 +94,12 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     private void Dead()
     {
+        _isDead = true;
         OnDead?.Invoke(_rewards, _stats.Power);
         _animator.SetTrigger(_deadParamID);
         _rigidBody.simulated = false;
         _collider.enabled = false;
         this.enabled = false;
-        _isDead = true;
         _renderer.sortingOrder--;
 
         foreach(Projectile projectile in _stuckProjectiles)
@@ -180,4 +182,15 @@ public class Enemy : MonoBehaviour, IDamageTaker
     //    checkSize.x *= 1.5f;
     //    Gizmos.DrawWireCube(checkPos, checkSize);
     //}
+
+    private void OnLevelEnd(bool victory)
+    {
+        if (victory == true && _isDead == false)
+            Dead();
+    }
+
+    private void OnDestroy()
+    {
+        Game.Instance.OnLevelEnd -= OnLevelEnd;
+    }
 }

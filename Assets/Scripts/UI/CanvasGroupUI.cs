@@ -8,8 +8,24 @@ public class CanvasGroupUI : MonoBehaviour
 	[SerializeField] private CanvasGroup canvasGroup;
 	[SerializeField] private float fadeTime = 0.2f;
 
-	public virtual void Show()
+	private bool _isInitialized;
+
+    protected void Awake()
+    {
+		if (_isInitialized == false)
+			Init();
+    }
+
+    protected virtual void Init()
+    {
+		_isInitialized = true;
+    }
+
+    public virtual void Show()
 	{
+		if (_isInitialized == false)
+			Init();
+
 		gameObject.SetActive(true);
 
 		StopAllCoroutines();
@@ -39,7 +55,7 @@ public class CanvasGroupUI : MonoBehaviour
 
 		while(t < 1f)
         {
-			t += Time.deltaTime / time;
+			t += Time.unscaledDeltaTime / time;
 			action?.Invoke(Mathf.Lerp(from, to, t));
 
 			yield return null;

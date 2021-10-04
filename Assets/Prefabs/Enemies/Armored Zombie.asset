@@ -19,11 +19,13 @@ MonoBehaviour:
   Stats:
     Damage: 1
     Health: 5
-    MoveSpeed: 1
+    MoveSpeed: 0.7
     Power: 2
   Rewards:
     Gold: 10
     Exp: 5
-    Wood: 7
-    Iron: 0
-    Stone: 0
+    Resources:
+    - Type: 2
+      Count: 10
+    - Type: 3
+      Count: 10

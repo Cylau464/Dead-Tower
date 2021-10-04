@@ -1,0 +1,55 @@
+
+scull.png
+size: 1766,893
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+light2
+  rotate: true
+  xy: 1270, 108
+  size: 272, 255
+  orig: 435, 317
+  offset: 93, 23
+  index: -1
+light1
+  rotate: true
+  xy: 1270, 108
+  size: 272, 255
+  orig: 435, 317
+  offset: 93, 23
+  index: -1
+orbit1
+  rotate: true
+  xy: 1527, 95
+  size: 285, 237
+  orig: 314, 237
+  offset: 0, 0
+  index: -1
+orbit2
+  rotate: true
+  xy: 1037, 59
+  size: 321, 231
+  orig: 385, 232
+  offset: 64, 1
+  index: -1
+pupils1
+  rotate: true
+  xy: 1270, 9
+  size: 97, 95
+  orig: 435, 317
+  offset: 181, 108
+  index: -1
+scull1
+  rotate: true
+  xy: 2, 2
+  size: 889, 1033
+  orig: 895, 1035
+  offset: 3, 1
+  index: -1
+scull2
+  rotate: false
+  xy: 1037, 382
+  size: 718, 509
+  orig: 721, 509
+  offset: 2, 0
+  index: -1

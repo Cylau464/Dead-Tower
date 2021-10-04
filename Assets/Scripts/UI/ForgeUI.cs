@@ -7,8 +7,6 @@ using System.Linq;
 public class ForgeUI : CanvasGroupUI
 {
     [Space]
-    [SerializeField] private MapUI _mapUI;
-    [Space]
     [SerializeField] private ProjectileConfig[] _recipeConfigs;
     [SerializeField] private ProjectileRecipeUI _recipePrefab;
     [SerializeField] private RectTransform _recipesHandler;
@@ -26,7 +24,7 @@ public class ForgeUI : CanvasGroupUI
     private List<ProjectileRecipeUI> _recipes;
     private ProjectileConfig _curProjectileConfig;
 
-    private void Start()
+    protected override void Init()
     {
         _craftBtn.onClick.AddListener(Craft);
         _backBtn.onClick.AddListener(BackToMap);
@@ -50,6 +48,8 @@ public class ForgeUI : CanvasGroupUI
         float contentHeight = (_recipePrefab.transform as RectTransform).sizeDelta.y * _recipeConfigs.Length;
         contentHeight += _spacing * 2f + _spacing * (_recipeConfigs.Length - 1);
         _scrollContent.sizeDelta = new Vector2(_scrollContent.sizeDelta.x, contentHeight);
+
+        base.Init();
     }
 
     private void ChooseRecipe(ProjectileConfig config)
@@ -104,7 +104,7 @@ public class ForgeUI : CanvasGroupUI
     private void BackToMap()
     {
         Hide();
-        _mapUI.Show();
+        MenuSwitcher.Instance.OpenMap();
     }
 
     private void OnDestroy()

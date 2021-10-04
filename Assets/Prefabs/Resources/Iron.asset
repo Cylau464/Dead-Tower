@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8484c7db0836d194ea1045749a1e3e7f, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 2
   Icon: {fileID: 21300000, guid: 51c8da0c7c4f60f46bf030df897a1e34, type: 3}
   ForgeIcon: {fileID: 21300000, guid: 314649844f5c3c9468d613a6f5130e2a, type: 3}
   RewardIcon: {fileID: 21300000, guid: d1f63cc92dc8a29458d1b1910154ded5, type: 3}

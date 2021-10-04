@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuUI : CanvasGroupUI
+public class StartMenuUI : CanvasGroupUI
 {
-    [SerializeField] private SettingsUI _settings;
-    [SerializeField] private MapUI _map;
     [Space]
     [SerializeField] private Button _playBtn;
     [SerializeField] private Button _settingsBtn;
@@ -13,7 +11,7 @@ public class MainMenuUI : CanvasGroupUI
     private int _showParamID;
     private int _hideParamID;
 
-    private void Start()
+    protected override void Init()
     {
         _showParamID = Animator.StringToHash("show");
         _hideParamID = Animator.StringToHash("hide");
@@ -21,8 +19,7 @@ public class MainMenuUI : CanvasGroupUI
         _playBtn.onClick.AddListener(Play);
         _settingsBtn.onClick.AddListener(OpenSettings);
 
-        _settings.OnHide += Show;
-        _settings.gameObject.SetActive(false);
+        base.Init();
     }
 
     public override void Hide()
@@ -40,17 +37,12 @@ public class MainMenuUI : CanvasGroupUI
     private void Play()
     {
         Hide();
-        _map.Show();
+        MenuSwitcher.Instance.OpenMap();
     }
 
     private void OpenSettings()
     {
         Hide();
-        _settings.Show();
-    }
-
-    private void OnDestroy()
-    {
-        _settings.OnHide -= Show;
+        MenuSwitcher.Instance.OpenSettings();
     }
 }
