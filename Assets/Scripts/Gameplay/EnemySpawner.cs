@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -8,29 +9,33 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemyFactory _bossFactory = null;
     private EnemyFactory _factory;
     [SerializeField] private float _respawnCooldown = 3f;
+    private int _powerReserve;
 
-    public static LevelInfo LevelInfo;
     public static LevelConfig LevelConfig;
 
     public static Action<Enemy> OnEnemySpawned;
 
     private void Start()
     {
-        if (LevelInfo.BossLevel == true)
+        _powerReserve = LevelConfig.Difficulty.PowerReserve;
+
+        if (LevelConfig.Difficulty.BossLevel == true)
             _factory = _bossFactory;
         else
             _factory = _generalFactory;
 
         StartCoroutine(SpawnEnemy());
+
+        Game.Instance.OnLevelEnd += OnLevelEnd;
     }
 
     private IEnumerator SpawnEnemy()
     {
-        while(LevelInfo.PowerReserve > 0)
+        while(_powerReserve > 0)
         {
-            Enemy enemy = _factory.Get(Mathf.Min(LevelInfo.MaxEnemyPower, LevelInfo.PowerReserve));
+            Enemy enemy = _factory.Get(Mathf.Min(LevelConfig.Difficulty.MaxEnemyPower, _powerReserve));
             enemy.transform.position = transform.position;
-            LevelInfo.PowerReserve -= enemy.Stats.Power;
+            _powerReserve -= enemy.Stats.Power;
             OnEnemySpawned?.Invoke(enemy);
             Debug.Log(enemy.name + " was spawned");
 
@@ -38,5 +43,21 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Debug.LogWarning("Power reserve depleted!");
+    }
+
+    private void OnLevelEnd(bool victory)
+    {
+        if(victory == true)
+        {
+            LevelConfig.Status = LevelStatus.Completed;
+            List<LevelConfig[]> levels = SLS.Data.Game.Levels.Value;
+            LevelConfig nextLevel = SLS.Data.Game.GetNextLevel();
+            nextLevel.Status = nextLevel.Status == LevelStatus.Closed ? LevelStatus.Opened : nextLevel.Status;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Game.Instance.OnLevelEnd -= OnLevelEnd;
     }
 }

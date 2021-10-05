@@ -16,33 +16,11 @@ public class StoredValue<T>
 			// Если значение поменялось
 			// сохраняем новое значение
 			// и инициируем событие OnValueChanged
-			//if (value is Array)
-   //         {
-			//	Array curArray = (this.value as Array);
-			//	Array newArray = (value as Array);
-			//	for(int i = 0; i < curArray.Length; i++)
-   //             {
-			//		UnityEngine.Debug.Log(curArray.GetValue(i) + "  " + newArray.GetValue(i));
-			//		if (curArray.GetValue(i).Equals(newArray.GetValue(i)) == false)
-   //                 {
-			//			valueChanged = true;
-			//			break;
-   //                 }
-   //             }
-			//}
-			if (!this.value.Equals(value))
+			if (this.value == null || !this.value.Equals(value))
 			{
                 this.value = value;
-                SaveLoadSystem.Instance.Save();
-                OnValueChanged?.Invoke(value);
-            }
-
-			//if(valueChanged == true)
-			//         {
-			//	this.value = value;
-			//	SaveLoadSystem.Instance.Save();
-			//	OnValueChanged?.Invoke(value);
-			//         }
+				SaveValue();
+			}
 		}
 	}
 
@@ -63,5 +41,11 @@ public class StoredValue<T>
 	public StoredValue(T value)
 	{
 		this.value = value;
+	}
+
+	public void SaveValue()
+	{
+		SaveLoadSystem.Instance.Save();
+		OnValueChanged?.Invoke(value);
 	}
 }

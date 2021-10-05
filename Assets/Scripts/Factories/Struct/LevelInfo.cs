@@ -1,4 +1,4 @@
-public struct LevelInfo
+public struct LevelDifficulty
 {
     public int MaxEnemyPower;
     public int PowerReserve;

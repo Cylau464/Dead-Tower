@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MapUI : CanvasGroupUI
 {
@@ -13,6 +14,7 @@ public class MapUI : CanvasGroupUI
     [SerializeField] private Button _characterBtn;
     [Space]
     [SerializeField] private Button _projectilesBtn;
+    [SerializeField] private TextMeshProUGUI _projectileCountText;
     [Space]
     [SerializeField] private Button _buyCurrencyBtn;
 
@@ -28,7 +30,16 @@ public class MapUI : CanvasGroupUI
 
         _buyCurrencyBtn.onClick.AddListener(OpenCurrencyShop);
 
+        SLS.Data.Game.ProjectilesCount.OnValueChanged += UpdateProjectilesCount;
+
         base.Init();
+    }
+
+    public override void Show()
+    {
+        base.Show();
+
+        UpdateProjectilesCount(SLS.Data.Game.ProjectilesCount.Value);
     }
 
     private void BackToMenu()
@@ -56,5 +67,17 @@ public class MapUI : CanvasGroupUI
     private void OpenCurrencyShop()
     {
 
+    }
+
+    private void UpdateProjectilesCount(int[] projectiles)
+    {
+        int index = AssetsHolder.Instance.TowerConfigs[SLS.Data.Game.SelectedTower.Value.Index]
+            .WeaponConfig.ProjectileConfig.Index;
+        _projectileCountText.text = projectiles[index].ToString();
+    }
+
+    private void OnDestroy()
+    {
+        SLS.Data.Game.ProjectilesCount.OnValueChanged -= UpdateProjectilesCount;
     }
 }

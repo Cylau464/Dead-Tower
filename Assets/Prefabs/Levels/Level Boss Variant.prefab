@@ -11,10 +11,10 @@ PrefabInstance:
       propertyPath: _openedIcon
       value: 
       objectReference: {fileID: 21300000, guid: 33085c5b2451f1446b2cee1df34de203, type: 3}
-    - target: {fileID: 1848155453952386373, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 78546101573250996, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
+      propertyPath: _completedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: f74bc2b0236fea1448132aff89dc088f, type: 3}
     - target: {fileID: 2945152468962782775, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
       propertyPath: m_Name
       value: Level Boss Variant
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374392584773784960, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8374392584773784960, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
       propertyPath: m_RootOrder
@@ -49,11 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374392584773784960, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 170
+      value: 171
       objectReference: {fileID: 0}
     - target: {fileID: 8374392584773784960, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 146
+      value: 262
       objectReference: {fileID: 0}
     - target: {fileID: 8374392584773784960, guid: 733485bae93a3564cac7e7e20a2f2203, type: 3}
       propertyPath: m_LocalPosition.x

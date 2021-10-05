@@ -16,6 +16,7 @@ public class TowerDefenderConfig : ScriptableObject
 
 public class DefenderData
 {
+    public int Index;
     public TowerDefenderStats Stats;
     public PurchaseStats PurchaseStats;
 

@@ -44,6 +44,7 @@ public class CurrencyUI : MonoBehaviour
     private IEnumerator AccuralCor(TextMeshProUGUI text, int targetValue)
     {
         int startValue = int.Parse(text.text);
+        Vector3 scaleTarget = Vector3.one + Vector3.one * _scaleIncrease;
         float t = 0f;
 
         while(t < 1f)

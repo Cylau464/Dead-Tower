@@ -13,8 +13,8 @@ public class ForgeUI : CanvasGroupUI
     [SerializeField] private RectTransform _scrollContent;
     [SerializeField] private int _spacing = 50;
     [Space]
-    [SerializeField] private Image _projectileIcon;
-    [SerializeField] private Image[] _resourceIcons;
+    [SerializeField] private DissolveImage _projectileIcon;
+    [SerializeField] private DissolveImage[] _resourceIcons;
     [SerializeField] private TextMeshProUGUI _costText;
     [SerializeField] private Sprite _recipeSprite;
     [Space]
@@ -29,6 +29,7 @@ public class ForgeUI : CanvasGroupUI
         _craftBtn.onClick.AddListener(Craft);
         _backBtn.onClick.AddListener(BackToMap);
         _recipes = new List<ProjectileRecipeUI>();
+        _costText.text = 0.ToString();
 
         foreach (ProjectileConfig config in _recipeConfigs)
         {
@@ -56,8 +57,14 @@ public class ForgeUI : CanvasGroupUI
     {
         _curProjectileConfig = config;
         ProjectileRecipe recipe = config.Recipe;
-        _projectileIcon.sprite = recipe.ForgeIcon;
-        _costText.text = recipe.Cost.ToString();
+        _projectileIcon.SetSprite(recipe.ForgeIcon);
+        StopAllCoroutines();
+        this.LerpCoroutine(
+            time: .25f,
+            from: float.Parse(_costText.text),
+            to: recipe.Cost,
+            action: a => _costText.text = Mathf.RoundToInt(a).ToString()
+        );
         bool canCraft = recipe.Cost > SLS.Data.Game.Coins.Value == true ? false : true;
 
         for(int i = 0; i < _resourceIcons.Length; i++)
@@ -72,13 +79,13 @@ public class ForgeUI : CanvasGroupUI
                     if (i >= _resourceIcons.Length)
                         throw new System.Exception("Attempts to fill more cells with resources than there are");
 
-                    _resourceIcons[i].sprite = AssetsHolder.Instance.ResourceConfigs.First(x => x.Type == resource.Type).ForgeIcon;
+                    _resourceIcons[i].SetSprite(AssetsHolder.Instance.ResourceConfigs.First(x => x.Type == resource.Type).ForgeIcon);
                     i++;
                 }
             }
 
             if (i < _resourceIcons.Length)
-                _resourceIcons[i].sprite = _recipeSprite;
+                _resourceIcons[i].SetSprite(_recipeSprite);
         }
 
         _craftBtn.interactable = canCraft;

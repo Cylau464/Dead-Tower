@@ -19,6 +19,8 @@ public class Weapon : MonoBehaviour
     private Spine.Bone _shootPointBone;
     private Tower _tower;
     private WeaponStats _stats;
+    private WeaponConfig _config;
+    public WeaponConfig Config => _config;
 
     // Anim params
     private int _aimingParamID;
@@ -52,6 +54,19 @@ public class Weapon : MonoBehaviour
 
         Game.Instance.OnLevelEnd += OnLevelEnd;
     } 
+
+    public void Init(WeaponConfig config, bool inMenu)
+    {
+        _config = config;
+        _projectileConfig = config.ProjectileConfig;
+        _skeletonMecanim.skeletonDataAsset = config.Skeleton;
+        _skeletonMecanim.Initialize(true);
+        _animator.runtimeAnimatorController = config.AnimatorController;
+        _stats = config.Stats;
+
+        if (inMenu == true)
+            _collider.enabled = false;
+    }
 
     private void Update()
     {
@@ -110,17 +125,6 @@ public class Weapon : MonoBehaviour
         SLS.Data.Game.ProjectilesCount.Value = projectilesCount;
     }
 
-    public void Init(WeaponConfig config, bool inMenu)
-    {
-        _projectileConfig = config.ProjectileConfig;
-        _skeletonMecanim.skeletonDataAsset = config.Skeleton;
-        _skeletonMecanim.Initialize(true);
-        _animator.runtimeAnimatorController = config.AnimatorController;
-        _stats = config.Stats;
-
-        if (inMenu == true)
-            _collider.enabled = false;
-    }
 
     private void TakeDamage(int healthLeft)
     {

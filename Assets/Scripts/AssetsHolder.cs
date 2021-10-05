@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class AssetsHolder : MonoBehaviour
 {
@@ -10,9 +11,6 @@ public class AssetsHolder : MonoBehaviour
     public TowerConfig[] TowerConfigs => _towerConfigs;
     [SerializeField] private TowerDefenderConfig[] _defenderConfigs;
     public TowerDefenderConfig[] DefenderConfigs => _defenderConfigs;
-
-    public TowerDefenderConfig SelectedDefender { get; private set; }
-    public TowerConfig SelectedTower { get; private set; }
 
     public static AssetsHolder Instance;
 
@@ -44,7 +42,8 @@ public class AssetsHolder : MonoBehaviour
             config.PurchaseStats = data.PurchaseStats;
         }
 
-        SelectedDefender = _defenderConfigs[0];
-        SelectedTower = _towerConfigs[0];
+        _towerConfigs = _towerConfigs.OrderBy(x => x.Index).ToArray();
+        _defenderConfigs = _defenderConfigs.OrderBy(x => x.Index).ToArray();
+        _projectileConfigs = _projectileConfigs.OrderBy(x => x.Index).ToArray();
     }
 }

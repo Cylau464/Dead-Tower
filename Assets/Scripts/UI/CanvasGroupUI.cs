@@ -23,44 +23,44 @@ public class CanvasGroupUI : MonoBehaviour
 
     public virtual void Show()
 	{
+		StopAllCoroutines();
+		gameObject.SetActive(true);
+
 		if (_isInitialized == false)
 			Init();
 
-		gameObject.SetActive(true);
-
-		StopAllCoroutines();
-		StartCoroutine(LerpCoroutine(
+		this.LerpCoroutine(
 			time: fadeTime,
 			from: canvasGroup.alpha,
 			to: 1,
 			action: a => canvasGroup.alpha = a
-		));
+		);
 	}
 
 	public virtual void Hide()
 	{
 		StopAllCoroutines();
-		StartCoroutine(LerpCoroutine(
+		this.LerpCoroutine(
 			time: fadeTime,
 			from: canvasGroup.alpha,
 			to: 0,
 			action: a => canvasGroup.alpha = a,
 			onEnd: () => gameObject.SetActive(false)
-		));
+		);
 	}
 
-	protected IEnumerator LerpCoroutine(float time, float from, float to, Action<float> action, Action onEnd = null)
-    {
-		float t = 0f;
+	//protected IEnumerator LerpCoroutine(float time, float from, float to, Action<float> action, Action onEnd = null)
+ //   {
+	//	float t = 0f;
 
-		while(t < 1f)
-        {
-			t += Time.unscaledDeltaTime / time;
-			action?.Invoke(Mathf.Lerp(from, to, t));
+	//	while(t < 1f)
+ //       {
+	//		t += Time.unscaledDeltaTime / time;
+	//		action?.Invoke(Mathf.Lerp(from, to, t));
 
-			yield return null;
-        }
+	//		yield return null;
+ //       }
 
-		onEnd?.Invoke();
-    }
+	//	onEnd?.Invoke();
+ //   }
 }

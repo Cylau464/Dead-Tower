@@ -185,8 +185,12 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     private void OnLevelEnd(bool victory)
     {
-        if (victory == true && _isDead == false)
+        if (_isDead == true) return;
+
+        if (victory == true)
             Dead();
+        else
+            _rigidBody.velocity = Vector2.zero;
     }
 
     private void OnDestroy()

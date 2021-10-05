@@ -8,23 +8,37 @@ public class StageFactory : GameObjectFactory
 
     public Level[] GetStageLevels(StageConfig stageConfig)
     {
+        LevelConfig[] levelConfigs;
+        bool levelsLoaded;
+
+        if (SLS.Data.Game.Levels.Value.Count > stageConfig.Index
+            && SLS.Data.Game.Levels.Value[stageConfig.Index] != null)
+        {
+            levelConfigs = SLS.Data.Game.Levels.Value[stageConfig.Index];
+            levelsLoaded = true;
+        }
+        else
+        {
+            levelConfigs = new LevelConfig[stageConfig.LevelsCount];
+            levelsLoaded = false;
+        }
+
         Level[] levels = new Level[stageConfig.LevelsCount];
 
         for(int i = 0; i < levels.Length; i++)
         {
-            LevelInfo levelInfo = new LevelInfo();
+            LevelDifficulty levelDifficulty = new LevelDifficulty();
             Level level = null;
             LevelStatus status = stageConfig.Index == 0 && i == 0 ? LevelStatus.Opened : LevelStatus.Closed;
-            LevelConfig levelConfig = new LevelConfig(stageConfig.Index, i, status);
 
             if ((i + 1) % stageConfig.BossInterval == 0)
             {
-                levelInfo.BossLevel = true;
+                levelDifficulty.BossLevel = true;
                 level = _bossLevel;
             }
             else
             {
-                levelInfo.BossLevel = false;
+                levelDifficulty.BossLevel = false;
                 level = _normalLevel;
             }
 
@@ -39,12 +53,23 @@ public class StageFactory : GameObjectFactory
                 stageConfig.MinPowerReserve
                 );
             powerReserve = Mathf.Min(powerReserve, stageConfig.MaxPowerReserve);
-            levelInfo.MaxEnemyPower = maxPower;
-            levelInfo.PowerReserve = powerReserve;
+            levelDifficulty.MaxEnemyPower = maxPower;
+            levelDifficulty.PowerReserve = powerReserve;
+
+            if (levelsLoaded == false)
+                levelConfigs[i] = new LevelConfig(stageConfig.Index, i, status, levelDifficulty);
 
             var instance = CreateGameObjectInstance(level);
-            instance.Init(levelConfig, levelInfo);
+            instance.Init(levelConfigs[i]);
             levels[i] = instance;
+        }
+
+        if(levelsLoaded == false)
+        {
+            if (SLS.Data.Game.Levels.Value.Count > stageConfig.Index)
+                SLS.Data.Game.Levels.Value[stageConfig.Index] = levelConfigs;
+            else
+                SLS.Data.Game.Levels.Value.Add(levelConfigs);
         }
 
         return levels;

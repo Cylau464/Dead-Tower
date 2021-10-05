@@ -16,6 +16,7 @@ public class TowerConfig : ScriptableObject
 
 public class TowerData
 {
+    public int Index;
     public TowerStats Stats;
     public PurchaseStats PurchaseStats;
 

@@ -9,12 +9,10 @@ public class Level : MonoBehaviour
     [SerializeField] private Sprite _openedIcon = null;
     [SerializeField] private Sprite _completedIcon = null;
     private LevelConfig _config;
-    private LevelInfo _levelInfo;
 
-    public void Init(LevelConfig config, LevelInfo levelInfo)
+    public void Init(LevelConfig config)
     {
         _config = config;
-        _levelInfo = levelInfo;
 
         switch(config.Status)
         {
@@ -39,7 +37,7 @@ public class Level : MonoBehaviour
     private void Select()
     {
         EnemySpawner.LevelConfig = _config;
-        EnemySpawner.LevelInfo = _levelInfo;
+        SLS.Data.Game.LastLevel.Value = _config;
         SceneLoader.LoadLevel();
     }
 }

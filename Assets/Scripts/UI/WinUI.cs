@@ -9,7 +9,6 @@ public class WinUI : CanvasGroupUI
     [SerializeField] private RectTransform _rewardsHolder;
     [SerializeField] private RewardUI _rewardPrefab;
     [SerializeField] private Sprite _coinSprite;
-    [SerializeField] private Sprite _expSprite;
 
     [SerializeField] private Button _nextLevelBtn;
     [SerializeField] private Button _exitBtn;
@@ -20,6 +19,7 @@ public class WinUI : CanvasGroupUI
     {
         //_nextLevelBtn.onClick.AddListener();
         _exitBtn.onClick.AddListener(SceneLoader.LoadMenu);
+        _nextLevelBtn.onClick.AddListener(NextLevel);
 
         base.Init();
     }
@@ -31,9 +31,6 @@ public class WinUI : CanvasGroupUI
         RewardUI reward = Instantiate(_rewardPrefab);
         reward.transform.SetParent(_rewardsHolder, false);
         reward.Init(_coinSprite, rewards.Gold);
-        reward = Instantiate(_rewardPrefab);
-        reward.transform.SetParent(_rewardsHolder, false);
-        reward.Init(_expSprite, rewards.Exp);
 
         SLS.Data.Game.Coins.Value += rewards.Gold;
         Resource[] resources = SLS.Data.Game.Resources.Value;
@@ -50,5 +47,13 @@ public class WinUI : CanvasGroupUI
         }
 
         SLS.Data.Game.Resources.Value = resources;
+    }
+
+    private void NextLevel()
+    {
+        LevelConfig nextLevel = SLS.Data.Game.GetNextLevel();
+        EnemySpawner.LevelConfig = nextLevel;
+        SLS.Data.Game.LastLevel.Value = nextLevel;
+        SceneLoader.LoadLevel();
     }
 }

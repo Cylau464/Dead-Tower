@@ -16,6 +16,7 @@ public class Tower : MonoBehaviour
     public Transform DefenderPoint => _defenderPoint;
 
     private Weapon _weapon;
+    public Weapon Weapon => _weapon;
     private DefensiveWeaponConfig _defensiveWeaponConfig;
     private bool _defensiveWeaponActivated;
     private TowerStats _stats;

@@ -5,13 +5,11 @@ using System.Linq;
 public struct Rewards
 {
     public int Gold;
-    public int Exp;
     public Resource[] Resources;
 
-    public Rewards(int gold, int exp, Resource[] resources)
+    public Rewards(int gold, Resource[] resources)
     {
         Gold = gold;
-        Exp = exp;
         Resources = resources;
     }
 
@@ -39,6 +37,6 @@ public struct Rewards
         if (resources == null)
             resources = new List<Resource>();
 
-        return new Rewards(a.Gold + b.Gold, a.Exp + b.Exp, resources.ToArray());
+        return new Rewards(a.Gold + b.Gold, resources.ToArray());
     }
 }
