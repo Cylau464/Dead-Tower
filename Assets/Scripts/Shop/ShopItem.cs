@@ -13,13 +13,22 @@ public abstract class ShopItem : MonoBehaviour
 
     protected ShopItemConfig _config;
 
-    protected virtual void Disable()
+    protected virtual void Purchased()
     {
         _gradient.material = _grayscaleMaterial;
-        _currencyIcon.material = _grayscaleMaterial;
         _itemIcon.material = _grayscaleMaterial;
+        _currencyIcon.gameObject.SetActive(false);
+        _costText.gameObject.SetActive(false);
     }
 
-    public abstract void Init(ShopItemConfig config, bool isPurchased = false);
+    public virtual void Init(ShopItemConfig config, bool isPurchased = false)
+    {
+        _config = config;
+        _itemIcon.sprite = config.Icon;
+
+        if (isPurchased == true)
+            Purchased();
+    }
+
     public abstract void Purchase();
 }

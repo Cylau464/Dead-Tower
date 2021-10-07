@@ -38,6 +38,7 @@ public class SaveLoadSystem : MonoBehaviour
 		else
 			Data = JsonConvert.DeserializeObject<SaveLoadData>(ppData);
 
+		Data.Game.Coins.Value += 1000;
 		DontDestroyOnLoad(this);
 	}
 

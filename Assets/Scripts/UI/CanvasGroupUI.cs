@@ -7,6 +7,7 @@ public class CanvasGroupUI : MonoBehaviour
 {
 	[SerializeField] private CanvasGroup canvasGroup;
 	[SerializeField] private float fadeTime = 0.2f;
+	[SerializeField] private float _showDelay = 0f;
 
 	private bool _isInitialized;
 
@@ -48,19 +49,4 @@ public class CanvasGroupUI : MonoBehaviour
 			onEnd: () => gameObject.SetActive(false)
 		);
 	}
-
-	//protected IEnumerator LerpCoroutine(float time, float from, float to, Action<float> action, Action onEnd = null)
- //   {
-	//	float t = 0f;
-
-	//	while(t < 1f)
- //       {
-	//		t += Time.unscaledDeltaTime / time;
-	//		action?.Invoke(Mathf.Lerp(from, to, t));
-
-	//		yield return null;
- //       }
-
-	//	onEnd?.Invoke();
- //   }
 }

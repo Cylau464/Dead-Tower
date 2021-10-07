@@ -7,7 +7,7 @@ public class ResourcesShopItem : CommonShopItem
 
     public override void Init(ShopItemConfig config, bool isPurchased = false)
     {
-        _countText.text = (config as ResourcesItemConfig).Count.ToString();
+        _countText.text = (config as MPIConfig).Count.ToString();
         base.Init(config, isPurchased);
     }
 }

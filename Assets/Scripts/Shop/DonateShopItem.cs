@@ -7,8 +7,8 @@ public class DonateShopItem : ShopItem
 
     public override void Init(ShopItemConfig config, bool isPurchased = false)
     {
-        _config = config;
-
+        
+        base.Init(config, isPurchased);
     }
 
     public override void Purchase()

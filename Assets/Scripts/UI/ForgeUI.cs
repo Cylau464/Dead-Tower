@@ -18,6 +18,11 @@ public class ForgeUI : CanvasGroupUI
     [SerializeField] private TextMeshProUGUI _costText;
     [SerializeField] private Sprite _recipeSprite;
     [Space]
+    [SerializeField] private DissolveImage _projectileCountIcon;
+    [SerializeField] private TextMeshProUGUI _projectileCountText;
+    [SerializeField] private DissolveImage[] _resourceCountIcons;
+    [SerializeField] private TextMeshProUGUI[] _resourceCountText;
+    [Space]
     [SerializeField] private Button _craftBtn;
     [SerializeField] private Button _backBtn;
 
@@ -58,12 +63,19 @@ public class ForgeUI : CanvasGroupUI
         _curProjectileConfig = config;
         ProjectileRecipe recipe = config.Recipe;
         _projectileIcon.SetSprite(recipe.ForgeIcon);
+        _projectileCountIcon.SetSprite(config.Icon);
         StopAllCoroutines();
         this.LerpCoroutine(
             time: .25f,
             from: float.Parse(_costText.text),
             to: recipe.Cost,
             action: a => _costText.text = Mathf.RoundToInt(a).ToString()
+        );
+        this.LerpCoroutine(
+            time: .25f,
+            from: float.Parse(_projectileCountText.text),
+            to: SLS.Data.Game.ProjectilesCount.Value[config.Index],
+            action: a => _projectileCountText.text = Mathf.RoundToInt(a).ToString()
         );
         bool canCraft = recipe.Cost > SLS.Data.Game.Coins.Value == true ? false : true;
 
@@ -74,12 +86,25 @@ public class ForgeUI : CanvasGroupUI
                 if (resource.Count > SLS.Data.Game.Resources.Value.First(x => x.Type == resource.Type).Count)
                     canCraft = false;
 
-                for(int k = 0; k < resource.Count; k++)
+                for (int k = 0; k < resource.Count; k++)
                 {
                     if (i >= _resourceIcons.Length)
                         throw new System.Exception("Attempts to fill more cells with resources than there are");
 
-                    _resourceIcons[i].SetSprite(AssetsHolder.Instance.ResourceConfigs.First(x => x.Type == resource.Type).ForgeIcon);
+                    ResourceConfig resConfig = AssetsHolder.Instance.ResourceConfigs.First(x => x.Type == resource.Type);
+                    _resourceIcons[i].SetSprite(resConfig.ForgeIcon);
+
+                    if (i < _resourceCountIcons.Length)
+                    {
+                        _resourceCountIcons[i].SetSprite(resConfig.RewardIcon);
+                        this.LerpCoroutine(
+                            time: .25f,
+                            from: float.Parse(_resourceCountText[i].text),
+                            to: SLS.Data.Game.Resources.Value.First(x => x.Type == resConfig.Type).Count,
+                            action: a => _resourceCountText[i].text = Mathf.RoundToInt(a).ToString()
+                        );
+                    }
+
                     i++;
                 }
             }

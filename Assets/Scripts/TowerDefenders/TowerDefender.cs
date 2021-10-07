@@ -98,6 +98,8 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
                     if (_modifierConfig.HasModifier(hit.collider.gameObject) == false
                         && Mathf.Abs(hit.collider.transform.position.x - _aimPosition.x) > _minAttackDistance)
                     {
+                        Debug.Log("DISTANCE TO TARGET: " + Mathf.Abs(hit.collider.transform.position.x - _aimPosition.x)
+                            + " MIN DISTANCE: " + _minAttackDistance);
                         _target = hit.collider.GetComponent<Rigidbody2D>();
                         break;
                     }

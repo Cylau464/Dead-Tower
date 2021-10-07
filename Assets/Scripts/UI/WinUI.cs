@@ -9,7 +9,7 @@ public class WinUI : CanvasGroupUI
     [SerializeField] private RectTransform _rewardsHolder;
     [SerializeField] private RewardUI _rewardPrefab;
     [SerializeField] private Sprite _coinSprite;
-
+    [Space]
     [SerializeField] private Button _nextLevelBtn;
     [SerializeField] private Button _exitBtn;
 

@@ -56,17 +56,20 @@ public class MapUI : CanvasGroupUI
 
     private void OpenShop()
     {
-
+        Hide();
+        MenuSwitcher.Instance.OpenShop();
     }
 
     private void OpenCharacterSettings()
     {
-
+        Hide();
+        MenuSwitcher.Instance.OpenCharacterSettings();
     }
 
     private void OpenCurrencyShop()
     {
-
+        Hide();
+        MenuSwitcher.Instance.OpenShop();
     }
 
     private void UpdateProjectilesCount(int[] projectiles)

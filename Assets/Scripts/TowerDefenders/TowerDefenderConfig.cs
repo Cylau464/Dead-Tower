@@ -5,7 +5,6 @@ using Spine.Unity;
 public class TowerDefenderConfig : ScriptableObject
 {
     public int Index;
-    public Sprite MenuSprite;
     public SkeletonDataAsset Skeleton;
     public RuntimeAnimatorController AnimatorController;
     public Projectile ProjectilePrefab;

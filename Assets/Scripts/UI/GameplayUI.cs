@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class GameplayUI : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _projectileCountText;
     [SerializeField] private TextMeshProUGUI _progressText;
     [SerializeField] private TextMeshProUGUI _towerHealthText;
+    [Space]
+    [SerializeField] private float _levelEndDelay = 2f;
 
     private Rewards _rewards;
     private int _projectileIndex;
@@ -72,7 +75,14 @@ public class GameplayUI : MonoBehaviour
 
     private void OnLevelEnd(bool victory)
     {
-        Debug.Log((_winUI == null) + " " + (_loseUI == null));
+        StopAllCoroutines();
+        StartCoroutine(LevelEndDelay(victory));
+    }
+
+    private IEnumerator LevelEndDelay(bool victory)
+    {
+        yield return new WaitForSeconds(_levelEndDelay);
+
         if (victory == true)
             _winUI.Show(_rewards);
         else

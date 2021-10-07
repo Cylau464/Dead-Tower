@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopUI : MonoBehaviour
+public class ShopUI : CanvasGroupUI
 {
     [SerializeField] private Button _closeBtn;
     [SerializeField] private TabUI[] _tabs;
@@ -13,6 +13,13 @@ public class ShopUI : MonoBehaviour
             _tabs[i].Init(_toggleGroup);
 
         _toggleGroup.SetAllTogglesOff();
+
+        _closeBtn.onClick.AddListener(Close);
     }
 
+    private void Close()
+    {
+        Hide();
+        MenuSwitcher.Instance.OpenMap();
+    }
 }

@@ -17,6 +17,6 @@ MonoBehaviour:
   Stats:
     IsPurchased: 0
     CurrencyType: 0
-    Cost: 500
+    Cost: 5000
   Category: 0
   Config: {fileID: 11400000, guid: 94adce2cbe709da4c8c00f24df077741, type: 2}
