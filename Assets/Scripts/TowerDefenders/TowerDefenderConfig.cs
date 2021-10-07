@@ -18,11 +18,12 @@ public class DefenderData
 {
     public int Index;
     public TowerDefenderStats Stats;
-    public PurchaseStats PurchaseStats;
+    public bool IsPurchased;
 
-    public DefenderData(TowerDefenderStats stats, PurchaseStats purchaseStats)
+    public DefenderData(int index, TowerDefenderStats stats, bool isPurchased)
     {
+        Index = index;
         Stats = stats;
-        PurchaseStats = purchaseStats;
+        IsPurchased = isPurchased;
     }
 }

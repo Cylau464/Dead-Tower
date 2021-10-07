@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 996842597929561489, guid: 60596cf52bcdaaf448e65b82dd8374f8, type: 3}
       propertyPath: m_Positions.Array.data[4].x
-      value: -475.97424
+      value: -484.79285
       objectReference: {fileID: 0}
     - target: {fileID: 996842597929561489, guid: 60596cf52bcdaaf448e65b82dd8374f8, type: 3}
       propertyPath: m_Positions.Array.data[4].y
-      value: -217.00134
+      value: -223.10654
       objectReference: {fileID: 0}
     - target: {fileID: 996842597929561489, guid: 60596cf52bcdaaf448e65b82dd8374f8, type: 3}
       propertyPath: m_Positions.Array.data[5].x

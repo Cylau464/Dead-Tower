@@ -46,7 +46,7 @@ public class GameData
 		for (int i = 0; i < towers.Length; i++)
 		{
 			TowerConfig config = AssetsHolder.Instance.TowerConfigs[i];
-			towers[config.Index] = new TowerData(config.Stats, config.PurchaseStats);
+			towers[config.Index] = new TowerData(config.Index, config.Stats, config.PurchaseStats.IsPurchased);
 		}
 
 		SelectedTower = new StoredValue<TowerData>(towers[0]);
@@ -60,7 +60,7 @@ public class GameData
 		for (int i = 0; i < defenders.Length; i++)
 		{
 			TowerDefenderConfig config = AssetsHolder.Instance.DefenderConfigs[i];
-			defenders[config.Index] = new DefenderData(config.Stats, config.PurchaseStats);
+			defenders[config.Index] = new DefenderData(config.Index, config.Stats, config.PurchaseStats.IsPurchased);
 		}
 
 		SelectedDefender = new StoredValue<DefenderData>(defenders[0]);

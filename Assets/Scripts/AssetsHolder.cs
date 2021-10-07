@@ -28,19 +28,19 @@ public class AssetsHolder : MonoBehaviour
 
     private void Start()
     {
-        foreach(TowerConfig config in _towerConfigs)
-        {
-            TowerData data = SLS.Data.Game.Towers.Value[config.Index];
-            config.Stats = data.Stats;
-            config.PurchaseStats = data.PurchaseStats;
-        }
+        //foreach(TowerConfig config in _towerConfigs)
+        //{
+        //    TowerData data = SLS.Data.Game.Towers.Value[config.Index];
+        //    config.Stats = data.Stats;
+        //    config.PurchaseStats = data.PurchaseStats;
+        //}
 
-        foreach(TowerDefenderConfig config in _defenderConfigs)
-        {
-            DefenderData data = SLS.Data.Game.Defenders.Value[config.Index];
-            config.Stats = data.Stats;
-            config.PurchaseStats = data.PurchaseStats;
-        }
+        //foreach(TowerDefenderConfig config in _defenderConfigs)
+        //{
+        //    DefenderData data = SLS.Data.Game.Defenders.Value[config.Index];
+        //    config.Stats = data.Stats;
+        //    config.PurchaseStats = data.PurchaseStats;
+        //}
 
         _towerConfigs = _towerConfigs.OrderBy(x => x.Index).ToArray();
         _defenderConfigs = _defenderConfigs.OrderBy(x => x.Index).ToArray();

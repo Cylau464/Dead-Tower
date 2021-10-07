@@ -1,5 +1,4 @@
 using UnityEngine;
-using Enums;
 
 [CreateAssetMenu(fileName = "Stage Factory", menuName = "Factories/Levels/Stage Factory")]
 public class StageFactory : GameObjectFactory
