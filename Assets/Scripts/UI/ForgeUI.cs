@@ -55,7 +55,18 @@ public class ForgeUI : CanvasGroupUI
         contentHeight += _spacing * 2f + _spacing * (_recipeConfigs.Length - 1);
         _scrollContent.sizeDelta = new Vector2(_scrollContent.sizeDelta.x, contentHeight);
 
+        SLS.Data.Game.ProjectilesCount.OnValueChanged += OnProjectileChanged;
+        SLS.Data.Game.Resources.OnValueChanged += OnResourcesChanged;
+
         base.Init();
+    }
+
+    public override void Show()
+    {
+        base.Show();
+
+        if(_curProjectileConfig != null)
+            ChooseRecipe(_curProjectileConfig);
     }
 
     private void ChooseRecipe(ProjectileConfig config)
@@ -64,7 +75,7 @@ public class ForgeUI : CanvasGroupUI
         ProjectileRecipe recipe = config.Recipe;
         _projectileIcon.SetSprite(recipe.ForgeIcon);
         _projectileCountIcon.SetSprite(config.Icon);
-        StopAllCoroutines();
+        //StopAllCoroutines();
         this.LerpCoroutine(
             time: .25f,
             from: float.Parse(_costText.text),
@@ -77,15 +88,11 @@ public class ForgeUI : CanvasGroupUI
             to: SLS.Data.Game.ProjectilesCount.Value[config.Index],
             action: a => _projectileCountText.text = Mathf.RoundToInt(a).ToString()
         );
-        bool canCraft = recipe.Cost > SLS.Data.Game.Coins.Value == true ? false : true;
 
         for(int i = 0; i < _resourceIcons.Length; i++)
         {
             foreach(Resource resource in recipe.Resources)
             {
-                if (resource.Count > SLS.Data.Game.Resources.Value.First(x => x.Type == resource.Type).Count)
-                    canCraft = false;
-
                 for (int k = 0; k < resource.Count; k++)
                 {
                     if (i >= _resourceIcons.Length)
@@ -94,16 +101,14 @@ public class ForgeUI : CanvasGroupUI
                     ResourceConfig resConfig = AssetsHolder.Instance.ResourceConfigs.First(x => x.Type == resource.Type);
                     _resourceIcons[i].SetSprite(resConfig.ForgeIcon);
 
-                    if (i < _resourceCountIcons.Length)
-                    {
-                        _resourceCountIcons[i].SetSprite(resConfig.RewardIcon);
-                        this.LerpCoroutine(
-                            time: .25f,
-                            from: float.Parse(_resourceCountText[i].text),
-                            to: SLS.Data.Game.Resources.Value.First(x => x.Type == resConfig.Type).Count,
-                            action: a => _resourceCountText[i].text = Mathf.RoundToInt(a).ToString()
-                        );
-                    }
+                    int index = i; // нужна из-за того, что после того, как i передаётся в корутину, то она превращается в 3
+                    _resourceCountIcons[index].SetSprite(resConfig.RewardIcon);
+                    this.LerpCoroutine(
+                        time: .25f,
+                        from: float.Parse(_resourceCountText[index].text),
+                        to: SLS.Data.Game.Resources.Value.First(x => x.Type == resConfig.Type).Count,
+                        action: a => _resourceCountText[index].text = Mathf.RoundToInt(a).ToString()
+                    );
 
                     i++;
                 }
@@ -113,7 +118,7 @@ public class ForgeUI : CanvasGroupUI
                 _resourceIcons[i].SetSprite(_recipeSprite);
         }
 
-        _craftBtn.interactable = canCraft;
+        CheckEnoughResources();
     }
 
     private void Craft()
@@ -131,6 +136,49 @@ public class ForgeUI : CanvasGroupUI
         }
 
         SLS.Data.Game.Resources.Value = resources;
+        CheckEnoughResources();
+    }
+
+    private void CheckEnoughResources()
+    {
+        bool canCraft = _curProjectileConfig.Recipe.Cost > SLS.Data.Game.Coins.Value == true ? false : true;
+
+        foreach(Resource res in _curProjectileConfig.Recipe.Resources)
+        {
+            if (res.Count > SLS.Data.Game.Resources.Value.First(x => x.Type == res.Type).Count)
+                canCraft = false;
+        }
+
+        _craftBtn.interactable = canCraft;
+    }
+
+    private void OnProjectileChanged(int[] projectiles)
+    {
+        Debug.Log("PROJ");
+        this.LerpCoroutine(
+            time: .25f,
+            from: float.Parse(_projectileCountText.text),
+            to: projectiles[_curProjectileConfig.Index],
+            action: a => _projectileCountText.text = Mathf.RoundToInt(a).ToString()
+        );
+    }
+
+    private void OnResourcesChanged(Resource[] resources)
+    {
+        List<Resource> usedResources = new List<Resource>();
+
+        foreach(Resource res in _curProjectileConfig.Recipe.Resources)
+            usedResources.Add(resources.First(x => x.Type == res.Type));
+
+        for(int i = 0; i < _resourceCountText.Length; i++)
+        {
+            this.LerpCoroutine(
+                time: .25f,
+                from: float.Parse(_resourceCountText[i].text),
+                to: usedResources[Mathf.Min(i, usedResources.Count - 1)].Count,
+                action: a => _resourceCountText[i].text = Mathf.RoundToInt(a).ToString()
+            );
+        }
     }
 
     private void BackToMap()
@@ -143,5 +191,8 @@ public class ForgeUI : CanvasGroupUI
     {
         foreach (ProjectileRecipeUI recipe in _recipes)
             recipe.OnClick -= ChooseRecipe;
+
+        SLS.Data.Game.ProjectilesCount.OnValueChanged -= OnProjectileChanged;
+        SLS.Data.Game.Resources.OnValueChanged -= OnResourcesChanged;
     }
 }

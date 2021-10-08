@@ -1,18 +1,32 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class DissolveImage : MonoBehaviour
 {
+    [SerializeField] private Material _dissolveMaterial;
     [SerializeField] private Image _image;
     [Space]
     [SerializeField] private float _dissolveTime = .5f;
-    [SerializeField] private float _colorIntensity = 6f;
+    //[SerializeField] private float _colorIntensity = 6f;
 
     private Material _material;
 
     public void SetSprite(Sprite sprite)
     {
+        bool veryOld = (SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES2);
+
+        if(veryOld == false)
+        {
+            if (_dissolveMaterial != null && _image.material != _dissolveMaterial)
+                _material = _image.material = new Material(_dissolveMaterial);
+        }
+        else
+        {
+            _image.material = null;
+        }
+
         StartCoroutine(Dissolve(sprite));
     }
 

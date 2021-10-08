@@ -11,8 +11,14 @@ public class StoredValue<T>
 		get => value;
 		set
 		{
-			//bool valueChanged = false;
+			bool valueChanged = false;
 
+			//if(value is Array)
+   //         {
+			//	StoredValue<T> arr = (this.value as Array);
+			//	 .SequenceEqual(value as Array)
+
+   //         }
 			// Если значение поменялось
 			// сохраняем новое значение
 			// и инициируем событие OnValueChanged
