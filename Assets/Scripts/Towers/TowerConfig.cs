@@ -1,23 +1,16 @@
 ﻿using UnityEngine;
-using Spine.Unity;
 
 [CreateAssetMenu(fileName = "Tower", menuName = "Tower/Tower")]
-public class TowerConfig : ScriptableObject
+public class TowerConfig : UnitBasicConfig
 {
-    public int Index;
-    public SkeletonDataAsset Skeleton;
-    public RuntimeAnimatorController AnimatorController;
     public DefensiveWeaponConfig DefensiveWeaponConfig;
     public WeaponConfig WeaponConfig;
     public TowerStats Stats;
-    public PurchaseStats PurchaseStats;
 }
 
-public class TowerData
+public class TowerData : UnitData
 {
-    public int Index;
     public TowerStats Stats;
-    public bool IsPurchased;
 
     public TowerData(int index, TowerStats stats, bool isPurchased)
     {
@@ -25,4 +18,10 @@ public class TowerData
         Stats = stats;
         IsPurchased = isPurchased;
     }
+}
+
+public class UnitData
+{
+    public int Index;
+    public bool IsPurchased;
 }

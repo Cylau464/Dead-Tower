@@ -69,7 +69,7 @@ public class MapUI : CanvasGroupUI
     private void OpenCurrencyShop()
     {
         Hide();
-        MenuSwitcher.Instance.OpenShop();
+        MenuSwitcher.Instance.OpenShop(ItemCategory.Currency);
     }
 
     private void UpdateProjectilesCount(int[] projectiles)

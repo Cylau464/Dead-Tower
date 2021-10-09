@@ -30,13 +30,16 @@ public class SaveLoadSystem : MonoBehaviour
 		if (Instance == null)
 			Instance = this;
 
-		//PlayerPrefs.SetString(DataKey, "");
+		PlayerPrefs.SetString(DataKey, "");
 		var ppData = PlayerPrefs.GetString(DataKey, "");
 
 		if (string.IsNullOrEmpty(ppData))
 			Data = new SaveLoadData();
 		else
 			Data = JsonConvert.DeserializeObject<SaveLoadData>(ppData);
+
+		Data.Game.Coins.Value += 1000000;
+		Data.Game.Diamonds.Value += 200;
 
 		DontDestroyOnLoad(this);
 	}

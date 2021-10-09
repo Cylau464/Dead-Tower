@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
+using TMPro;
 using System;
 
 public class CommonShopItem : ShopItem
 {
+    [SerializeField] private TextMeshProUGUI _purchasedText;
+    [Space]
     [SerializeField] private Sprite _coinSprite;
     [SerializeField] private Sprite _diamondSprite;
     [Space]
@@ -14,6 +16,7 @@ public class CommonShopItem : ShopItem
 
     public override void Init(ShopItemConfig config, bool isPurchased = false)
     {
+        _purchasedText.gameObject.SetActive(false);
         base.Init(config, isPurchased);
 
         _costText.text = config.Stats.Cost.ToString();
@@ -37,6 +40,8 @@ public class CommonShopItem : ShopItem
     protected override void Purchased()
     {
         base.Purchased();
+        _purchasedText.gameObject.SetActive(true);
+        _purchasedText.text = "Purchased";
         _purchaseBtn.interactable = false;
 
         if (_config.Stats.CurrencyType == CurrencyTypes.Coins)
@@ -51,10 +56,12 @@ public class CommonShopItem : ShopItem
         {
             case ItemCategory.Tower:
                 SLS.Data.Game.Towers.Value[(_config as TowerItemConfig).Config.Index].IsPurchased = true;
+                SLS.Data.Game.Towers.SaveValue();
                 Purchased();
                 break;
             case ItemCategory.Defender:
                 SLS.Data.Game.Defenders.Value[(_config as DefenderItemConfig).Config.Index].IsPurchased = true;
+                SLS.Data.Game.Defenders.SaveValue();
                 Purchased();
                 break;
             case ItemCategory.Resources:

@@ -101,7 +101,7 @@ public class ForgeUI : CanvasGroupUI
                     ResourceConfig resConfig = AssetsHolder.Instance.ResourceConfigs.First(x => x.Type == resource.Type);
                     _resourceIcons[i].SetSprite(resConfig.ForgeIcon);
 
-                    int index = i; // нужна из-за того, что после того, как i передаётся в корутину, то она превращается в 3
+                    int index = i; // нужна из-за того, что когда i передаётся в корутину, то она превращается в 3
                     _resourceCountIcons[index].SetSprite(resConfig.RewardIcon);
                     this.LerpCoroutine(
                         time: .25f,
@@ -154,7 +154,6 @@ public class ForgeUI : CanvasGroupUI
 
     private void OnProjectileChanged(int[] projectiles)
     {
-        Debug.Log("PROJ");
         this.LerpCoroutine(
             time: .25f,
             from: float.Parse(_projectileCountText.text),
@@ -172,12 +171,22 @@ public class ForgeUI : CanvasGroupUI
 
         for(int i = 0; i < _resourceCountText.Length; i++)
         {
-            this.LerpCoroutine(
-                time: .25f,
-                from: float.Parse(_resourceCountText[i].text),
-                to: usedResources[Mathf.Min(i, usedResources.Count - 1)].Count,
-                action: a => _resourceCountText[i].text = Mathf.RoundToInt(a).ToString()
-            );
+            int index = i; // нужна из-за того, что когда i передаётся в корутину, то она превращается в 3
+
+            if(gameObject.activeInHierarchy == true)
+            {
+                this.LerpCoroutine(
+                    time: .25f,
+                    from: float.Parse(_resourceCountText[index].text),
+                    to: usedResources[Mathf.Min(i, usedResources.Count - 1)].Count,
+                    action: a => _resourceCountText[index].text = Mathf.RoundToInt(a).ToString()
+                );
+            }
+            else
+            {
+                _resourceCountText[index].text = Mathf.RoundToInt(
+                    usedResources[Mathf.Min(i, usedResources.Count - 1)].Count).ToString();
+            }
         }
     }
 

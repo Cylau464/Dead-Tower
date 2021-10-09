@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: Pirat Tower
   m_EditorClassIdentifier: 
   Index: 2
-  MenuSprite: {fileID: 0}
+  Title: Pirat Tower
+  Description: Govno iz zhopi
+  MenuIcon: {fileID: 21300000, guid: 94b72662637aa284ab01d761e76aadce, type: 3}
   Skeleton: {fileID: 11400000, guid: 7f78cdd4c766dae4ba52a1defd66c84b, type: 2}
   AnimatorController: {fileID: 9100000, guid: 876200a276983ec4d83ad338d03fb9c8, type: 2}
+  PurchaseStats:
+    IsPurchased: 0
+    CurrencyType: 0
+    Cost: 500
   DefensiveWeaponConfig: {fileID: 11400000, guid: 10fd32e3ffc556147b07c6e797258162, type: 2}
   WeaponConfig: {fileID: 11400000, guid: 20e83ae0fa5da174b810038361dc86ae, type: 2}
   Stats:
     _health: 4
     _damage: 3
     _abilityLevel: 1
-  PurchaseStats:
-    IsPurchased: 0
-    Cost: 500
-    DiamondCost: 0

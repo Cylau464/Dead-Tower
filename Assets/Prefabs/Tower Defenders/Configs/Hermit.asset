@@ -13,15 +13,18 @@ MonoBehaviour:
   m_Name: Hermit
   m_EditorClassIdentifier: 
   Index: 2
+  Title: Hermit
+  Description: Termit ebat'
+  MenuIcon: {fileID: 21300000, guid: af4e47f342dc8f5418cff89e2adfccd9, type: 3}
   Skeleton: {fileID: 11400000, guid: a6bd469f6f81fbb4b865b888afdf3458, type: 2}
   AnimatorController: {fileID: 9100000, guid: e0e35cb56164f0b43b14afed220f794d, type: 2}
+  PurchaseStats:
+    IsPurchased: 0
+    CurrencyType: 0
+    Cost: 200
   ProjectilePrefab: {fileID: 0}
   Modifier: {fileID: 0}
   Stats:
     _health: 5
     _damage: 2
     _shootDistance: 4
-  PurchaseStats:
-    IsPurchased: 0
-    CurrencyType: 0
-    Cost: 200

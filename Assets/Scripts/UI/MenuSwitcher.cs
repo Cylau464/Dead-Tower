@@ -50,6 +50,11 @@ public class MenuSwitcher : MonoBehaviour
     {
         _shopUI.Show();
     }
+
+    public void OpenShop(ItemCategory category, int itemIndex = 0)
+    {
+        (_shopUI as ShopUI).Show(category, itemIndex);
+    }
     
     public void OpenForge()
     {

@@ -7,7 +7,6 @@ public class CanvasGroupUI : MonoBehaviour
 {
 	[SerializeField] private CanvasGroup canvasGroup;
 	[SerializeField] private float fadeTime = 0.2f;
-	[SerializeField] private float _showDelay = 0f;
 
 	private bool _isInitialized;
 

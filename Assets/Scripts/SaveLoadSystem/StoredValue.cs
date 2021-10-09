@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 [Serializable]
@@ -11,22 +12,21 @@ public class StoredValue<T>
 		get => value;
 		set
 		{
+            // Если значение поменялось
+            // сохраняем новое значение
+            // и инициируем событие OnValueChanged
 			bool valueChanged = false;
 
-			//if(value is Array)
-   //         {
-			//	StoredValue<T> arr = (this.value as Array);
-			//	 .SequenceEqual(value as Array)
+            if (value is Array || this.value == null || !this.value.Equals(value))
+            {
+				valueChanged = true;
+			}
 
-   //         }
-			// Если значение поменялось
-			// сохраняем новое значение
-			// и инициируем событие OnValueChanged
-			if (this.value == null || !this.value.Equals(value))
-			{
+			if(valueChanged == true)
+            {
                 this.value = value;
 				SaveValue();
-			}
+            }
 		}
 	}
 

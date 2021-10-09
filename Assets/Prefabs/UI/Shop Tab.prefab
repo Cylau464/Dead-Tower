@@ -861,7 +861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4517195807506905931}
-  - component: {fileID: 5113730921925857125}
+  - component: {fileID: 7855994941448289726}
   m_Layer: 5
   m_Name: Shop Tab
   m_TagString: Untagged
@@ -890,7 +890,7 @@ RectTransform:
   m_AnchoredPosition: {x: -1000, y: 605}
   m_SizeDelta: {x: 405, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5113730921925857125
+--- !u!114 &7855994941448289726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -899,14 +899,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4517195807506905932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7accb33433269c41830ea3ffbb78c19, type: 3}
+  m_Script: {fileID: 11500000, guid: 534ba6a03ab19d7478e3cda361e91c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _toggle: {fileID: 466820344024693710}
   _title: {fileID: 4517195806443381439}
-  _scrollRect: {fileID: 4517195806278664878}
+  _scrollRect: {fileID: 4517195806278664876}
   _contentHolder: {fileID: 4517195807082862987}
   _activeTextColor: {r: 0.82745105, g: 0.6392157, b: 0.5882353, a: 1}
-  _inactiveTextColor: {r: 0.35686275, g: 0.33333334, b: 0.38823533, a: 1}
+  _inactiveTextColor: {r: 0.35686275, g: 0.33333334, b: 0.3882353, a: 1}
   _itemsConfigs: []
   _factory: {fileID: 11400000, guid: c190963c59bc99b4d9ecfa1b1030d138, type: 2}
