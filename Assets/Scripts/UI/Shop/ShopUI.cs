@@ -20,24 +20,14 @@ public class ShopUI : CanvasGroupUI
         base.Init();
     }
 
-    public void Show(ItemCategory category, int itemIndex)
+    public void Show(ItemCategory category, int itemIndex = -1)
     {
         base.Show();
+        ShopTabUI tab = _tabs.Cast<ShopTabUI>().FirstOrDefault(x => x.ItemCategory == category);
+        tab.ActivateTab();
 
-        switch(category)
-        {
-            case ItemCategory.Tower:
-                break;
-            case ItemCategory.Defender:
-                break;
-            case ItemCategory.Resources:
-                break;
-            case ItemCategory.Currency:
-                _tabs.Cast<ShopTabUI>()
-                    .FirstOrDefault(x => x.ItemCategory == ItemCategory.Currency)
-                    .ActivateTab();
-                break;
-        }
+        if(itemIndex >= 0)
+            tab.ScrollTo(itemIndex);
     }
 
     private void Close()

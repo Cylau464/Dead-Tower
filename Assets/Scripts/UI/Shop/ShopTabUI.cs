@@ -8,8 +8,6 @@ public class ShopTabUI : TabUI
     [Space]
     [SerializeField] private ShopItemConfig[] _itemsConfigs;
     [SerializeField] private ShopFactory _factory;
-    [SerializeField] private ItemCategory _itemCategory;
-    public ItemCategory ItemCategory => _itemCategory;
 
     public override void Init(ToggleGroup group)
     {
@@ -36,5 +34,12 @@ public class ShopTabUI : TabUI
                 _itemsConfigs = currencyConfigs.OrderBy(x => x.Type).ThenBy(x => x.Count).ToArray();
                 break;
         }
+    }
+
+    public override void ScrollTo(int itemIndex)
+    {
+        float offset = 1f / (_itemsConfigs.Length - 1) * itemIndex;
+
+        ScrollTo(_scrollRect, offset);
     }
 }

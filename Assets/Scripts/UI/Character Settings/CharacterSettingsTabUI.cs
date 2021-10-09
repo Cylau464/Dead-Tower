@@ -127,22 +127,14 @@ public class CharacterSettingsTabUI : TabUI
                 && (SLS.Data.Game.SelectedDefender.Value.Index == index) == false;
         }
 
-        float offset = 1f / (_itemsConfigs.Length - 1) * index;
+        ScrollTo(index);
+    }
 
-        if(gameObject.activeInHierarchy == true)
-        {
-            StopAllCoroutines();
-            this.LerpCoroutine(
-                time: .2f,
-                from: _scrollRect.normalizedPosition.x,
-                to: offset,
-                action: a => _scrollRect.normalizedPosition = new Vector2(a, _scrollRect.normalizedPosition.y)
-            );
-        }
-        else
-        {
-            _scrollRect.normalizedPosition = new Vector2(offset, _scrollRect.normalizedPosition.y);
-        }
+    public override void ScrollTo(int itemIndex)
+    {
+        float offset = 1f / (_itemsConfigs.Length - 1) * itemIndex;
+
+        ScrollTo(_scrollRect, offset);
     }
 
     private void Select()
@@ -155,6 +147,12 @@ public class CharacterSettingsTabUI : TabUI
             SLS.Data.Game.SelectedDefender.Value = SLS.Data.Game.Defenders.Value[_curConfig.Index];
 
         OnSelected?.Invoke();
+    }
+
+    public void OpenShop(int itemIndex)
+    {
+        _windowUI.Hide();
+        MenuSwitcher.Instance.OpenShop(_itemCategory, itemIndex);
     }
 
     private void OnDestroy()

@@ -18,12 +18,13 @@ public class CSItem : MonoBehaviour
         _tab = tab;
         _tab.OnSelected += OnSelected;
         _icon.sprite = config.MenuIcon;
+        _purchaseBtn.onClick.AddListener(BuyItem);
         SetStatus(false);
 
-
-        // Add button linking shop to this item
-        //SLS.Data.Game.Towers.Value[config.Index].IsPurchased
-
+        if (_config is TowerConfig)
+            SLS.Data.Game.Towers.OnValueChanged += OnItemsChanged;
+        else
+            SLS.Data.Game.Defenders.OnValueChanged += OnItemsChanged;
     }
 
     private void SetStatus(bool lerpAlpha = true)
@@ -55,7 +56,7 @@ public class CSItem : MonoBehaviour
 
         _purchaseBtn.interactable = !isPurchased;
 
-        if (lerpAlpha == false) return;
+        if (lerpAlpha == false || gameObject.activeInHierarchy == false) return;
 
         Color color = _statusText.color;
         color.a = 0f;
@@ -73,8 +74,23 @@ public class CSItem : MonoBehaviour
         SetStatus();
     }
 
+    private void BuyItem()
+    {
+        _tab.OpenShop(_config.Index);
+    }
+
+    private void OnItemsChanged(UnitData[] data)
+    {
+        SetStatus();
+    }
+
     private void OnDestroy()
     {
         _tab.OnSelected -= OnSelected;
+
+        if (_config is TowerConfig)
+            SLS.Data.Game.Towers.OnValueChanged -= OnItemsChanged;
+        else
+            SLS.Data.Game.Defenders.OnValueChanged -= OnItemsChanged;
     }
 }
