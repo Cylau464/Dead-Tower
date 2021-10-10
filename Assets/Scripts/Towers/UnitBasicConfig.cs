@@ -9,5 +9,6 @@ public abstract class UnitBasicConfig : ScriptableObject
     public Sprite MenuIcon;
     public SkeletonDataAsset Skeleton;
     public RuntimeAnimatorController AnimatorController;
+    public Sprite[] PercIcons;
     public PurchaseStats PurchaseStats;
 }

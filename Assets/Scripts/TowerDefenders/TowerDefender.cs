@@ -106,7 +106,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
                 }
 
                 if (_target == null) return;
-                    //target = hits[0].collider.GetComponent<Rigidbody2D>();
+                //target = hits[0].collider.GetComponent<Rigidbody2D>();
 
                 _animator.SetTrigger(_attackParamID);
                 _curShotCooldown = Time.time + _shotCooldown;
@@ -121,11 +121,11 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
         }
     }
 
-    public void Init(TowerDefenderConfig config, bool inMenu)
+    public void Init(TowerDefenderConfig config, DefenderData data, bool inMenu)
     {
         _projectilePrefab = config.ProjectilePrefab;
         _modifierConfig = config.Modifier;
-        _stats = config.Stats;
+        _stats = data.Stats;
         _maxHealth = _stats.Health;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
@@ -137,7 +137,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
 
     public bool TakeDamage(int damage)
     {
-        _stats.Health -= damage;
+        _stats.health -= damage;
         HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
 
         if (_stats.Health <= 0)

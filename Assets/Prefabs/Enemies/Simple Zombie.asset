@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Simple Zombie
   Prefab: {fileID: 4140002623381893389, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
-  Skeleton: {fileID: 0}
-  AnimatorController: {fileID: 0}
+  Skeleton: {fileID: 11400000, guid: 49010ed9d5764e74fa50779991197dd7, type: 2}
+  AnimatorController: {fileID: 9100000, guid: 808e08c3f9f9f5142bb465d34c6216ec, type: 2}
   Stats:
     Damage: 1
     Health: 1

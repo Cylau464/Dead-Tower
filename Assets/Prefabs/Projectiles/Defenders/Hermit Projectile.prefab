@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8728990395029971308}
   - component: {fileID: 2735775324074460089}
   m_Layer: 0
-  m_Name: Defender Projectile
+  m_Name: Hermit Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1569912621
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4fe5aa783821f0242afd66b12e9ac14c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16dc4fa2e1197f94a862bc7e03455947, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   _towerSortingOrder: 0
   _hitParticlePrefab: {fileID: 0}
   _lifetime: 10
-  _stuckDepth: 0.5
+  _stuckDepth: 0.75
   _dissolveDelay: 2
   _dissolveDuration: 1
 --- !u!60 &2735775324074460089

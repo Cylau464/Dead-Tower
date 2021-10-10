@@ -1,0 +1,251 @@
+
+monk1.png
+size: 1699,332
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2R_hand_
+  rotate: false
+  xy: 1354, 141
+  size: 99, 189
+  orig: 99, 189
+  offset: 0, 0
+  index: -1
+R_hand_2
+  rotate: false
+  xy: 1354, 141
+  size: 99, 189
+  orig: 99, 189
+  offset: 0, 0
+  index: -1
+L_boot
+  rotate: false
+  xy: 1596, 119
+  size: 89, 105
+  orig: 92, 105
+  offset: 1, 0
+  index: -1
+L_hand
+  rotate: false
+  xy: 877, 4
+  size: 105, 114
+  orig: 105, 114
+  offset: 0, 0
+  index: -1
+L_leg
+  rotate: false
+  xy: 1559, 31
+  size: 51, 86
+  orig: 51, 86
+  offset: 0, 0
+  index: -1
+L_palm
+  rotate: false
+  xy: 799, 6
+  size: 76, 91
+  orig: 78, 93
+  offset: 1, 1
+  index: -1
+L_plam
+  rotate: true
+  xy: 1355, 16
+  size: 123, 103
+  orig: 123, 103
+  offset: 0, 0
+  index: -1
+R_boot
+  rotate: true
+  xy: 1263, 4
+  size: 124, 90
+  orig: 124, 90
+  offset: 0, 0
+  index: -1
+R_finger
+  rotate: false
+  xy: 272, 41
+  size: 23, 31
+  orig: 25, 33
+  offset: 1, 1
+  index: -1
+R_hand
+  rotate: true
+  xy: 553, 6
+  size: 91, 142
+  orig: 91, 142
+  offset: 0, 0
+  index: -1
+R_leg
+  rotate: true
+  xy: 1612, 66
+  size: 51, 85
+  orig: 51, 85
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 34, 4
+  size: 329, 33
+  orig: 331, 35
+  offset: 1, 1
+  index: -1
+beard
+  rotate: true
+  xy: 1125, 3
+  size: 125, 136
+  orig: 127, 138
+  offset: 1, 1
+  index: -1
+body
+  rotate: false
+  xy: 836, 120
+  size: 173, 210
+  orig: 173, 210
+  offset: 0, 0
+  index: -1
+bow
+  rotate: true
+  xy: 440, 99
+  size: 231, 394
+  orig: 233, 396
+  offset: 1, 1
+  index: -1
+bowstring
+  rotate: true
+  xy: 1011, 130
+  size: 200, 341
+  orig: 200, 341
+  offset: 0, 0
+  index: -1
+death/death_trash0001
+  rotate: true
+  xy: 1497, 160
+  size: 59, 97
+  orig: 102, 112
+  offset: 26, 2
+  index: -1
+death/death_trash0002
+  rotate: false
+  xy: 1596, 226
+  size: 98, 104
+  orig: 102, 112
+  offset: 3, 7
+  index: -1
+death/death_trash0003
+  rotate: false
+  xy: 1460, 37
+  size: 97, 106
+  orig: 102, 112
+  offset: 3, 3
+  index: -1
+death/death_trash0004
+  rotate: false
+  xy: 1455, 221
+  size: 90, 109
+  orig: 102, 112
+  offset: 12, 3
+  index: -1
+death/death_trash0005
+  rotate: false
+  xy: 697, 6
+  size: 100, 91
+  orig: 102, 112
+  offset: 0, 3
+  index: -1
+death/death_trash0006
+  rotate: true
+  xy: 490, 2
+  size: 95, 61
+  orig: 102, 112
+  offset: 1, 0
+  index: -1
+death/death_trash0007
+  rotate: false
+  xy: 414, 6
+  size: 74, 66
+  orig: 102, 112
+  offset: 21, 1
+  index: -1
+death/death_trash0008
+  rotate: true
+  xy: 1455, 145
+  size: 74, 40
+  orig: 102, 112
+  offset: 20, 3
+  index: -1
+death/death_trash0009
+  rotate: true
+  xy: 365, 3
+  size: 69, 26
+  orig: 102, 112
+  offset: 21, 3
+  index: -1
+death/death_trash0010
+  rotate: true
+  xy: 393, 3
+  size: 69, 19
+  orig: 102, 112
+  offset: 32, 5
+  index: -1
+death/death_trash0011
+  rotate: false
+  xy: 1355, 2
+  size: 43, 12
+  orig: 102, 112
+  offset: 40, 6
+  index: -1
+eyebrow
+  rotate: false
+  xy: 440, 78
+  size: 40, 19
+  orig: 42, 21
+  offset: 1, 1
+  index: -1
+eyes
+  rotate: true
+  xy: 1460, 6
+  size: 29, 42
+  orig: 31, 44
+  offset: 1, 1
+  index: -1
+head
+  rotate: true
+  xy: 2, 39
+  size: 291, 268
+  orig: 293, 270
+  offset: 1, 1
+  index: -1
+hood
+  rotate: false
+  xy: 984, 6
+  size: 139, 112
+  orig: 139, 112
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 1547, 315
+  size: 43, 15
+  orig: 45, 17
+  offset: 1, 1
+  index: -1
+mouth2
+  rotate: true
+  xy: 2, 2
+  size: 35, 30
+  orig: 35, 30
+  offset: 0, 0
+  index: -1
+mouth3
+  rotate: false
+  xy: 297, 42
+  size: 58, 30
+  orig: 60, 32
+  offset: 1, 1
+  index: -1
+quiver_of_arrows
+  rotate: false
+  xy: 272, 74
+  size: 166, 256
+  orig: 169, 258
+  offset: 1, 1
+  index: -1

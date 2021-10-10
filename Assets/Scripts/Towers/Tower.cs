@@ -38,10 +38,10 @@ public class Tower : MonoBehaviour
         _defensiveWeaponButton.onClick.AddListener(OpenGate);
     }
 
-    public void Init(TowerConfig config, bool inMenu)
+    public void Init(TowerConfig config, TowerData data, bool inMenu)
     {
         _defensiveWeaponConfig = config.DefensiveWeaponConfig;
-        _stats = config.Stats;
+        _stats = data.Stats;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
@@ -101,7 +101,7 @@ public class Tower : MonoBehaviour
     public void GateOpened()
     {
         DefensiveWeapon weapon = Instantiate(_defensiveWeaponConfig.Prefab, _defensiveWeaponSpawnPoint.position, Quaternion.identity);
-        _defensiveWeaponConfig.Stats.Damage *= _stats.AbilityLevel;
+        _defensiveWeaponConfig.Stats.Health *= _stats.AbilityLevel;
         weapon.Init(_defensiveWeaponConfig);
     }
 

@@ -13,18 +13,23 @@ MonoBehaviour:
   m_Name: Robin
   m_EditorClassIdentifier: 
   Index: 0
-  Title: Robin Bobin
-  Description: Dolbaebin
+  Title: Robin Hood
+  Description: The hero of the ballads, the leader of the forest robbers. According
+    to legend, he robbed the rich, giving the loot to the poor, and now he will repel
+    the attacks of zombies
   MenuIcon: {fileID: 21300000, guid: 9042736abf01f9a4caf1c743b8ebb4d6, type: 3}
   Skeleton: {fileID: 11400000, guid: 14442e06025548b45b038cdc4339935d, type: 2}
   AnimatorController: {fileID: 9100000, guid: c1a9fc87ec6ebea469aff7aa9dfd1746, type: 2}
+  PercIcons:
+  - {fileID: 21300000, guid: d599567135d55564c9217181bdbd4a43, type: 3}
   PurchaseStats:
     IsPurchased: 1
     CurrencyType: 0
     Cost: 0
+    StatUpgradeCost: 100
   ProjectilePrefab: {fileID: 8728990395029971308, guid: f0032d52460395e4b937ed884089c36d, type: 3}
   Modifier: {fileID: 11400000, guid: acccda952ca8222478e0006fde168a93, type: 2}
   Stats:
-    _health: 3
-    _damage: 1
-    _shootDistance: 3
+    health: 3
+    damage: 1
+    shootDistance: 1

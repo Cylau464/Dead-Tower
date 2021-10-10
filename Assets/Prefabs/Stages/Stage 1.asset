@@ -20,4 +20,4 @@ MonoBehaviour:
   MaxEnemyPower: 3
   MinPowerReserve: 5
   MaxPowerReserve: 15
-  BossInterval: 5
+  BossInterval: 10

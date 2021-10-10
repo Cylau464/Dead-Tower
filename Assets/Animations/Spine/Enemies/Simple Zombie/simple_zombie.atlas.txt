@@ -1,0 +1,181 @@
+
+simple_zombie.png
+size: 323,990
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+R_hand
+  rotate: false
+  xy: 246, 733
+  size: 68, 96
+  orig: 69, 96
+  offset: 1, 0
+  index: -1
+R_hand2
+  rotate: true
+  xy: 2, 664
+  size: 97, 235
+  orig: 97, 235
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 536
+  size: 126, 224
+  orig: 126, 224
+  offset: 0, 0
+  index: -1
+death/death_trash_zombie0000
+  rotate: false
+  xy: 236, 108
+  size: 59, 97
+  orig: 102, 112
+  offset: 26, 2
+  index: -1
+death/death_trash_zombie0001
+  rotate: false
+  xy: 223, 2
+  size: 98, 104
+  orig: 102, 112
+  offset: 3, 7
+  index: -1
+death/death_trash_zombie0002
+  rotate: true
+  xy: 115, 102
+  size: 97, 106
+  orig: 102, 112
+  offset: 3, 3
+  index: -1
+death/death_trash_zombie0003
+  rotate: true
+  xy: 107, 10
+  size: 90, 94
+  orig: 102, 112
+  offset: 12, 3
+  index: -1
+death/death_trash_zombie0004
+  rotate: true
+  xy: 228, 521
+  size: 100, 91
+  orig: 102, 112
+  offset: 0, 3
+  index: -1
+death/death_trash_zombie0005
+  rotate: true
+  xy: 236, 207
+  size: 95, 61
+  orig: 102, 112
+  offset: 1, 0
+  index: -1
+death/death_trash_zombie0006
+  rotate: false
+  xy: 246, 901
+  size: 74, 66
+  orig: 102, 112
+  offset: 21, 1
+  index: -1
+death/death_trash_zombie0007
+  rotate: false
+  xy: 246, 859
+  size: 74, 40
+  orig: 102, 112
+  offset: 20, 3
+  index: -1
+death/death_trash_zombie0008
+  rotate: false
+  xy: 246, 831
+  size: 69, 26
+  orig: 102, 112
+  offset: 21, 3
+  index: -1
+death/death_trash_zombie0009
+  rotate: false
+  xy: 246, 969
+  size: 75, 19
+  orig: 102, 112
+  offset: 26, 5
+  index: -1
+death/death_trash_zombie0010
+  rotate: true
+  xy: 309, 688
+  size: 43, 12
+  orig: 102, 112
+  offset: 40, 6
+  index: -1
+eye
+  rotate: false
+  xy: 239, 623
+  size: 64, 54
+  orig: 66, 56
+  offset: 1, 1
+  index: -1
+head
+  rotate: true
+  xy: 2, 763
+  size: 225, 242
+  orig: 228, 263
+  offset: 1, 1
+  index: -1
+l_hand
+  rotate: false
+  xy: 2, 347
+  size: 162, 138
+  orig: 162, 139
+  offset: 0, 1
+  index: -1
+l_hand2
+  rotate: true
+  xy: 166, 304
+  size: 119, 154
+  orig: 119, 155
+  offset: 0, 1
+  index: -1
+left_leg
+  rotate: true
+  xy: 2, 241
+  size: 104, 118
+  orig: 104, 118
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 239, 679
+  size: 68, 52
+  orig: 70, 54
+  offset: 1, 1
+  index: -1
+pin
+  rotate: false
+  xy: 2, 487
+  size: 165, 47
+  orig: 167, 49
+  offset: 1, 1
+  index: -1
+right_leg
+  rotate: false
+  xy: 122, 201
+  size: 112, 101
+  orig: 112, 101
+  offset: 0, 0
+  index: -1
+shorts1
+  rotate: true
+  xy: 2, 136
+  size: 103, 111
+  orig: 104, 113
+  offset: 1, 2
+  index: -1
+shorts2
+  rotate: false
+  xy: 2, 31
+  size: 103, 103
+  orig: 103, 103
+  offset: 0, 0
+  index: -1
+taz
+  rotate: false
+  xy: 169, 425
+  size: 142, 94
+  orig: 147, 112
+  offset: 3, 14
+  index: -1

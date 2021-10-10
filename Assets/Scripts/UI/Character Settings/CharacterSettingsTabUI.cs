@@ -20,6 +20,7 @@ public class CharacterSettingsTabUI : TabUI
     private UnitBasicConfig _curConfig;
 
     public Action OnSelected;
+    public event EventHandler<UnitBasicConfig> OnSwitchItem;
 
     private void Activate()
     {
@@ -108,10 +109,10 @@ public class CharacterSettingsTabUI : TabUI
     private void OnItemsChanged(UnitData[] data)
     {
         if(_isInitialized == true)
-            SwitchItem(_curConfig.Index);
+            SwitchItem(_curConfig.Index, false);
     }
 
-    private void SwitchItem(int index)
+    private void SwitchItem(int index, bool callEvent = true)
     {
         _curConfig = _itemsConfigs[index];
         SetItemTitle();
@@ -128,6 +129,9 @@ public class CharacterSettingsTabUI : TabUI
         }
 
         ScrollTo(index);
+
+        if(callEvent == true)
+            OnSwitchItem?.Invoke(this, _curConfig);
     }
 
     public override void ScrollTo(int itemIndex)

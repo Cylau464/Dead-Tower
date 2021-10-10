@@ -31,7 +31,7 @@ public class Archer : Enemy
 
     private void Update()
     {
-        if(_curAttackCooldown <= Time.time && _isShoot == false)
+        if (_curAttackCooldown <= Time.time && _isShoot == false)
         {
             Vector3 targetPos = _target.transform.position;
             targetPos.y = transform.position.y;

@@ -83,13 +83,18 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     private void Attack()
     {
-        _rigidBody.velocity = Vector2.zero;
+        StopMove();
         _animator.SetTrigger(_attackParamID);
     }
 
     protected void Move()
     {
         _rigidBody.velocity = Vector2.left * _stats.MoveSpeed;
+    }
+
+    protected void StopMove()
+    {
+        _rigidBody.velocity = Vector2.zero;
     }
 
     private void Dead()
@@ -190,7 +195,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
         if (victory == true)
             Dead();
         else
-            _rigidBody.velocity = Vector2.zero;
+            StopMove();
     }
 
     private void OnDestroy()

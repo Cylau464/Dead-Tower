@@ -14,14 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 1
   Title: Barbarian Tower
-  Description: CATAPULTA BLYAT'
+  Description: Equipped with a reinforced catapult and ram to repel the attacks of
+    huge crowds of simultaneous attacks
   MenuIcon: {fileID: 21300000, guid: 97394160a53e150448bf7f34ddb41498, type: 3}
   Skeleton: {fileID: 11400000, guid: 400fc40a401eba141b55aa6671cc3b2c, type: 2}
   AnimatorController: {fileID: 9100000, guid: 29a3fa39873f4f94e9f85e981793c7ac, type: 2}
+  PercIcons:
+  - {fileID: 21300000, guid: 7dc159f355ddd604ba26e7377b1c0f8e, type: 3}
+  - {fileID: 21300000, guid: eb8666254114d904bb7d47f99e26c6fb, type: 3}
   PurchaseStats:
     IsPurchased: 0
     CurrencyType: 0
     Cost: 200
+    StatUpgradeCost: 200
   DefensiveWeaponConfig: {fileID: 11400000, guid: 10fd32e3ffc556147b07c6e797258162, type: 2}
   WeaponConfig: {fileID: 11400000, guid: 12c604587ab99a6458a6ec5c15a59cbb, type: 2}
   Stats:

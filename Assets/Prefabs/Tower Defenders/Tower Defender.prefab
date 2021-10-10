@@ -648,10 +648,10 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128
-  _minAttackDistance: 5
-  _maxAttackDistance: 5
+  _minAttackDistance: 6
+  _maxAttackDistance: 6
   _projectileFlightDuration: 1
-  _shotCooldown: 2
+  _shotCooldown: 3
   _hpCanvas: {fileID: 7374406546151544450}
 --- !u!70 &1003193830188234227
 CapsuleCollider2D:

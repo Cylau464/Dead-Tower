@@ -13,18 +13,22 @@ MonoBehaviour:
   m_Name: Samurai
   m_EditorClassIdentifier: 
   Index: 1
-  Title: Samurai
-  Description: Za hui kusai AHAHAAHHAHAHAHHAH
+  Title: Tokugawa's clan samurai
+  Description: In self-defense, he killed his teacher and is hiding from justice.
+    Having survived an internecine war, it is unlikely to be scared of a zombie
   MenuIcon: {fileID: 21300000, guid: 4ab084bd7d5cacf429214a83fb0409a9, type: 3}
   Skeleton: {fileID: 11400000, guid: a6bd469f6f81fbb4b865b888afdf3458, type: 2}
   AnimatorController: {fileID: 9100000, guid: e0e35cb56164f0b43b14afed220f794d, type: 2}
+  PercIcons:
+  - {fileID: 21300000, guid: d599567135d55564c9217181bdbd4a43, type: 3}
   PurchaseStats:
     IsPurchased: 0
     CurrencyType: 0
     Cost: 200
-  ProjectilePrefab: {fileID: 0}
-  Modifier: {fileID: 0}
+    StatUpgradeCost: 350
+  ProjectilePrefab: {fileID: 8728990395029971308, guid: 1faee3a4ec2835e4191da3ea12b92352, type: 3}
+  Modifier: {fileID: 11400000, guid: acccda952ca8222478e0006fde168a93, type: 2}
   Stats:
-    _health: 5
-    _damage: 2
-    _shootDistance: 4
+    health: 3
+    damage: 3
+    shootDistance: 3

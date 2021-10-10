@@ -3,27 +3,27 @@
 [System.Serializable]
 public struct TowerDefenderStats
 {
-    [SerializeField] private int _health;
-    [SerializeField] private int _damage;
-    [SerializeField] private int _shootDistance;
+    public int health;
+    public int damage;
+    public int shootDistance;
     public int Health
     {
-        get => _health + _extraHealth;
-        set => _health = value;
+        get => health + _extraHealth;
+        //set => _health = value - _extraHealth;
     }
     public int Damage
     {
-        get => _damage + _extraDamage;
-        set => _damage = value;
+        get => damage + _extraDamage;
+        //set => _damage = value - _extraDamage;
     }
     public int ShootDistance
     {
-        get => _shootDistance + _extraDistance;
-        set => _shootDistance = value;
+        get => shootDistance + _extraDistance;
+        //set => _shootDistance = value - _extraDistance;
     }
-    public int BasicHealth => _health;
-    public int BasicDamage => _damage;
-    public int BasicShootDistance => _shootDistance;
+    public int BasicHealth => health;
+    public int BasicDamage => damage;
+    public int BasicShootDistance => shootDistance;
 
     private int _extraHealth;
     private int _extraDamage;
@@ -33,8 +33,9 @@ public struct TowerDefenderStats
         get => _extraHealth;
         set
         {
-            if (value < 0) return;
-            _extraHealth += value;
+            if (value < _extraHealth) return;
+
+            _extraHealth = value;
         }
     }
     public int ExtraDamage
@@ -42,8 +43,9 @@ public struct TowerDefenderStats
         get => _extraDamage;
         set
         {
-            if (value < 0) return;
-            _extraDamage += value;
+            if (value < _extraDamage) return;
+
+            _extraDamage = value;
         }
     }
     public int ExtraDistance
@@ -51,8 +53,38 @@ public struct TowerDefenderStats
         get => _extraDistance;
         set
         {
-            if (value < 0) return;
-            _extraDistance += value;
+            if (value < _extraDistance) return;
+
+            _extraDistance = value;
+        }
+    }
+
+    private int _level;
+    public int Level
+    {
+        get => Mathf.Max(_level, 1);
+        set
+        {
+            if (value < _level) return;
+
+            _level = value;
+        }
+    }
+    private int _levelProgress;
+    public int LevelProgress
+    {
+        get => _levelProgress;
+        set
+        {
+            if (value < _levelProgress) return;
+
+            if (value >= 3)
+            {
+                Level += value / 3;
+                value = value % 3;
+            }
+
+            _levelProgress = value;
         }
     }
 }
