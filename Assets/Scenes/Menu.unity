@@ -927,7 +927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 93684351}
-  fadeTime: 0.2
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _text: {fileID: 1595638415}
   _loadingText: Loading
   _textUpdateDelay: 0.5
@@ -1854,6 +1855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 251852360}
   - component: {fileID: 251852361}
+  - component: {fileID: 251852362}
   m_Layer: 0
   m_Name: Background_summer
   m_TagString: Untagged
@@ -1926,6 +1928,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &251852362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251852359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abbd16ffa2da7f4bbb307be902d9b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 251852361}
 --- !u!1 &279427334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,7 +2101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 295859360}
-  fadeTime: 0.2
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _closeBtn: {fileID: 1787021954}
   _tabs:
   - {fileID: 528470346}
@@ -2204,12 +2220,12 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 50
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!1 &340776452
 GameObject:
@@ -3908,7 +3924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 523482109}
-  fadeTime: 0.2
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _recipeConfigs:
   - {fileID: 11400000, guid: 68403d33f537a114592f22ea74ab45a5, type: 2}
   - {fileID: 11400000, guid: f48ad0e2d8d791b4a867bec7aa6d3af0, type: 2}
@@ -4013,7 +4030,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 539700958}
-  fadeTime: 0.2
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _startMenu: {fileID: 899704957}
   _forgeUI: {fileID: 523482108}
   _backBtn: {fileID: 756386340}
@@ -6699,7 +6717,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 899704958}
-  fadeTime: 0.2
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _playBtn: {fileID: 1042742069}
   _settingsBtn: {fileID: 1223178444}
   _animator: {fileID: 899704959}
@@ -6921,7 +6940,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7500,7 +7519,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1041016700}
-  fadeTime: 0.2
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _musicBtn: {fileID: 2125056281}
   _musicState: {fileID: 416007578}
   _soundBtn: {fileID: 1961344650}
@@ -9274,7 +9294,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -13087,6 +13107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2014671248}
   - component: {fileID: 2014671249}
+  - component: {fileID: 2014671250}
   m_Layer: 0
   m_Name: Ground_summer
   m_TagString: Untagged
@@ -13103,7 +13124,7 @@ Transform:
   m_GameObject: {fileID: 2014671247}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1}
   m_Children: []
   m_Father: {fileID: 796369691}
   m_RootOrder: 1
@@ -13152,13 +13173,26 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 19.2, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2014671250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014671247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abbd16ffa2da7f4bbb307be902d9b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 2014671249}
 --- !u!1 &2054240987
 GameObject:
   m_ObjectHideFlags: 0
@@ -13310,7 +13344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1088, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2048, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2082814506
@@ -13334,7 +13368,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -13514,7 +13548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2107619329}
-  fadeTime: 0.2
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _closeBtn: {fileID: 2147026441}
   _scrollView: {fileID: 348444418}
   _toggleGroup: {fileID: 784366483}

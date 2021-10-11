@@ -12,7 +12,7 @@ public class ExplosiveProjectile : Projectile
         _rigidBody.isKinematic = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.Rotate(Vector3.back, _rigidBody.velocity.magnitude * _rotationMultiplier * Time.deltaTime);
     }
@@ -28,6 +28,8 @@ public class ExplosiveProjectile : Projectile
         {
             if (col.TryGetComponent(out Enemy enemy) == true)
                 enemy.TakeDamage(_stats.Damage);
+            else if (col.TryGetComponent(out Tower tower) == true)
+                tower.TakeDamage(null, _stats.Damage);
         }
 
         Destroy(gameObject);

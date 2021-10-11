@@ -33,9 +33,12 @@ public class EnemySpawner : MonoBehaviour
     {
         while(_powerReserve > 0)
         {
-            Enemy enemy = _factory.Get(Mathf.Min(LevelConfig.Difficulty.MaxEnemyPower, _powerReserve));
+            Enemy enemy = _factory.Get(
+                Mathf.Min(LevelConfig.Difficulty.MaxEnemyPower, _powerReserve),
+                LevelConfig.Difficulty);
             enemy.transform.position = transform.position;
             _powerReserve -= enemy.Stats.Power;
+
             OnEnemySpawned?.Invoke(enemy);
             Debug.Log(enemy.name + " was spawned");
 

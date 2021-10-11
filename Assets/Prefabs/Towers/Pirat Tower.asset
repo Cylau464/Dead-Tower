@@ -29,6 +29,6 @@ MonoBehaviour:
   DefensiveWeaponConfig: {fileID: 11400000, guid: 10fd32e3ffc556147b07c6e797258162, type: 2}
   WeaponConfig: {fileID: 11400000, guid: 20e83ae0fa5da174b810038361dc86ae, type: 2}
   Stats:
-    _health: 4
-    _damage: 3
-    _abilityLevel: 1
+    health: 4
+    damage: 3
+    abilityLevel: 1

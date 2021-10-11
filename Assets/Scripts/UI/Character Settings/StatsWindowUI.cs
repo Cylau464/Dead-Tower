@@ -90,8 +90,8 @@ public class StatsWindowUI : MonoBehaviour
 
     private void UpdateFields()
     {
-        int level = 0;
-        float progress = 0f;
+        int level;
+        float progress;
 
         if(_unitData is TowerData)
         {
@@ -107,26 +107,36 @@ public class StatsWindowUI : MonoBehaviour
         }
 
         int upgradeCost = GetUpgradeCost();
-        _upgradeBtn.interactable = SLS.Data.Game.Coins.Value >= upgradeCost;
-        StopAllCoroutines();
-        this.LerpCoroutine(
-            time: .25f,
-            from: int.Parse(_upgradeCostText.text),
-            to: upgradeCost,
-            action: a => _upgradeCostText.text = Mathf.Round(a).ToString()
-        );
-        this.LerpCoroutine(
-            time: .25f,
-            from: _progressSlider.value,
-            to: progress,
-            action: a => _progressSlider.value = a
-        );
-        this.LerpCoroutine(
-            time: .25f,
-            from: int.Parse(_progressLevelText.text),
-            to: level,
-            action: a => _progressLevelText.text = Mathf.Round(a).ToString()
-        );
+        _upgradeBtn.interactable = _unitData.IsPurchased == true && SLS.Data.Game.Coins.Value >= upgradeCost;
+
+        if(gameObject.activeInHierarchy == true)
+        {
+            StopAllCoroutines();
+            this.LerpCoroutine(
+                time: .25f,
+                from: int.Parse(_upgradeCostText.text),
+                to: upgradeCost,
+                action: a => _upgradeCostText.text = Mathf.Round(a).ToString()
+            );
+            this.LerpCoroutine(
+                time: .25f,
+                from: _progressSlider.value,
+                to: progress,
+                action: a => _progressSlider.value = a
+            );
+            this.LerpCoroutine(
+                time: .25f,
+                from: int.Parse(_progressLevelText.text),
+                to: level,
+                action: a => _progressLevelText.text = Mathf.Round(a).ToString()
+            );
+        }
+        else
+        {
+            _upgradeCostText.text = upgradeCost.ToString();
+            _progressSlider.value = progress;
+            _progressLevelText.text = level.ToString();
+        }
     }
 
     private void Upgrade()

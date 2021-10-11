@@ -57,7 +57,7 @@ public class StatUI : MonoBehaviour
         }
     }
 
-    private int GetStatValue()
+    private int GetStatValue(bool onlyExtra = false)
     {
         if(_unitData is TowerData)
         {
@@ -66,11 +66,11 @@ public class StatUI : MonoBehaviour
             switch (_stat)
             {
                 case Stats.Damage:
-                    return data.Stats.Damage;
+                    return onlyExtra == true ? data.Stats.ExtraDamage : data.Stats.Damage;
                 case Stats.Health:
-                    return data.Stats.Health;
+                    return onlyExtra == true ? data.Stats.ExtraHealth : data.Stats.Health;
                 case Stats.TowerAbility:
-                    return data.Stats.AbilityLevel;
+                    return onlyExtra == true ? data.Stats.ExtraAL : data.Stats.AbilityLevel;
             }
 
             return int.Parse(_valueText.text);
@@ -82,11 +82,11 @@ public class StatUI : MonoBehaviour
             switch(_stat)
             {
                 case Stats.Damage:
-                    return data.Stats.Damage;
+                    return onlyExtra == true ? data.Stats.ExtraDamage : data.Stats.Damage;
                 case Stats.Health:
-                    return data.Stats.Health;
+                    return onlyExtra == true ? data.Stats.ExtraHealth : data.Stats.Health;
                 case Stats.AttackDistance:
-                    return data.Stats.ShootDistance;
+                    return onlyExtra == true ? data.Stats.ExtraDistance : data.Stats.ShootDistance;
             }
 
             return int.Parse(_valueText.text);
@@ -95,7 +95,12 @@ public class StatUI : MonoBehaviour
 
     private void Upgrade()
     {
-        SetCountToText(IncreaseStat());
+        int newValue = IncreaseStat();
+
+        if (GetStatValue(true) >= 5)
+            HideButton();
+
+        SetCountToText(newValue);
         SLS.Data.Game.Coins.Value -= _curCost;
     }
 
@@ -151,7 +156,7 @@ public class StatUI : MonoBehaviour
 
     public void ShowButton(int cost)
     {
-        if(GetStatValue() >= 5 || gameObject.activeInHierarchy == false) return;
+        if(GetStatValue(true) >= 5 || gameObject.activeInHierarchy == false) return;
 
         _curCost = cost;
         _upgradeBtn.interactable = true;

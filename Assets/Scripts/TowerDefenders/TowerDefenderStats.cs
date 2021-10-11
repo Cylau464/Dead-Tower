@@ -6,21 +6,9 @@ public struct TowerDefenderStats
     public int health;
     public int damage;
     public int shootDistance;
-    public int Health
-    {
-        get => health + _extraHealth;
-        //set => _health = value - _extraHealth;
-    }
-    public int Damage
-    {
-        get => damage + _extraDamage;
-        //set => _damage = value - _extraDamage;
-    }
-    public int ShootDistance
-    {
-        get => shootDistance + _extraDistance;
-        //set => _shootDistance = value - _extraDistance;
-    }
+    public int Health => health + _extraHealth;
+    public int Damage => damage + _extraDamage;
+    public int ShootDistance => shootDistance + _extraDistance;
     public int BasicHealth => health;
     public int BasicDamage => damage;
     public int BasicShootDistance => shootDistance;

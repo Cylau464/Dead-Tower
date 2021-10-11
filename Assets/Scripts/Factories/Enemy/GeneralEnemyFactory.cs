@@ -8,7 +8,7 @@ public class GeneralEnemyFactory : EnemyFactory
     [SerializeField] private EnemyConfig[] _enemies;
     private Dictionary<int, float> _pseudoRandomCounter = new Dictionary<int, float>();
 
-    protected override EnemyConfig GetConfig(int maxPower)
+    protected override EnemyConfig GetConfig(int maxPower, LevelDifficulty difficulty)
     {
         if (maxPower <= 0)
             throw new System.Exception("Tried get enemy config with 0 power");
@@ -17,8 +17,15 @@ public class GeneralEnemyFactory : EnemyFactory
             throw new System.Exception("Not a single enemy was set on " + this.ToString());
 
         var enemies = _enemies.Where(x => x.Stats.Power <= maxPower).ToArray();
-        
-        return GetRandomConfig(enemies, maxPower + 1);
+
+        if (difficulty.BossLevel == true)
+        {
+            EnemyConfig config = _enemies[0];
+            config.Stats.Power = difficulty.PowerReserve;
+            return config;
+        }
+        else
+            return GetRandomConfig(enemies, maxPower + 1);
     }
 
     private EnemyConfig GetRandomConfig(EnemyConfig[] configs, int maxPower)

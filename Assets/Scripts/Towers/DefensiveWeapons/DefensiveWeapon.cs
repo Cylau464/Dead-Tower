@@ -35,12 +35,13 @@ public abstract class DefensiveWeapon : MonoBehaviour, IDamageTaker
         _animator.SetFloat(_speedParamID, normalizedSpeed);
     }
 
-    public void Init(DefensiveWeaponConfig config)
+    public void Init(DefensiveWeaponConfig config, int level)
     {
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
         _stats = config.Stats;
+        _stats.Health *= level;
         _maxHealth = _stats.Health;
         Move();
     }

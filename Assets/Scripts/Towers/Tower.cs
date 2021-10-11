@@ -58,15 +58,19 @@ public class Tower : MonoBehaviour
         _weapon.OnAimEnd += OnAimEnd;
     }
 
-    public void TakeDamage(Enemy attacker, int damage)
+    public void TakeDamage(IDamageTaker attacker, int damage)
     {
-        _stats.Health = Mathf.Max(_stats.Health - damage, 0);
+        _stats.health = Mathf.Max(_stats.Health - damage, 0);
         OnTakeDamage?.Invoke(_stats.Health);
-        _animator.SetTrigger(_takeDamageParamID);
-        attacker.TakeDamage(int.MaxValue);
 
         if(_stats.Health <= 0)
             Game.Instance.LevelEnd(false);
+
+        _animator.SetTrigger(_takeDamageParamID);
+
+        if(attacker != null)
+            attacker.TakeDamage(int.MaxValue);
+
     }
 
     private void OnAimStart()
@@ -101,8 +105,7 @@ public class Tower : MonoBehaviour
     public void GateOpened()
     {
         DefensiveWeapon weapon = Instantiate(_defensiveWeaponConfig.Prefab, _defensiveWeaponSpawnPoint.position, Quaternion.identity);
-        _defensiveWeaponConfig.Stats.Health *= _stats.AbilityLevel;
-        weapon.Init(_defensiveWeaponConfig);
+        weapon.Init(_defensiveWeaponConfig, _stats.AbilityLevel);
     }
 
     private void CloseGate()

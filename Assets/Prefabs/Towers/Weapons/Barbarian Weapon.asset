@@ -16,6 +16,6 @@ MonoBehaviour:
   AnimatorController: {fileID: 9100000, guid: 156b0a13770243b4e92bdf74992ce692, type: 2}
   ProjectileConfig: {fileID: 11400000, guid: f48ad0e2d8d791b4a867bec7aa6d3af0, type: 2}
   Stats:
-    MinCharge: 6
-    MaxCharge: 12
+    MinCharge: 5
+    MaxCharge: 11
     ChargeSpeed: 3

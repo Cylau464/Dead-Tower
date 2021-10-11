@@ -10,12 +10,13 @@ public class StageLoader : MonoBehaviour
     {
         Level[] levels = _factory.GetStageLevels(config);
         _background.sprite = config.Sprite;
+
         float refAspectRation = 1920f / 1080f;
         float curAspectRation = (float)Screen.width / Screen.height;
         float aspectRatioOffset = (refAspectRation - curAspectRation) / refAspectRation;
         LineRenderer curve = Instantiate(config.SpawnCurve);
         curve.transform.SetParent(transform, false);
-        curve.transform.localScale += Vector3.up * aspectRatioOffset;
+        //curve.transform.localScale += Vector3.up * aspectRatioOffset;
 
         for (int i = 0; i < levels.Length; i++)
         {

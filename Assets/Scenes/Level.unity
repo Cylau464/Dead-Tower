@@ -789,7 +789,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.2, y: 1.5}
+  m_Size: {x: 19.199997, y: 1.5000001}
   m_EdgeRadius: 0
 --- !u!331 &212616991
 SpriteMask:
@@ -1250,8 +1250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 385851098}
-  fadeTime: 0.2
-  _showDelay: 0
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _skipLevelUI: {fileID: 487109479}
   _skipBtn: {fileID: 279697000}
   _restartBtn: {fileID: 614843111}
@@ -1523,7 +1523,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487109475
 GameObject:
@@ -1586,8 +1586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 487109480}
-  fadeTime: 0.2
-  _showDelay: 0
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _diamondsPayCost: 10
   _closeBtns:
   - {fileID: 1438173825}
@@ -1901,8 +1901,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 563681020}
-  fadeTime: 0.2
-  _showDelay: 0
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _rewardsHolder: {fileID: 634726361}
   _rewardPrefab: {fileID: 1151498326151331164, guid: e98421557ef962c4a9a657c8d1589f3f, type: 3}
   _coinSprite: {fileID: 21300000, guid: 13c0c8abb79deaf4fb63cacb305bdb76, type: 3}
@@ -1958,6 +1958,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563681017}
   m_CullTransparentMesh: 1
+--- !u!1 &601474771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601474772}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &601474772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601474771}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1800091799}
+  - {fileID: 1062623699}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &614843109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,6 +2256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684910543}
   - component: {fileID: 684910542}
+  - component: {fileID: 684910544}
   m_Layer: 0
   m_Name: Background_Summer
   m_TagString: Untagged
@@ -2275,7 +2308,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -2291,11 +2324,24 @@ Transform:
   m_GameObject: {fileID: 684910541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684910544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684910541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abbd16ffa2da7f4bbb307be902d9b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 684910542}
 --- !u!1 &689297928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,8 +2932,6 @@ MonoBehaviour:
   _towerPoint: {fileID: 689297929}
   _defenderPrefab: {fileID: 7770691424732660584, guid: 58b895a8583719c4587da07f62278efb, type: 3}
   _towerPrefab: {fileID: 7187629729043736150, guid: 8a266ddd492b47b4db4590e6990ebb4e, type: 3}
-  _towerConfig: {fileID: 11400000, guid: a176fdce8cf7d4941a68355107f07918, type: 2}
-  _defenderConfig: {fileID: 11400000, guid: f5955a836a113eb4dbc222be40ff0640, type: 2}
   _inMenuInit: 0
 --- !u!4 &961034727
 Transform:
@@ -2967,7 +3011,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1023612741
 GameObject:
@@ -2999,7 +3043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _generalFactory: {fileID: 11400000, guid: 2b25f1c3765251f42bf7003dacdb64f9, type: 2}
-  _bossFactory: {fileID: 11400000, guid: 2b25f1c3765251f42bf7003dacdb64f9, type: 2}
+  _bossFactory: {fileID: 11400000, guid: 1eba9ceb6c852d4489dc35ef758c2c4e, type: 2}
   _respawnCooldown: 3
 --- !u!4 &1023612743
 Transform:
@@ -3009,7 +3053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023612741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.88, y: -4.12, z: 0}
+  m_LocalPosition: {x: 8.98, y: -4.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3279,6 +3323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1062623699}
   - component: {fileID: 1062623698}
+  - component: {fileID: 1062623700}
   m_Layer: 8
   m_Name: Ground_Summer
   m_TagString: Untagged
@@ -3323,14 +3368,14 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1569912621
-  m_SortingLayer: 3
-  m_SortingOrder: -1
+  m_SortingLayerID: -327685239
+  m_SortingLayer: 7
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: be98e858a2f22ea4080b30cc51a9e1f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 19.2, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -3344,14 +3389,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062623697}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1}
   m_Children:
   - {fileID: 212616989}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 601474772}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062623700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062623697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abbd16ffa2da7f4bbb307be902d9b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 1062623698}
 --- !u!1 &1116786856
 GameObject:
   m_ObjectHideFlags: 0
@@ -4545,7 +4603,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -4589,7 +4647,7 @@ RectTransform:
   - {fileID: 563681018}
   - {fileID: 385851094}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4995,6 +5053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800091799}
   - component: {fileID: 1800091798}
+  - component: {fileID: 1800091797}
   m_Layer: 8
   m_Name: Ground_Summer Back
   m_TagString: Untagged
@@ -5002,6 +5061,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1800091797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800091796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abbd16ffa2da7f4bbb307be902d9b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 1800091798}
 --- !u!212 &1800091798
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5046,7 +5118,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 19.2, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -5060,12 +5132,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800091796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 601474772}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1822959979
 GameObject:
@@ -5350,8 +5422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2040714321}
-  fadeTime: 0.2
-  _showDelay: 0
+  _fadeTime: 0.2
+  _lerpOnPause: 0
   _resumeBtn: {fileID: 793961238}
   _exitBtn: {fileID: 511510608}
   _animator: {fileID: 2040714319}

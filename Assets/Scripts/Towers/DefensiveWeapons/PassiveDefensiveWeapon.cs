@@ -1,8 +1,30 @@
-﻿public class PassiveDefensiveWeapon : DefensiveWeapon
+﻿using UnityEngine;
+
+public class PassiveDefensiveWeapon : DefensiveWeapon
 {
+    [SerializeField] private float _explosionRadius = 2f;
+    [SerializeField] private float _rotationMultiplier = 10f;
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(Vector3.back, _rigidBody.velocity.magnitude * _rotationMultiplier * Time.deltaTime);
+    }
+
     protected override void Attack(Enemy enemy)
     {
-        enemy.TakeDamage(_stats.Damage);
+        Explode();
+    }
+
+    private void Explode()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _explosionRadius, _targetLayer);
+
+        foreach (Collider2D col in colliders)
+        {
+            if (col.TryGetComponent(out Enemy enemy) == true)
+                enemy.TakeDamage(int.MaxValue);
+        }
+
         TakeDamage(int.MaxValue);
     }
 

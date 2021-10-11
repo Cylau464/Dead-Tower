@@ -34,9 +34,15 @@ public class SaveLoadSystem : MonoBehaviour
 		var ppData = PlayerPrefs.GetString(DataKey, "");
 
 		if (string.IsNullOrEmpty(ppData))
+        {
 			Data = new SaveLoadData();
+        }
 		else
+        {
 			Data = JsonConvert.DeserializeObject<SaveLoadData>(ppData);
+			Data.Game.SelectedDefender.Value = Data.Game.Defenders.Value[Data.Game.SelectedDefender.Value.Index];
+			Data.Game.SelectedTower.Value = Data.Game.Towers.Value[Data.Game.SelectedTower.Value.Index];
+        }
 
 		Data.Game.Coins.Value += 2000;
 		Data.Game.Diamonds.Value += 200;

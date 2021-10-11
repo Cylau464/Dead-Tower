@@ -6,7 +6,8 @@ using System;
 public class CanvasGroupUI : MonoBehaviour
 {
 	[SerializeField] private CanvasGroup canvasGroup;
-	[SerializeField] private float fadeTime = 0.2f;
+	[SerializeField] private float _fadeTime = 0.2f;
+	[SerializeField] private bool _lerpOnPause = false;
 
 	private bool _isInitialized;
 
@@ -18,6 +19,7 @@ public class CanvasGroupUI : MonoBehaviour
 
     protected virtual void Init()
     {
+		canvasGroup.alpha = 0f;
 		_isInitialized = true;
     }
 
@@ -29,23 +31,39 @@ public class CanvasGroupUI : MonoBehaviour
 		if (_isInitialized == false)
 			Init();
 
-		this.LerpCoroutine(
-			time: fadeTime,
-			from: canvasGroup.alpha,
-			to: 1,
-			action: a => canvasGroup.alpha = a
-		);
+		if((Time.timeScale <= 0f && _lerpOnPause == true) || Time.timeScale > 0f)
+        {
+			this.LerpCoroutine(
+				time: _fadeTime,
+				from: canvasGroup.alpha,
+				to: 1f,
+				action: a => canvasGroup.alpha = a
+			);
+        }
+		else
+        {
+			canvasGroup.alpha = 1f;
+        }
 	}
 
 	public virtual void Hide()
 	{
 		StopAllCoroutines();
-		this.LerpCoroutine(
-			time: fadeTime,
-			from: canvasGroup.alpha,
-			to: 0,
-			action: a => canvasGroup.alpha = a,
-			onEnd: () => gameObject.SetActive(false)
-		);
+
+		if ((Time.timeScale <= 0f && _lerpOnPause == true) || Time.timeScale > 0f)
+		{
+			this.LerpCoroutine(
+				time: _fadeTime,
+				from: canvasGroup.alpha,
+				to: 0f,
+				action: a => canvasGroup.alpha = a,
+				onEnd: () => gameObject.SetActive(false)
+			);
+		}
+		else
+        {
+			canvasGroup.alpha = 0f;
+			gameObject.SetActive(false);
+        }
 	}
 }

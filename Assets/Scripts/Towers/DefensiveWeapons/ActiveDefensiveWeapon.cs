@@ -27,7 +27,7 @@ public class ActiveDefensiveWeapon : DefensiveWeapon
     {
         if(_target != null && _isDead == false)
         {
-            _target.TakeDamage(_stats.Damage);
+            _target.TakeDamage(int.MaxValue);
             _animator.SetFloat(_attackSpeedParamID, _animator.GetFloat(_attackSpeedParamID) / 2f);
         }
 

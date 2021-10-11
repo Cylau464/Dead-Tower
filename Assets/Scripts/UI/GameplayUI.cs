@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 public class GameplayUI : MonoBehaviour
 {
@@ -66,8 +67,20 @@ public class GameplayUI : MonoBehaviour
     {
         _levelProgress += value;
         int progress = Mathf.Min(Mathf.CeilToInt((float)_levelProgress / _startLevelPower * 100), 100);
-        _progressText.text = progress.ToString() + "%";
         _rewards += rewards;
+        this.LerpCoroutine(
+            time: .125f,
+            from: Vector3.one,
+            to: Vector3.one * 1.5f,
+            action: a => _progressText.transform.localScale = a,
+            settings: new CoroutineTemplate.Settings(false, 0, true)
+        );
+        this.LerpCoroutine(
+            time: .25f,
+            from: int.Parse(Regex.Match(_progressText.text, @"\d+").Value),
+            to: progress,
+            action: a => _progressText.text = Mathf.Round(a).ToString() + "%"
+        );
 
         if (progress >= 100)
             Game.Instance.LevelEnd(true);
@@ -75,7 +88,7 @@ public class GameplayUI : MonoBehaviour
 
     private void OnLevelEnd(bool victory)
     {
-        StopAllCoroutines();
+        StopCoroutine(LevelEndDelay(victory));
         StartCoroutine(LevelEndDelay(victory));
     }
 
@@ -92,6 +105,13 @@ public class GameplayUI : MonoBehaviour
     private void OnTowerTakeDamage(int value)
     {
         _towerHealthText.text = value.ToString();
+        this.LerpCoroutine(
+            time: .125f,
+            from: Vector3.one,
+            to: Vector3.one * 1.5f,
+            action: a => _towerHealthText.transform.localScale = a,
+            settings: new CoroutineTemplate.Settings(false, 0, true)
+        );
     }
 
     private void OnDestroy()

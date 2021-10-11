@@ -9,6 +9,15 @@ public class PercUI : MonoBehaviour
     {
         _icon.sprite = icon;
         gameObject.SetActive(true);
+
+        StopAllCoroutines();
+        this.LerpCoroutine(
+            time: .125f,
+            from: Vector3.one,
+            to: Vector3.zero,
+            action: a => transform.localScale = a,
+            settings: new CoroutineTemplate.Settings(false, 0, true)
+        );
     }
 
     public void Deactivate()

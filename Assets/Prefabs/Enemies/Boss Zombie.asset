@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Boss Zombie
   m_EditorClassIdentifier: 
   Name: Boss Zombie
-  Prefab: {fileID: 4140002623381893389, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
-  Skeleton: {fileID: 0}
-  AnimatorController: {fileID: 0}
+  Prefab: {fileID: 6146106188634663691, guid: 43f871bfb2848734496d149e2ff3c790, type: 3}
+  Skeleton: {fileID: 11400000, guid: 2f27dadcc08d51a45b136a833fea26d2, type: 2}
+  AnimatorController: {fileID: 9100000, guid: fc54156034e9c8d4e83bc34807c8dd09, type: 2}
   Stats:
     Damage: 1
     Health: 25
     MoveSpeed: 0
-    Power: 4
+    Power: 1
   Rewards:
     Gold: 500
     Resources:

@@ -3,27 +3,15 @@
 [System.Serializable]
 public struct TowerStats
 {
-    [SerializeField] private int _health;
-    [SerializeField] private int _damage;
-    [SerializeField] private int _abilityLevel;
-    public int Health
-    {
-        get => _health + _extraHealth;
-        set => _health = value - _extraHealth;
-    }
-    public int Damage
-    {
-        get => _damage + _extraDamage;
-        set => _damage = value - _extraDamage;
-    }
-    public int AbilityLevel
-    {
-        get => _abilityLevel + _extraAL;
-        set => _abilityLevel = value - _extraAL;
-    }
-    public int BasicHealth => _health;
-    public int BasicDamage => _damage;
-    public int BasicAbilityLevel => _abilityLevel;
+    public int health;
+    public int damage;
+    public int abilityLevel;
+    public int Health => health + _extraHealth;
+    public int Damage => damage + _extraDamage;
+    public int AbilityLevel => abilityLevel + _extraAL;
+    public int BasicHealth => health;
+    public int BasicDamage => damage;
+    public int BasicAbilityLevel => abilityLevel;
 
     private int _extraHealth;
     private int _extraDamage;

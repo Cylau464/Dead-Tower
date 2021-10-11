@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
     private bool _isDead;
 
     private int _speedParamID;
-    private int _attackParamID;
+    protected int _attackParamID;
     private int _deadParamID;
     private int _takeDamageParamID;
 
@@ -81,18 +81,18 @@ public class Enemy : MonoBehaviour, IDamageTaker
         return dead;
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         StopMove();
         _animator.SetTrigger(_attackParamID);
     }
 
-    protected void Move()
+    protected virtual void Move()
     {
         _rigidBody.velocity = Vector2.left * _stats.MoveSpeed;
     }
 
-    protected void StopMove()
+    protected virtual void StopMove()
     {
         _rigidBody.velocity = Vector2.zero;
     }
@@ -152,15 +152,20 @@ public class Enemy : MonoBehaviour, IDamageTaker
             }
         }
 
+        bool targetIsDead = true;
+
         if (target != null)
         {
             if(target.TryGetComponent(out Tower tower))
                 tower.TakeDamage(this, _stats.Damage);
             else if(target.TryGetComponent(out ActiveDefensiveWeapon defensiveWeapon))
-                defensiveWeapon.TakeDamage(_stats.Damage);
+                targetIsDead = defensiveWeapon.TakeDamage(_stats.Damage);
         }
 
-        Invoke(nameof(Move), .2f);
+        if (targetIsDead == true)
+            Invoke(nameof(Move), .2f);
+        else
+            Invoke(nameof(Attack), .5f);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
