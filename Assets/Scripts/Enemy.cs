@@ -198,7 +198,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
         if (_isDead == true) return;
 
         if (victory == true)
-            Dead();
+            TakeDamage(int.MaxValue);
         else
             StopMove();
     }

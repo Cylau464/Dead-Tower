@@ -19,7 +19,7 @@ MonoBehaviour:
   _collider: {fileID: 5141853532926929198}
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   _projectilePrefab: {fileID: 8728990395029971308, guid: 27a5dc5786e422446bf9750bbad0de5e, type: 3}
   _minDistanceToShoot: 7
   _attackCooldown: 5

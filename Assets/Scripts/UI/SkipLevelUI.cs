@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -19,19 +18,43 @@ public class SkipLevelUI : CanvasGroupUI
             btn.onClick.AddListener(Hide);
 
         _viewAdBtn.onClick.AddListener(ViewAd);
+        _viewAdBtn.interactable = AdsInitializer.Instance.RewardedAd.IsLoaded;
         _diamondPayBtn.onClick.AddListener(DiamondPay);
+        _diamondPayBtn.interactable = SLS.Data.Game.Diamonds.Value >= _diamondsPayCost;
         _diamondCostText.text = _diamondsPayCost.ToString();
+        AdsInitializer.Instance.RewardedAd.OnAdComplete += OnAdComplete;
+        AdsInitializer.Instance.RewardedAd.OnAdLoaded += OnAdLoaded;
 
         base.Init();
     }
 
     private void ViewAd()
     {
-
+        _viewAdBtn.interactable = false;
+        AdsInitializer.Instance.ShowRewarded();
     }
 
     private void DiamondPay()
     {
+        SLS.Data.Game.Diamonds.Value -= _diamondsPayCost;
+        Game.Instance.LevelEnd(true, true);
+        Hide();
+    }
 
+    private void OnAdLoaded()
+    {
+        _viewAdBtn.interactable = true;
+    }
+
+    public void OnAdComplete()
+    {
+        Game.Instance.LevelEnd(true, true);
+        Hide();
+    }
+
+    private void OnDestroy()
+    {
+        AdsInitializer.Instance.RewardedAd.OnAdComplete -= OnAdComplete;
+        AdsInitializer.Instance.RewardedAd.OnAdLoaded -= OnAdLoaded;
     }
 }

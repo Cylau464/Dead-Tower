@@ -56,6 +56,8 @@ public class EnemySpawner : MonoBehaviour
             List<LevelConfig[]> levels = SLS.Data.Game.Levels.Value;
             LevelConfig nextLevel = SLS.Data.Game.GetNextLevel();
             nextLevel.Status = nextLevel.Status == LevelStatus.Closed ? LevelStatus.Opened : nextLevel.Status;
+
+            StopAllCoroutines();
         }
     }
 

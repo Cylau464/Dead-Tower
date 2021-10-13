@@ -50,6 +50,8 @@ public class CanvasGroupUI : MonoBehaviour
 	{
 		StopAllCoroutines();
 
+		if (gameObject.activeInHierarchy == false) return;
+
 		if ((Time.timeScale <= 0f && _lerpOnPause == true) || Time.timeScale > 0f)
 		{
 			this.LerpCoroutine(

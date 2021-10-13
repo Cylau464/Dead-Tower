@@ -18,7 +18,8 @@ MonoBehaviour:
     IsPurchased: 0
     CurrencyType: 0
     Cost: 0
+    StatUpgradeCost: 0
   Category: 3
   Count: 50
   Type: 1
-  StoreItemID: 
+  StoreItemID: diamonds_50

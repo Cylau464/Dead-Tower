@@ -88,18 +88,22 @@ public class GameplayUI : MonoBehaviour
 
     private void OnLevelEnd(bool victory)
     {
-        StopCoroutine(LevelEndDelay(victory));
         StartCoroutine(LevelEndDelay(victory));
     }
 
     private IEnumerator LevelEndDelay(bool victory)
     {
+        _winUI.Hide();
+        _loseUI.Hide();
+
         yield return new WaitForSeconds(_levelEndDelay);
 
         if (victory == true)
             _winUI.Show(_rewards);
         else
             _loseUI.Show();
+
+        AdsInitializer.Instance.ShowInterstitial();
     }
 
     private void OnTowerTakeDamage(int value)

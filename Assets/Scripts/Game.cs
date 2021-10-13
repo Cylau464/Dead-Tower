@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    private bool _isLevelEnd;
+    public bool _isLevelEnd { get; private set; }
 
     public static Game Instance;
 
@@ -33,9 +33,9 @@ public class Game : MonoBehaviour
         _isLevelEnd = false;
     }
 
-	public void LevelEnd(bool playerWin)
+	public void LevelEnd(bool playerWin, bool forceEnd = false)
 	{
-        if (_isLevelEnd == true) return;
+        if (_isLevelEnd == true && forceEnd == false) return;
 
 		OnLevelEnd?.Invoke(playerWin);
         _isLevelEnd = true;
