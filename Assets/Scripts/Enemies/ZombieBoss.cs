@@ -42,6 +42,7 @@ public class ZombieBoss : Enemy
 
     public override void Spawned()
     {
+        AudioController.PlayClipAtPosition(_spawnClip, transform.position);
         _projectileStats = new ProjectileStats();
         _projectileStats.Damage = 1;
         StartCoroutine(AttackCor());

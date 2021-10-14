@@ -45,30 +45,35 @@ public class MapUI : CanvasGroupUI
     private void BackToMenu()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenStartMenu();
     }
 
     private void OpenForge()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenForge();
     }
 
     private void OpenShop()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenShop();
     }
 
     private void OpenCharacterSettings()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenCharacterSettings();
     }
 
     private void OpenCurrencyShop()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenShop(ItemCategory.Currency);
     }
 

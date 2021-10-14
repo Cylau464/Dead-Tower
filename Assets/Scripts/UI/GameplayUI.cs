@@ -9,6 +9,7 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private WinUI _winUI;
     [SerializeField] private CanvasGroupUI _loseUI;
     [SerializeField] private CanvasGroupUI _pauseUI;
+    [SerializeField] private CanvasGroupUI _projectileShortageUI;
     [Space]
     [SerializeField] private Button _pauseBtn;
     [SerializeField] private Image _projectileIcon;
@@ -45,6 +46,7 @@ public class GameplayUI : MonoBehaviour
         _projectileCountText.text = SLS.Data.Game.ProjectilesCount
             .Value[_projectileIndex].ToString();
         _towerHealthText.text = _tower.Stats.Health.ToString();
+        _tower.Weapon.OnProjectilesEnd += OpenProjectileShortage;
     }
 
     public void OnEnemySpawned(Enemy enemy)
@@ -118,11 +120,17 @@ public class GameplayUI : MonoBehaviour
         );
     }
 
+    private void OpenProjectileShortage()
+    {
+        _projectileShortageUI.Show();
+    }
+
     private void OnDestroy()
     {
         SLS.Data.Game.ProjectilesCount.OnValueChanged -= UpdateProjectileCount;
         _tower.OnTakeDamage -= OnTowerTakeDamage;
         EnemySpawner.OnEnemySpawned -= OnEnemySpawned;
         Game.Instance.OnLevelEnd -= OnLevelEnd;
+        _tower.Weapon.OnProjectilesEnd -= OpenProjectileShortage;
     }
 }

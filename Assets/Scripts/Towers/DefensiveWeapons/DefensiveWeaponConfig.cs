@@ -8,4 +8,6 @@ public class DefensiveWeaponConfig : ScriptableObject
     public SkeletonDataAsset Skeleton;
     public RuntimeAnimatorController AnimatorController;
     public DefensiveWeaponStats Stats;
+    [Space]
+    public AudioClip DestroyClip;
 }

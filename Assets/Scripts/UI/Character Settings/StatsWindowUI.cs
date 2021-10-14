@@ -20,6 +20,8 @@ public class StatsWindowUI : MonoBehaviour
     [SerializeField] private TMP_Text _progressLevelText;
     [SerializeField] private Button _upgradeBtn;
     [SerializeField] private TMP_Text _upgradeCostText;
+    [Space]
+    [SerializeField] private AudioClip _buttonClip;
 
     private List<PercUI> _percs;
     private List<StatUI> _stats;
@@ -141,6 +143,8 @@ public class StatsWindowUI : MonoBehaviour
 
     private void Upgrade()
     {
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
+
         foreach (StatUI stat in _stats)
             stat.ShowButton(GetUpgradeCost());
     }

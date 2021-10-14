@@ -908,5 +908,7 @@ MonoBehaviour:
   _contentHolder: {fileID: 4517195807082862987}
   _activeTextColor: {r: 0.82745105, g: 0.6392157, b: 0.5882353, a: 1}
   _inactiveTextColor: {r: 0.35686275, g: 0.33333334, b: 0.3882353, a: 1}
+  _itemCategory: 0
+  _buttonClip: {fileID: 8300000, guid: 5c269a58ec2d26a4aa26364fc71a2759, type: 3}
   _itemsConfigs: []
   _factory: {fileID: 11400000, guid: c190963c59bc99b4d9ecfa1b1030d138, type: 2}

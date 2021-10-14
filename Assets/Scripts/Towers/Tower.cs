@@ -13,6 +13,11 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform _defensiveWeaponSpawnPoint;
     [SerializeField] private LayerMask _defensiveWeaponLayer;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip _leverClip;
+    [SerializeField] private AudioClip _gateOpenClip;
+    [SerializeField] private AudioClip _takeDamageClip;
+
     public Transform DefenderPoint => _defenderPoint;
 
     private Weapon _weapon;
@@ -60,6 +65,7 @@ public class Tower : MonoBehaviour
 
     public void TakeDamage(IDamageTaker attacker, int damage)
     {
+        AudioController.PlayClipAtPosition(_takeDamageClip, transform.position);
         _stats.health = Mathf.Max(_stats.Health - damage, 0);
         OnTakeDamage?.Invoke(_stats.Health);
 
@@ -100,6 +106,9 @@ public class Tower : MonoBehaviour
         _defensiveWeaponButton.interactable = false;
         _defensiveWeaponActivated = true;
         _defensiveWeaponButton.GetComponent<SkeletonMecanim>().skeleton.SetColor(Color.gray);
+
+        AudioController.PlayClipAtPosition(_gateOpenClip, transform.position);
+        AudioController.PlayClipAtPosition(_leverClip, transform.position);
     }
 
     public void GateOpened()

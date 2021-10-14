@@ -8,4 +8,7 @@ public class WeaponConfig : ScriptableObject
     public RuntimeAnimatorController AnimatorController;
     public ProjectileConfig ProjectileConfig;
     public WeaponStats Stats;
+    [Header("Audio Clips")]
+    public AudioClip ChargeClip;
+    public AudioClip ShotClip;
 }

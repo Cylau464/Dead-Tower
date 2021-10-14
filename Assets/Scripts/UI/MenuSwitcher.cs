@@ -8,6 +8,7 @@ public class MenuSwitcher : MonoBehaviour
     [SerializeField] private CanvasGroupUI _shopUI;
     [SerializeField] private CanvasGroupUI _forgeUI;
     [SerializeField] private CanvasGroupUI _characterSettingsUI;
+    [SerializeField] private CanvasGroupUI _projectileShortageUI;
 
     public static MenuSwitcher Instance;
     public static bool OpenMapAfterLoad;
@@ -64,5 +65,15 @@ public class MenuSwitcher : MonoBehaviour
     public void OpenCharacterSettings()
     {
         _characterSettingsUI.Show();
+    }
+
+    public void OpenProjectileShortage()
+    {
+        _projectileShortageUI.Show();
+    }
+
+    public void HideMap()
+    {
+        _mapUI.Hide();
     }
 }

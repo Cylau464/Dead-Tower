@@ -653,6 +653,7 @@ MonoBehaviour:
   _projectileFlightDuration: 1
   _shotCooldown: 3
   _hpCanvas: {fileID: 7374406546151544450}
+  _hitClip: {fileID: 8300000, guid: 686fd3b27f3b6e54a9c80fbbb29b12c6, type: 3}
 --- !u!70 &1003193830188234227
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

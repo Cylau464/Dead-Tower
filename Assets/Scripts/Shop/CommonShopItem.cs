@@ -13,6 +13,10 @@ public class CommonShopItem : ShopItem
     [SerializeField] private Button _purchaseBtn;
     [SerializeField] private Color _disableTextColor;
     [SerializeField] private Color _enableTextColor;
+    [Space]
+    [SerializeField] private Slider _damageSliders;
+    [SerializeField] private Slider _healthSliders;
+    [SerializeField] private Slider _specSliders;
 
     public override void Init(ShopItemConfig config, bool isPurchased = false)
     {
@@ -22,6 +26,7 @@ public class CommonShopItem : ShopItem
         _costText.text = config.Stats.Cost.ToString();
         _currencyIcon.sprite = config.Stats.CurrencyType == CurrencyTypes.Coins ? _coinSprite : _diamondSprite;
         _purchaseBtn.onClick.AddListener(Purchase);
+        
 
         if(isPurchased == false)
         {
@@ -34,6 +39,27 @@ public class CommonShopItem : ShopItem
                 SLS.Data.Game.Coins.OnValueChanged += OnCoinsChanged;
             else
                 SLS.Data.Game.Diamonds.OnValueChanged += OnDiamondsChanged;
+        }
+
+        if(config.Category == ItemCategory.Tower)
+        {
+            TowerStats stats = SLS.Data.Game.Towers.Value[(_config as TowerItemConfig).Config.Index].Stats;
+            _damageSliders.value = stats.BasicDamage;
+            _healthSliders.value = stats.BasicHealth;
+            _specSliders.value = stats.BasicAbilityLevel;
+        }
+        else if(config.Category == ItemCategory.Defender)
+        {
+            TowerDefenderStats stats = SLS.Data.Game.Defenders.Value[(_config as DefenderItemConfig).Config.Index].Stats;
+            _damageSliders.value = stats.BasicDamage;
+            _healthSliders.value = stats.BasicHealth;
+            _specSliders.value = stats.BasicShootDistance;
+        }
+        else
+        {
+            _damageSliders?.gameObject.SetActive(false);
+            _healthSliders?.gameObject.SetActive(false);
+            _specSliders?.gameObject.SetActive(false);
         }
     }
 
@@ -82,6 +108,7 @@ public class CommonShopItem : ShopItem
                 break;
         }
 
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         WriteOffCurrency(_config.Stats.CurrencyType, _config.Stats.Cost);
     }
 

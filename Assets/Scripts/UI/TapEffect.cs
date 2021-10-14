@@ -5,6 +5,8 @@ public class TapEffect : MonoBehaviour
 {
     [SerializeField] private GameObject _particlePrefab;
     [SerializeField] private RectTransform _targetTransform;
+    [Space]
+    [SerializeField] private AudioClip _tapClip;
 
     private void Update()
     {
@@ -26,6 +28,7 @@ public class TapEffect : MonoBehaviour
 
         if (mouseButtonUp == true/* && isPointerOverGO == false*/)
         {
+            AudioController.PlayClipAtPosition(_tapClip, transform.position);
             Instantiate(_particlePrefab, Input.mousePosition, Quaternion.identity, _targetTransform);
         }
     }

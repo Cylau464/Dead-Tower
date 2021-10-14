@@ -19,3 +19,4 @@ MonoBehaviour:
     Health: 1
     Damage: 2
     MoveSpeed: 1.5
+  DestroyClip: {fileID: 8300000, guid: 9e901c9b1124cda44ace21fc4b007645, type: 3}

@@ -36,6 +36,12 @@ public class Level : MonoBehaviour
 
     private void Select()
     {
+        if(SLS.Data.Game.ProjectilesCount.Value[SLS.Data.Game.SelectedTower.Value.Index] <= 0)
+        {
+            MenuSwitcher.Instance.OpenProjectileShortage();
+            return;
+        }
+
         EnemySpawner.LevelConfig = _config;
         SLS.Data.Game.LastLevel.Value = _config;
         SceneLoader.LoadLevel();

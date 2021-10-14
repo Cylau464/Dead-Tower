@@ -149,6 +149,7 @@ MonoBehaviour:
   _towerSortingOrder: 10
   _hitParticlePrefab: {fileID: 6397198884632695025, guid: 8ec673534d4aeb34dbbe8242eae395b0, type: 3}
   _lifetime: 10
+  _hitClip: {fileID: 8300000, guid: b8ebaa4eab1cad94db5fc5b0c5d04501, type: 3}
   _explosionRadius: 1.5
   _rotationMultiplier: 100
 --- !u!1 &4675807523354343443

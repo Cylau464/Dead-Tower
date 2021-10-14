@@ -22,6 +22,7 @@ public class ExplosiveProjectile : Projectile
         if (_hitParticlePrefab != null)
             Instantiate(_hitParticlePrefab, transform.position, Quaternion.identity);
 
+        AudioController.PlayClipAtPosition(_hitClip, transform.position);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _explosionRadius, _targetLayer);
 
         foreach (Collider2D col in colliders)

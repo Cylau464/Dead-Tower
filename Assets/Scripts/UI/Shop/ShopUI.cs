@@ -33,6 +33,7 @@ public class ShopUI : CanvasGroupUI
     private void Close()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenMap();
     }
 }

@@ -13,6 +13,10 @@ public class Enemy : MonoBehaviour, IDamageTaker
     [SerializeField] protected Rigidbody2D _rigidBody;
     [SerializeField] private CapsuleCollider2D _collider;
     [SerializeField] private LayerMask _targetLayer;
+    [Space]
+    [SerializeField] protected AudioClip _spawnClip;
+    [SerializeField] private AudioClip _hitClip;
+    [SerializeField] private AudioClip _deathClip;
 
     protected EnemyStats _stats;
     public EnemyStats Stats => _stats;
@@ -58,15 +62,16 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
         _stats.Health -= damage;
         HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
+        AudioController.PlayClipAtPosition(_hitClip, transform.position);
 
         if (_stats.Health <= 0)
         {
+            AudioController.PlayClipAtPosition(_deathClip, transform.position);
             Dead();
             return true;
         }
         else
         {
-            //_animator.SetTrigger(_takeDamageParamID);
             return false;
         }
     }
@@ -127,6 +132,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     public virtual void Spawned()
     {
+        AudioController.PlayClipAtPosition(_spawnClip, transform.position);
         Move();
     }
 

@@ -20,6 +20,7 @@ public class DonateShopItem : ShopItem
     public void Purchase(Product product)
     {
         SLS.Data.Game.Diamonds.Value += (int) product.definition.payout.quantity;
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
     }
 
     public override void Purchase() { }

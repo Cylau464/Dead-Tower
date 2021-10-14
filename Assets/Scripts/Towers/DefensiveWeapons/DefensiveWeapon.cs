@@ -11,6 +11,7 @@ public abstract class DefensiveWeapon : MonoBehaviour, IDamageTaker
     [SerializeField] protected Collider2D _collider;
     [SerializeField] protected LayerMask _targetLayer;
     protected DefensiveWeaponStats _stats;
+    protected DefensiveWeaponConfig _config;
 
     protected int _speedParamID;
     protected int _deadParamID;
@@ -37,6 +38,7 @@ public abstract class DefensiveWeapon : MonoBehaviour, IDamageTaker
 
     public void Init(DefensiveWeaponConfig config, int level)
     {
+        _config = config;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
@@ -57,6 +59,7 @@ public abstract class DefensiveWeapon : MonoBehaviour, IDamageTaker
         _rigidBody.simulated = false;
         _collider.enabled = false;
         _animator.SetTrigger(_deadParamID);
+        AudioController.PlayClipAtPosition(_config.DestroyClip, transform.position);
 
         foreach (Projectile projectile in _stuckProjectiles)
         {

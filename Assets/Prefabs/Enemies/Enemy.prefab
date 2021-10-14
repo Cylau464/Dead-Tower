@@ -315,6 +315,9 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 1536
+  _spawnClip: {fileID: 8300000, guid: e4f45b1187c56154e9b1df82ea2e61ba, type: 3}
+  _hitClip: {fileID: 8300000, guid: ca3e0da573e8a254096ba593fda38904, type: 3}
+  _deathClip: {fileID: 8300000, guid: eec628882f3967f4c87d52735bdaacf3, type: 3}
 --- !u!50 &4140002623381893388
 Rigidbody2D:
   serializedVersion: 4

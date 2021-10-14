@@ -43,38 +43,41 @@ public class SettingsUI : CanvasGroupUI
     public override void Hide()
     {
         base.Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenStartMenu();
     }
 
     private void ToggleMusic()
     {
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         bool enabled = AudioController.Instance.ToggleMusic();
         _musicState.text = enabled == true ? EnabledState : DisabledState;
     }
 
     private void ToggleSFX()
     {
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         bool enabled = AudioController.Instance.ToggleSFX();
         _soundState.text = enabled == true ? EnabledState : DisabledState;
     }
 
     private void OpenFacebook()
     {
-
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
     }
 
     private void OpenInstagram()
     {
-
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
     }
 
     private void FacebookLogin()
     {
-
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
     }
 
     private void GoogleLogin()
     {
-
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
     }
 }

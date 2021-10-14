@@ -96,6 +96,7 @@ public class CharacterSettingsTabUI : TabUI
     {
         if (_curConfig.Index <= 0) return;
 
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         SwitchItem(_curConfig.Index - 1);
     }
 
@@ -103,6 +104,7 @@ public class CharacterSettingsTabUI : TabUI
     {
         if (_curConfig.Index >= _itemsConfigs.Length - 1) return;
 
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         SwitchItem(_curConfig.Index + 1);
     }
 
@@ -143,6 +145,7 @@ public class CharacterSettingsTabUI : TabUI
 
     private void Select()
     {
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         _selectBtn.interactable = false;
 
         if (_curConfig is TowerConfig)

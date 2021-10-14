@@ -227,7 +227,9 @@ MonoBehaviour:
   _itemIcon: {fileID: 6510029858351302821}
   _currencyIcon: {fileID: 0}
   _costText: {fileID: 6510029858704047562}
+  _buttonClip: {fileID: 8300000, guid: 36174cb811b8af744976a07c1eca2710, type: 3}
   _purchaseBtn: {fileID: 1842925171881277664}
+  _countText: {fileID: 0}
 --- !u!1 &6510029858630532429
 GameObject:
   m_ObjectHideFlags: 0

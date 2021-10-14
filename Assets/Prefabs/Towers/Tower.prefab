@@ -409,6 +409,9 @@ MonoBehaviour:
   _defensiveWeaponLayer:
     serializedVersion: 2
     m_Bits: 1024
+  _leverClip: {fileID: 8300000, guid: 7179fa4e6cb2f4e4ca74c1123686c75e, type: 3}
+  _gateOpenClip: {fileID: 8300000, guid: b75942f2d00f48b4c8301c0c61f0a222, type: 3}
+  _takeDamageClip: {fileID: 8300000, guid: 38de4b66fcdd16e468f2f69b78eae11d, type: 3}
 --- !u!60 &2124802960310433929
 PolygonCollider2D:
   m_ObjectHideFlags: 0

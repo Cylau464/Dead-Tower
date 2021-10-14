@@ -7,6 +7,8 @@ public abstract class ShopItem : MonoBehaviour
     [SerializeField] protected Image _itemIcon;
     [SerializeField] protected Image _currencyIcon;
     [SerializeField] protected TextMeshProUGUI _costText;
+    [Space]
+    [SerializeField] protected AudioClip _buttonClip;
 
     protected ShopItemConfig _config;
 

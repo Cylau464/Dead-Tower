@@ -132,6 +132,7 @@ MonoBehaviour:
   _towerSortingOrder: 0
   _hitParticlePrefab: {fileID: 0}
   _lifetime: 10
+  _hitClip: {fileID: 8300000, guid: 6b9ae2e10de540f40bccaaf2f441200b, type: 3}
   _stuckDepth: 0.75
   _dissolveDelay: 2
   _dissolveDuration: 1

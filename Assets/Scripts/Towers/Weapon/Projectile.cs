@@ -20,6 +20,8 @@ public abstract class Projectile : MonoBehaviour
 
     [Space]
     [SerializeField] private float _lifetime = 10f;
+    [Header("Audio Clips")]
+    [SerializeField] protected AudioClip _hitClip;
 
     public Action OnShot;
 

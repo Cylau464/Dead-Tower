@@ -19,3 +19,5 @@ MonoBehaviour:
     MinCharge: 5
     MaxCharge: 11
     ChargeSpeed: 3
+  ChargeClip: {fileID: 8300000, guid: fac3f105aa605954081a336451d5a36e, type: 3}
+  ShotClip: {fileID: 8300000, guid: 243c52cd8b24c4f4f9da0e7a69a96328, type: 3}

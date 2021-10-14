@@ -8,6 +8,8 @@ public class CanvasGroupUI : MonoBehaviour
 	[SerializeField] private CanvasGroup canvasGroup;
 	[SerializeField] private float _fadeTime = 0.2f;
 	[SerializeField] private bool _lerpOnPause = false;
+	[Space]
+	[SerializeField] protected AudioClip _buttonClip;
 
 	private bool _isInitialized;
 

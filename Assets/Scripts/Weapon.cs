@@ -22,6 +22,8 @@ public class Weapon : MonoBehaviour
     private WeaponConfig _config;
     public WeaponConfig Config => _config;
 
+    private AudioSource _chargeAudio;
+
     // Anim params
     private int _aimingParamID;
     private int _shootParamID;
@@ -29,6 +31,7 @@ public class Weapon : MonoBehaviour
 
     public Action OnAimStart;
     public Action OnAimEnd;
+    public Action OnProjectilesEnd;
 
     private void Start()
     {
@@ -90,8 +93,17 @@ public class Weapon : MonoBehaviour
 
     private void StartCharge()
     {
-        if (_curProjectile != null || SLS.Data.Game.ProjectilesCount.Value[_projectileConfig.Index] <= 0)
+        if(SLS.Data.Game.ProjectilesCount.Value[_projectileConfig.Index] <= 0)
+        {
+            OnProjectilesEnd?.Invoke();
             return;
+        }
+
+        if (_curProjectile != null)
+            return;
+
+        if(_config.ChargeClip != null)
+            _chargeAudio = AudioController.PlayClipAtPosition(_config.ChargeClip, transform.position);
 
         Vector2 pos = _projectileBone.GetWorldPosition(transform);
         Quaternion rot = Quaternion.Euler(0f, 0f, _projectileBone.Rotation);
@@ -109,6 +121,11 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         if (_curProjectile == null) return;
+
+        if (_chargeAudio?.isPlaying == true)
+            _chargeAudio.Stop();
+
+        AudioController.PlayClipAtPosition(_config.ShotClip, transform.position);
 
         _isCharging = false;
         _line.gameObject.SetActive(false);

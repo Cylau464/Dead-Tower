@@ -623,3 +623,4 @@ MonoBehaviour:
   _icon: {fileID: 7284923752480568872}
   _upgradeBtn: {fileID: 1719894680278895600}
   _valueText: {fileID: 5634074343921195397}
+  _buttonClip: {fileID: 8300000, guid: 36174cb811b8af744976a07c1eca2710, type: 3}

@@ -37,12 +37,14 @@ public class StartMenuUI : CanvasGroupUI
     private void Play()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenMap();
     }
 
     private void OpenSettings()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenSettings();
     }
 }

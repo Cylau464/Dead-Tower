@@ -24,8 +24,8 @@ MonoBehaviour:
   PurchaseStats:
     IsPurchased: 0
     CurrencyType: 0
-    Cost: 200
-    StatUpgradeCost: 350
+    Cost: 5000
+    StatUpgradeCost: 1000
   ProjectilePrefab: {fileID: 8728990395029971308, guid: 1faee3a4ec2835e4191da3ea12b92352, type: 3}
   Modifier: {fileID: 11400000, guid: acccda952ca8222478e0006fde168a93, type: 2}
   Stats:

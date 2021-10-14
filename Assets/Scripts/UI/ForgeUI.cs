@@ -6,6 +6,7 @@ using System.Linq;
 
 public class ForgeUI : CanvasGroupUI
 {
+    [SerializeField] protected AudioClip[] _craftClips;
     [Space]
     [SerializeField] private ProjectileConfig[] _recipeConfigs;
     [SerializeField] private ProjectileRecipeUI _recipePrefab;
@@ -71,6 +72,7 @@ public class ForgeUI : CanvasGroupUI
 
     private void ChooseRecipe(ProjectileConfig config)
     {
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         _curProjectileConfig = config;
         ProjectileRecipe recipe = config.Recipe;
         _projectileIcon.SetSprite(recipe.ForgeIcon);
@@ -123,6 +125,7 @@ public class ForgeUI : CanvasGroupUI
 
     private void Craft()
     {
+        AudioController.PlayClipAtPosition(_craftClips[Random.Range(0, _craftClips.Length)], transform.position);
         int[] projectilesCount = SLS.Data.Game.ProjectilesCount.Value;
         projectilesCount[_curProjectileConfig.Index]++;
         SLS.Data.Game.ProjectilesCount.Value = projectilesCount;
@@ -193,6 +196,7 @@ public class ForgeUI : CanvasGroupUI
     private void BackToMap()
     {
         Hide();
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         MenuSwitcher.Instance.OpenMap();
     }
 

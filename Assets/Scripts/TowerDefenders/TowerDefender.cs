@@ -17,6 +17,8 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
     [SerializeField] private float _shotCooldown = 1f;
     [Space]
     [SerializeField] private GameObject _hpCanvas;
+    [Space]
+    [SerializeField] private AudioClip _hitClip;
 
     private float _curShotCooldown;
     private Vector2 _aimPosition;
@@ -139,7 +141,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
     {
         _stats.health -= damage;
         HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
-
+        AudioController.PlayClipAtPosition(_hitClip, transform.position);
         if (_stats.Health <= 0)
             Dead();
 

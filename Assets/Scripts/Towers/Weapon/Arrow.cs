@@ -37,6 +37,7 @@ public class Arrow : Projectile
         if (_hitParticlePrefab != null)
             Instantiate(_hitParticlePrefab, transform.position, Quaternion.identity);
 
+        AudioController.PlayClipAtPosition(_hitClip, transform.position);
         _hasHit = true;
         StartCoroutine(Stuck(target, true));
     }
@@ -44,6 +45,8 @@ public class Arrow : Projectile
     protected override void HitToTarget(GameObject target)
     {
         if (_hasHit == true) return;
+
+        AudioController.PlayClipAtPosition(_hitClip, transform.position);
 
         if (target.TryGetComponent(out IDamageTaker damageTaker))
         {

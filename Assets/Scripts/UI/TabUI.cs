@@ -12,6 +12,8 @@ public abstract class TabUI : MonoBehaviour
     [SerializeField] private Color _inactiveTextColor;
     [SerializeField] protected ItemCategory _itemCategory;
     public ItemCategory ItemCategory => _itemCategory;
+    [Space]
+    [SerializeField] protected AudioClip _buttonClip;
 
     protected bool _isInitialized;
 
@@ -26,6 +28,7 @@ public abstract class TabUI : MonoBehaviour
 
     protected virtual void ToggleTab(bool active)
     {
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         _scrollRect.gameObject.SetActive(active);
         _title.color = active == true ? _activeTextColor : _inactiveTextColor;
     }

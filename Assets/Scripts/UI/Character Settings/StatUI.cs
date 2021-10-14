@@ -9,6 +9,8 @@ public class StatUI : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private Button _upgradeBtn;
     [SerializeField] private TMP_Text _valueText;
+    [Space]
+    [SerializeField] private AudioClip _buttonClip;
 
     private Stats _stat;
     public Stats Stat => _stat;
@@ -95,6 +97,7 @@ public class StatUI : MonoBehaviour
 
     private void Upgrade()
     {
+        AudioController.PlayClipAtPosition(_buttonClip, transform.position);
         int newValue = IncreaseStat();
 
         if (GetStatValue(true) >= 5)
