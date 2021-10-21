@@ -16,9 +16,10 @@ MonoBehaviour:
   Title: Cannonball
   Prefab: {fileID: 8434029751462772131, guid: cf37d5f1abdfb4b4aa0b49f38129cb6a, type: 3}
   Icon: {fileID: 21300000, guid: a79da83bfcc3ad94299386ad219f99f7, type: 3}
+  MapIcon: {fileID: 21300000, guid: 6634df70eab499d47be0987a4229ff92, type: 3}
   Recipe:
     ForgeIcon: {fileID: 21300000, guid: 57a54fda39bca9a4887bc943ee2c5341, type: 3}
-    Cost: 15
+    Cost: 30
     Resources:
     - Type: 2
       Count: 2

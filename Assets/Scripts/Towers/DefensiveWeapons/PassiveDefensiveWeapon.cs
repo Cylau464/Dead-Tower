@@ -7,7 +7,7 @@ public class PassiveDefensiveWeapon : DefensiveWeapon
 
     private void FixedUpdate()
     {
-        transform.Rotate(Vector3.back, _rigidBody.velocity.magnitude * _rotationMultiplier * Time.deltaTime);
+        transform.Rotate(Vector3.back, /*_rigidBody.velocity.magnitude **/ _rotationMultiplier * Time.fixedDeltaTime);
     }
 
     protected override void Attack(Enemy enemy)

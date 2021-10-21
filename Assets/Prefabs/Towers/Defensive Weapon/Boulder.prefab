@@ -428,7 +428,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _explosionRadius: 2
-  _rotationMultiplier: 100
+  _rotationMultiplier: 250
 --- !u!50 &7793470733253985884
 Rigidbody2D:
   serializedVersion: 4

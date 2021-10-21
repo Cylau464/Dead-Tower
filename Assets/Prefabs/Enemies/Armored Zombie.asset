@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Armored Zombie
   m_EditorClassIdentifier: 
   Name: Armored Zombie
+  Type: 3
   Prefab: {fileID: 4140002623381893389, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
   Skeleton: {fileID: 11400000, guid: 115491cbac5f42148a05af8dad112d75, type: 2}
   AnimatorController: {fileID: 9100000, guid: 05c753e24e0bad64e9d98cf580592faf, type: 2}

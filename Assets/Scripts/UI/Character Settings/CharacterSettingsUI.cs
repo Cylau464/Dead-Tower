@@ -39,6 +39,16 @@ public class CharacterSettingsUI : CanvasGroupUI
         _closeBtn.onClick.AddListener(Close);
     }
 
+    public override void Show()
+    {
+        base.Show();
+
+        Toggle activeToggle = _toggleGroup.GetFirstActiveToggle();
+
+        if(activeToggle != null)
+            activeToggle.isOn = true;
+    }
+
     private void Close()
     {
         Hide();

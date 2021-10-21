@@ -16,9 +16,10 @@ MonoBehaviour:
   Title: Cobble
   Prefab: {fileID: 8434029751462772131, guid: 28358291c2078864baca49818ff2df7e, type: 3}
   Icon: {fileID: 21300000, guid: d6ae2eb6c8810ec44ab8110cd6150c63, type: 3}
+  MapIcon: {fileID: 21300000, guid: f6e3957c1538de74590d263ed136133a, type: 3}
   Recipe:
     ForgeIcon: {fileID: 21300000, guid: 5deaa1d6b82b6c146aa3bac65f993969, type: 3}
-    Cost: 10
+    Cost: 20
     Resources:
     - Type: 3
       Count: 2

@@ -16,9 +16,10 @@ MonoBehaviour:
   Title: Bolt
   Prefab: {fileID: 8728990395029971308, guid: b5b72671fd79d8b49a3e99c6921378c2, type: 3}
   Icon: {fileID: 21300000, guid: 1337f831b5930a2498c9bcbfad04b668, type: 3}
+  MapIcon: {fileID: 21300000, guid: 715126a2035c8a948866116fe0a8a27f, type: 3}
   Recipe:
     ForgeIcon: {fileID: 21300000, guid: 51c5cdeb9bd2adc41b1496f2852042b4, type: 3}
-    Cost: 5
+    Cost: 10
     Resources:
     - Type: 1
       Count: 1

@@ -6,8 +6,20 @@ using UnityEngine;
 public class GPServices : MonoBehaviour
 {
     [SerializeField] private TMPro.TMP_Text _text;
+
+    public static GPServices Instance;
+
     private void Awake()
     {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(this);
+
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
         // enables saving game progress.
         .EnableSavedGames()
@@ -24,23 +36,29 @@ public class GPServices : MonoBehaviour
 
         PlayGamesPlatform.InitializeInstance(config);
         // recommended for debugging:
-        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.DebugLogEnabled = false;
         // Activate the Google Play Games platform
         PlayGamesPlatform.Activate();
     }
 
     private void Start()
     {
-        SignIn();
+        LogIn();
     }
 
-    public void SignIn()
+    private void Update()
     {
-        if (PlayGamesPlatform.Instance.IsAuthenticated() == true) return;
+        Debug.Log("GP login status " + PlayGamesPlatform.Instance.IsAuthenticated().ToString());
+    }
 
-        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (success) =>
+    public void LogIn()
+    {
+        if (PlayGamesPlatform.Instance.IsAuthenticated() == true)
+            PlayGamesPlatform.Instance.SignOut();
+
+        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (success) =>
         {
-            _text.text = "GP Services authenticated is " + success;
+            Debug.Log("GP Services authenticated is " + success);
         });
     }
 }

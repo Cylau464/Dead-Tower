@@ -50,14 +50,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnLevelEnd(bool victory)
     {
+        StopAllCoroutines();
+
         if(victory == true)
         {
+            if (LevelConfig.Status != LevelStatus.Completed)
+                DailyQuestsHandler.Instance.LevelComplete();
+
             LevelConfig.Status = LevelStatus.Completed;
             List<LevelConfig[]> levels = SLS.Data.Game.Levels.Value;
             LevelConfig nextLevel = SLS.Data.Game.GetNextLevel();
             nextLevel.Status = nextLevel.Status == LevelStatus.Closed ? LevelStatus.Opened : nextLevel.Status;
 
-            StopAllCoroutines();
         }
     }
 

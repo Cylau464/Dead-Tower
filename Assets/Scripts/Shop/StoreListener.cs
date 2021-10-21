@@ -16,14 +16,17 @@ public class StoreListener : MonoBehaviour, IStoreListener
         }
 
         Instance = this;
+        DontDestroyOnLoad(this);
 
         ConfigurationBuilder builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+        IAPConfigurationHelper.PopulateConfigurationBuilder(ref builder, ProductCatalog.LoadDefaultCatalog());
         UnityPurchasing.Initialize(this, builder);
     }
 
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
     {
         Debug.LogWarning("Store initialization complete");
+        StoreController = controller;
     }
 
     public void OnInitializeFailed(InitializationFailureReason error)

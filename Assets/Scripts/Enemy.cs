@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
     [SerializeField] private AudioClip _hitClip;
     [SerializeField] private AudioClip _deathClip;
 
+    public KillTargets Type { get; private set; }
     protected EnemyStats _stats;
     public EnemyStats Stats => _stats;
     private int _maxHealth;
@@ -111,8 +112,9 @@ public class Enemy : MonoBehaviour, IDamageTaker
         _collider.enabled = false;
         this.enabled = false;
         _renderer.sortingOrder--;
+        DailyQuestsHandler.Instance.EnemyDead(Type);
 
-        foreach(Projectile projectile in _stuckProjectiles)
+        foreach (Projectile projectile in _stuckProjectiles)
         {
             projectile.Unstuck(transform.position);
         }
@@ -120,6 +122,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     public virtual void Init(EnemyConfig config)
     {
+        Type = config.Type;
         _stats = config.Stats;
         _maxHealth = _stats.Health;
         _rewards = config.Rewards;

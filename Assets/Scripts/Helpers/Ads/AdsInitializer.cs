@@ -41,9 +41,11 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 
     public void OnInitializationComplete()
     {
-        Debug.Log("Unity Ads initialization complete.");
-        _interstitialAd.Init();
+        //Debug.Log("Unity Ads initialization complete.");
         _rewardedAd.Init();
+
+        if(SLS.Data.Settings.AdsEnabled.Value == true)
+            _interstitialAd.Init();
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
@@ -53,7 +55,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 
     public void ShowInterstitial()
     {
-        _interstitialAd.ShowAd();
+        if (SLS.Data.Settings.AdsEnabled.Value == true)
+            _interstitialAd.ShowAd();
     }
 
     public void ShowRewarded()

@@ -7,6 +7,7 @@ public class ProjectileConfig : ScriptableObject
     public string Title;
     public Projectile Prefab;
     public Sprite Icon;
+    public Sprite MapIcon;
     public ProjectileStats Stats;
     public ProjectileRecipe Recipe;
 }

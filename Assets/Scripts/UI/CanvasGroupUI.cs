@@ -39,7 +39,10 @@ public class CanvasGroupUI : MonoBehaviour
 				time: _fadeTime,
 				from: canvasGroup.alpha,
 				to: 1f,
-				action: a => canvasGroup.alpha = a
+				action: a => canvasGroup.alpha = a,
+				settings: new CoroutineTemplate.Settings(
+					lerpOnPause: _lerpOnPause
+					)
 			);
         }
 		else

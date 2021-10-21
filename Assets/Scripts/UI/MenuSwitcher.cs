@@ -9,6 +9,7 @@ public class MenuSwitcher : MonoBehaviour
     [SerializeField] private CanvasGroupUI _forgeUI;
     [SerializeField] private CanvasGroupUI _characterSettingsUI;
     [SerializeField] private CanvasGroupUI _projectileShortageUI;
+    [SerializeField] private CanvasGroupUI _dailyQuestsUI;
 
     public static MenuSwitcher Instance;
     public static bool OpenMapAfterLoad;
@@ -26,6 +27,8 @@ public class MenuSwitcher : MonoBehaviour
 
     private void Start()
     {
+        (_settingsUI as SettingsUI).Init();
+
         if (OpenMapAfterLoad == true)
             OpenMap();
         else
@@ -75,5 +78,10 @@ public class MenuSwitcher : MonoBehaviour
     public void HideMap()
     {
         _mapUI.Hide();
+    }
+
+    public void OpenDailyQuests()
+    {
+        _dailyQuestsUI.Show();
     }
 }

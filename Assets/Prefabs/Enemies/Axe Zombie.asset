@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Axe Zombie
   m_EditorClassIdentifier: 
   Name: Axe Zombie
+  Type: 4
   Prefab: {fileID: 1826059166, guid: 312174b71747b9543adced59064295eb, type: 3}
   Skeleton: {fileID: 11400000, guid: 6f8724dd5f2b65246854ea821d90c2b5, type: 2}
   AnimatorController: {fileID: 9100000, guid: 5289cdcda8e404745b855b9c339d3046, type: 2}

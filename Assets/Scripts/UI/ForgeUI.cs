@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 public class ForgeUI : CanvasGroupUI
 {
@@ -80,9 +81,9 @@ public class ForgeUI : CanvasGroupUI
         //StopAllCoroutines();
         this.LerpCoroutine(
             time: .25f,
-            from: float.Parse(_costText.text),
+            from: float.Parse(Regex.Match(_costText.text, @"\d+").Value),
             to: recipe.Cost,
-            action: a => _costText.text = Mathf.RoundToInt(a).ToString()
+            action: a => _costText.text = Mathf.RoundToInt(a).ToString() + "<sprite=1>"
         );
         this.LerpCoroutine(
             time: .25f,

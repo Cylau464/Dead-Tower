@@ -2,6 +2,7 @@ using UnityEngine;
 using Spine.Unity;
 using System;
 using System.Linq;
+using System.Collections;
 
 public class Weapon : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Weapon : MonoBehaviour
     public WeaponConfig Config => _config;
 
     private AudioSource _chargeAudio;
+    private Coroutine _vibrateCor;
 
     // Anim params
     private int _aimingParamID;
@@ -56,6 +58,7 @@ public class Weapon : MonoBehaviour
         _line.SetYLimit(_shootPointBone.GetWorldPosition(transform));
 
         Game.Instance.OnLevelEnd += OnLevelEnd;
+        Vibration.Init();
     } 
 
     public void Init(WeaponConfig config, bool inMenu)
@@ -87,6 +90,8 @@ public class Weapon : MonoBehaviour
 
                 _line.UpdateLine(_charge * _curProjectile.transform.right, _shootPointBone.GetWorldPosition(transform), lineTextureOffset);
 
+                if (_vibrateCor != null && _charge >= _stats.MaxCharge)
+                    StopCoroutine(_vibrateCor);
             }
         }
     }
@@ -116,13 +121,15 @@ public class Weapon : MonoBehaviour
         _line.UpdateLine(_charge * _curProjectile.transform.right, _shootPointBone.GetWorldPosition(transform));
         _animator.SetTrigger(_aimingParamID);
         OnAimStart?.Invoke();
+
+        _vibrateCor = StartCoroutine(Vibrate());
     }
 
     private void Shoot()
     {
         if (_curProjectile == null) return;
 
-        if (_chargeAudio?.isPlaying == true)
+        if (_chargeAudio != null && _chargeAudio.isPlaying == true)
             _chargeAudio.Stop();
 
         AudioController.PlayClipAtPosition(_config.ShotClip, transform.position);
@@ -131,6 +138,9 @@ public class Weapon : MonoBehaviour
         _line.gameObject.SetActive(false);
         _animator.SetTrigger(_shootParamID);
         OnAimEnd?.Invoke();
+
+        if (_vibrateCor != null)
+            StopCoroutine(_vibrateCor);
     }
 
     public void LaunchProjectile()
@@ -166,6 +176,25 @@ public class Weapon : MonoBehaviour
     private void OnLevelEnd(bool victory)
     {
         _collider.enabled = false;
+    }
+
+    private IEnumerator Vibrate()
+    {
+        long time;
+        long[] pattern;
+        float t;
+
+        while (true)
+        {
+            t = (_charge - _stats.MinCharge) / (_stats.MaxCharge - _stats.MinCharge);
+            time = (long)Mathf.Lerp(100, 10, t);
+            pattern = new long[] { 0, time };
+
+            if(SLS.Data.Settings.VibrationEnabled.Value == true)
+                Vibration.Vibrate(pattern, -1);
+            
+            yield return new WaitForSeconds((float)(time * 2f) / 1000);
+        }
     }
 
     private void OnDestroy()

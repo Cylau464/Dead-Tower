@@ -5,6 +5,7 @@ using Spine.Unity;
 public class EnemyConfig : ScriptableObject
 {
     public string Name;
+    public KillTargets Type;
     public Enemy Prefab;
     public SkeletonDataAsset Skeleton;
     public RuntimeAnimatorController AnimatorController;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 
 public class WinUI : CanvasGroupUI
@@ -13,11 +13,10 @@ public class WinUI : CanvasGroupUI
     [SerializeField] private Button _nextLevelBtn;
     [SerializeField] private Button _exitBtn;
 
-    private List<Enemy> _enemies = new List<Enemy>();
+    public Action OnProjectilesEnd;
 
     protected override void Init()
     {
-        //_nextLevelBtn.onClick.AddListener();
         _exitBtn.onClick.AddListener(SceneLoader.LoadMenu);
         _nextLevelBtn.onClick.AddListener(NextLevel);
 
@@ -51,6 +50,12 @@ public class WinUI : CanvasGroupUI
 
     private void NextLevel()
     {
+        if (SLS.Data.Game.ProjectilesCount.Value[SLS.Data.Game.SelectedTower.Value.Index] <= 0)
+        {
+            OnProjectilesEnd?.Invoke();
+            return;
+        }
+
         LevelConfig nextLevel = SLS.Data.Game.GetNextLevel();
         EnemySpawner.LevelConfig = nextLevel;
         SLS.Data.Game.LastLevel.Value = nextLevel;

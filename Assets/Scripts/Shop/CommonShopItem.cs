@@ -7,9 +7,9 @@ public class CommonShopItem : ShopItem
 {
     [SerializeField] private TextMeshProUGUI _purchasedText;
     [Space]
-    [SerializeField] private Sprite _coinSprite;
-    [SerializeField] private Sprite _diamondSprite;
-    [Space]
+    //[SerializeField] private Sprite _coinSprite;
+    //[SerializeField] private Sprite _diamondSprite;
+    //[Space]
     [SerializeField] private Button _purchaseBtn;
     [SerializeField] private Color _disableTextColor;
     [SerializeField] private Color _enableTextColor;
@@ -23,8 +23,8 @@ public class CommonShopItem : ShopItem
         _purchasedText.gameObject.SetActive(false);
         base.Init(config, isPurchased);
 
-        _costText.text = config.Stats.Cost.ToString();
-        _currencyIcon.sprite = config.Stats.CurrencyType == CurrencyTypes.Coins ? _coinSprite : _diamondSprite;
+        _costText.text = config.Stats.Cost.ToString() + "<sprite=" + (config.Stats.CurrencyType == CurrencyTypes.Coins ? "1>" : "0>");
+        //_currencyIcon.sprite = config.Stats.CurrencyType == CurrencyTypes.Coins ? _coinSprite : _diamondSprite;
         _purchaseBtn.onClick.AddListener(Purchase);
         
 

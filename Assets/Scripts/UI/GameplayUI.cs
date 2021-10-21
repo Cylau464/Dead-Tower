@@ -10,6 +10,7 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private CanvasGroupUI _loseUI;
     [SerializeField] private CanvasGroupUI _pauseUI;
     [SerializeField] private CanvasGroupUI _projectileShortageUI;
+    [SerializeField] private CanvasGroupUI _tutorialUI;
     [Space]
     [SerializeField] private Button _pauseBtn;
     [SerializeField] private Image _projectileIcon;
@@ -47,6 +48,13 @@ public class GameplayUI : MonoBehaviour
             .Value[_projectileIndex].ToString();
         _towerHealthText.text = _tower.Stats.Health.ToString();
         _tower.Weapon.OnProjectilesEnd += OpenProjectileShortage;
+        _winUI.OnProjectilesEnd += OpenProjectileShortage;
+
+        if (SLS.Data.Settings.TutorialPassed.Value == false)
+        {
+            (_tutorialUI as TutorialUI).Init(_tower.Weapon);
+            _tutorialUI.Show();
+        }
     }
 
     public void OnEnemySpawned(Enemy enemy)
@@ -132,5 +140,6 @@ public class GameplayUI : MonoBehaviour
         EnemySpawner.OnEnemySpawned -= OnEnemySpawned;
         Game.Instance.OnLevelEnd -= OnLevelEnd;
         _tower.Weapon.OnProjectilesEnd -= OpenProjectileShortage;
+        _winUI.OnProjectilesEnd -= OpenProjectileShortage;
     }
 }

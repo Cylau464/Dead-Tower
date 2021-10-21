@@ -139,7 +139,6 @@ public class CharacterSettingsTabUI : TabUI
     public override void ScrollTo(int itemIndex)
     {
         float offset = 1f / (_itemsConfigs.Length - 1) * itemIndex;
-
         ScrollTo(_scrollRect, offset);
     }
 

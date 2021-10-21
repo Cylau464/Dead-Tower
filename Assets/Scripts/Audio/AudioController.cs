@@ -13,6 +13,9 @@ public class AudioController : MonoBehaviour
 
     public static AudioController Instance;
 
+    private const string SFXVolumeParamName = "SFXVolume";
+    private const string MusicVolumeParamName = "MusicVolume";
+
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -53,14 +56,46 @@ public class AudioController : MonoBehaviour
 
     public bool ToggleMusic()
     {
-        _musicSource.enabled = !_musicSource.enabled;
-        return _musicSource.enabled;
+        _musicMixer.audioMixer.GetFloat(MusicVolumeParamName, out float value);
+
+        if (value < 0f)
+        {
+            _musicMixer.audioMixer.SetFloat(MusicVolumeParamName, 0f);
+            return true;
+        }
+        else
+        {
+            _musicMixer.audioMixer.SetFloat(MusicVolumeParamName, -80f);
+            return false;
+        }
+    }
+
+    public void ToggleMusic(bool enabled)
+    {
+        float value = enabled == true ? 0f : -80f;
+        _musicMixer.audioMixer.SetFloat(MusicVolumeParamName, value);
     }
 
     public bool ToggleSFX()
     {
-        _sfxSource.enabled = !_sfxSource.enabled;
-        return _sfxSource.enabled;
+        _sfxMixer.audioMixer.GetFloat(SFXVolumeParamName, out float value);
+
+        if (value < 0f)
+        {
+            _sfxMixer.audioMixer.SetFloat(SFXVolumeParamName, 0f);
+            return true;
+        }
+        else
+        {
+            _sfxMixer.audioMixer.SetFloat(SFXVolumeParamName, -80f);
+            return false;
+        }
+    }
+
+    public void ToggleSFX(bool enabled)
+    {
+        float value = enabled == true ? 0f : -80f;
+        _sfxMixer.audioMixer.SetFloat(SFXVolumeParamName, value);
     }
 
     private void OnDestroy()
@@ -69,7 +104,7 @@ public class AudioController : MonoBehaviour
         SceneLoader.OnSceneLoadComplete -= ResumeMusic;
     }
 
-    public static AudioSource PlayClipAtPosition(AudioClip clip, Vector3 position, float volume = 1f, float minDistance = 1f, float pitch = 1f, Transform parent = null)
+    public static AudioSource PlayClipAtPosition(AudioClip clip, Vector3 position, float volume = 1f, float minDistance = 1f, float pitch = 1f, AudioMixerGroup mixerGroup = null, Transform parent = null)
     {
         GameObject go = new GameObject("One Shot Audio");
         go.transform.position = position;
@@ -80,6 +115,7 @@ public class AudioController : MonoBehaviour
         source.spatialBlend = 0f;
         source.minDistance = minDistance;
         source.pitch = Random.Range(pitch - .2f, pitch + .2f);
+        source.outputAudioMixerGroup = mixerGroup == null ? Instance._sfxMixer : mixerGroup;
         source.Play();
         Destroy(go, source.clip.length);
 

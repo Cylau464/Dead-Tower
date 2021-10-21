@@ -16,15 +16,15 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 420498299449924
+  - 785899538855600
   appLabels:
-  - App Name
+  - Zombies vs Tower
   cookie: 1
   logging: 1
   status: 1
   xfbml: 0
   frictionlessRequests: 1
-  androidKeystorePath: 
+  androidKeystorePath: C:\Users\Cylau\.android\debug.keystore
   iosURLSuffix: 
   appLinkSchemes:
   - list: []

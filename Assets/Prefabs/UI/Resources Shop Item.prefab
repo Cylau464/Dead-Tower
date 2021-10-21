@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175, y: -285}
+  m_AnchoredPosition: {x: -50, y: -285}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3059656274091589185
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1337
+  m_text: 100<sprite=1>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf64f91f518e227429348f7a4d1cdc49, type: 2}
   m_sharedMaterial: {fileID: -2741036063699812199, guid: cf64f91f518e227429348f7a4d1cdc49, type: 2}
@@ -84,7 +84,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: a776a43cc77f241489d768dc55a03780, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -304,12 +304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: 3059656274444340013}
-  _currencyIcon: {fileID: 3059656274803678260}
   _costText: {fileID: 3059656274091589186}
   _buttonClip: {fileID: 8300000, guid: 36174cb811b8af744976a07c1eca2710, type: 3}
   _purchasedText: {fileID: 4169386114795869635}
-  _coinSprite: {fileID: 21300000, guid: c4db962c825d73548b5504befe561ed6, type: 3}
-  _diamondSprite: {fileID: 21300000, guid: ad443d47e1df42d43b018f671daf2bb9, type: 3}
   _purchaseBtn: {fileID: 3059656274665825787}
   _disableTextColor: {r: 0.7764706, g: 0.21568628, b: 0.21568628, a: 1}
   _enableTextColor: {r: 0.9882353, g: 0.90588236, b: 0.101960786, a: 1}
@@ -454,7 +451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3059656274803678261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -596,7 +593,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: a776a43cc77f241489d768dc55a03780, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

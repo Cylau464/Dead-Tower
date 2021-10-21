@@ -66,7 +66,7 @@ public class Tower : MonoBehaviour
     public void TakeDamage(IDamageTaker attacker, int damage)
     {
         AudioController.PlayClipAtPosition(_takeDamageClip, transform.position);
-        _stats.health = Mathf.Max(_stats.Health - damage, 0);
+        _stats.health = Mathf.Max(_stats.health - damage, -_stats.ExtraHealth);
         OnTakeDamage?.Invoke(_stats.Health);
 
         if(_stats.Health <= 0)

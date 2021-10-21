@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Zombie Great
   m_EditorClassIdentifier: 
   Name: Zombie Great
+  Type: 1
   Prefab: {fileID: 4140002623381893389, guid: 4ed8801a62f5cee42819ff5878f1e073, type: 3}
   Skeleton: {fileID: 11400000, guid: 8c34a229488076c48abb4ec915933d5b, type: 2}
   AnimatorController: {fileID: 9100000, guid: 19c30c1d45a06174ba220ecf7c2cda84, type: 2}

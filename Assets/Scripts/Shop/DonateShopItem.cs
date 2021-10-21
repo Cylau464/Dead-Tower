@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Purchasing;
 using TMPro;
+using System.Linq;
 
 public class DonateShopItem : ShopItem
 {
@@ -10,16 +11,18 @@ public class DonateShopItem : ShopItem
     public override void Init(ShopItemConfig config, bool isPurchased = false)
     {
         base.Init(config, isPurchased);
+
         _purchaseBtn.productId = (config as DiamondItemConfig).StoreItemID;
-        //Product product = StoreListener.Instance.StoreController.products.WithID((config as DiamondItemConfig).StoreItemID);
-        //_costText.text = product.metadata.localizedPrice.ToString() + product.metadata.localizedTitle;
-        //_countText.text = product.definition.payout.quantity.ToString();
+        Product product = StoreListener.Instance.StoreController.products.WithID(_purchaseBtn.productId);
+        _costText.text = product.metadata.localizedPrice.ToString() + " " + product.metadata.isoCurrencyCode;
+        _countText.text = product.definition.payout.quantity.ToString();
         _purchaseBtn.onPurchaseComplete.AddListener(Purchase);
     }
 
     public void Purchase(Product product)
     {
         SLS.Data.Game.Diamonds.Value += (int) product.definition.payout.quantity;
+        SLS.Data.Settings.AdsEnabled.Value = false;
         AudioController.PlayClipAtPosition(_buttonClip, transform.position);
     }
 

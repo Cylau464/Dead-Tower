@@ -19,6 +19,7 @@ public static partial class CoroutineTemplate
 		public bool pingPong;
 		public bool repeat;
 		public float interval;
+		public bool lerpOnPause;
 
 		public AnimationCurve curve;
 
@@ -32,7 +33,7 @@ public static partial class CoroutineTemplate
 			curve = LinearCurve;
 		}
 
-		public Settings(bool invokeOnceBeforeDelay = false, float delay = 0, bool pingPong = false, bool repeat = false, float interval = 0, AnimationCurve curve = null)
+		public Settings(bool invokeOnceBeforeDelay = false, float delay = 0, bool pingPong = false, bool repeat = false, float interval = 0, AnimationCurve curve = null, bool lerpOnPause = false)
 		{
 			this.invokeOnceBeforeDelay = invokeOnceBeforeDelay;
 			this.delay = delay;
@@ -40,6 +41,7 @@ public static partial class CoroutineTemplate
 			this.repeat = repeat;
 			this.interval = interval;
 			this.curve = curve == null ? AnimationCurve.Linear(0, 0, 1, 1) : curve;
+			this.lerpOnPause = lerpOnPause;
 		}
 	}
 
@@ -212,7 +214,7 @@ public static partial class CoroutineTemplate
 
 		while (invoke || settings.repeat)
 		{
-			for (var t = 0f; t < time; t += Time.deltaTime)
+			for (var t = 0f; t < time; t += settings.lerpOnPause == true ? Time.unscaledDeltaTime : Time.deltaTime)
 			{
 				var k = settings.curve.Evaluate(t / time);
 				action?.Invoke(k);
@@ -221,7 +223,7 @@ public static partial class CoroutineTemplate
 
 			if (settings.pingPong)
 			{
-				for (var t = time; t > 0; t -= Time.deltaTime)
+				for (var t = time; t > 0; t -= settings.lerpOnPause == true ? Time.unscaledDeltaTime : Time.deltaTime)
 				{
 					var k = settings.curve.Evaluate(t / time);
 					action?.Invoke(k);
