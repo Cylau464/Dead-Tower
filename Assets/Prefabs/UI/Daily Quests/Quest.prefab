@@ -191,8 +191,7 @@ MonoBehaviour:
   _getBtn: {fileID: 8543488681222933567}
   _rewardText: {fileID: 8543488680672039221}
   _timeLeftText: {fileID: 5364382360509916185}
-  _progressSlider: {fileID: 0}
-  _progressText: {fileID: 0}
+  _getClip: {fileID: 8300000, guid: 36174cb811b8af744976a07c1eca2710, type: 3}
 --- !u!1 &8543488680672039223
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kill 1000(900) simple zombie
+  m_text: Kill 1000 simple zombie
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf64f91f518e227429348f7a4d1cdc49, type: 2}
   m_sharedMaterial: {fileID: -2741036063699812199, guid: cf64f91f518e227429348f7a4d1cdc49, type: 2}
@@ -495,7 +494,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.45
+  m_fontSize: 72
   m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 1

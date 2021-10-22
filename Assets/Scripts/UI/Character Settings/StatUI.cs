@@ -118,7 +118,7 @@ public class StatUI : MonoBehaviour
             switch (_stat)
             {
                 case Stats.Damage:
-                    value = ++data.Stats.ExtraDamage +data.Stats.Damage;
+                    value = ++data.Stats.ExtraDamage + data.Stats.BasicDamage;
                     break;
                 case Stats.Health:
                     value = ++data.Stats.ExtraHealth + data.Stats.BasicHealth;

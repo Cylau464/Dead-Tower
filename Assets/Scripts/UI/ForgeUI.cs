@@ -128,7 +128,7 @@ public class ForgeUI : CanvasGroupUI
     {
         AudioController.PlayClipAtPosition(_craftClips[Random.Range(0, _craftClips.Length)], transform.position);
         int[] projectilesCount = SLS.Data.Game.ProjectilesCount.Value;
-        projectilesCount[_curProjectileConfig.Index]++;
+        projectilesCount[_curProjectileConfig.Index] += _curProjectileConfig.Recipe.Count;
         SLS.Data.Game.ProjectilesCount.Value = projectilesCount;
         SLS.Data.Game.Coins.Value -= _curProjectileConfig.Recipe.Cost;
         Resource[] resources = SLS.Data.Game.Resources.Value;

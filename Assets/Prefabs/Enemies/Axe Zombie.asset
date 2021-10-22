@@ -21,7 +21,7 @@ MonoBehaviour:
     Damage: 3
     Health: 2
     MoveSpeed: 1.5
-    Power: 1
+    Power: 4
   Rewards:
     Gold: 60
     Resources:

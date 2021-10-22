@@ -32,7 +32,7 @@ public class Cloud : MonoBehaviour
         this.LerpCoroutine(
             time: _fadeInTime,
             from: _renderer.color.a,
-            to: 1f,
+            to: .8f,
             action: a =>
             {
                 Color color = _renderer.color;

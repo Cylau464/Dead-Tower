@@ -16,8 +16,8 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: b40d0f646de508c4d95b0748b2552a9d, type: 3}
   Index: 0
   LevelsCount: 10
-  MinEnemyPower: 2
-  MaxEnemyPower: 3
+  MinEnemyPower: 1
+  MaxEnemyPower: 1
   MinPowerReserve: 5
   MaxPowerReserve: 15
   BossInterval: 10

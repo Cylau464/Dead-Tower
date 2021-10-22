@@ -1,0 +1,55 @@
+
+hand.png
+size: 1987,1081
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bone
+  rotate: false
+  xy: 2, 518
+  size: 1152, 561
+  orig: 1156, 563
+  offset: 2, 1
+  index: -1
+finger1
+  rotate: false
+  xy: 753, 36
+  size: 318, 480
+  orig: 318, 480
+  offset: 0, 0
+  index: -1
+finger2
+  rotate: false
+  xy: 2, 2
+  size: 749, 514
+  orig: 749, 514
+  offset: 0, 0
+  index: -1
+finger3
+  rotate: true
+  xy: 1156, 278
+  size: 801, 465
+  orig: 802, 465
+  offset: 1, 0
+  index: -1
+finger4
+  rotate: true
+  xy: 1623, 374
+  size: 705, 362
+  orig: 705, 362
+  offset: 0, 0
+  index: -1
+finger5
+  rotate: false
+  xy: 1073, 54
+  size: 589, 222
+  orig: 589, 222
+  offset: 0, 0
+  index: -1
+wrist
+  rotate: false
+  xy: 1664, 102
+  size: 212, 270
+  orig: 214, 272
+  offset: 1, 1
+  index: -1

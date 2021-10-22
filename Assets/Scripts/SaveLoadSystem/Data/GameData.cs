@@ -21,8 +21,8 @@ public class GameData
 
 		Levels = new StoredValue<List<LevelConfig[]>>();
 		LastLevel = new StoredValue<LevelConfig>();
-		Coins = new StoredValue<int>(0);
-		Diamonds = new StoredValue<int>(0);
+		Coins = new StoredValue<int>(1000);
+		Diamonds = new StoredValue<int>(10);
 		GetResources();
 		GetTowers();
 		GetDefenders();

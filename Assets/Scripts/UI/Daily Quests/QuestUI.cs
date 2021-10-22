@@ -11,6 +11,8 @@ public class QuestUI : MonoBehaviour
     [SerializeField] private Button _getBtn;
     [SerializeField] private TMP_Text _rewardText;
     [SerializeField] private TMP_Text _timeLeftText;
+    [Space]
+    [SerializeField] private AudioClip _getClip;
 
     private DailyQuest _quest;
 
@@ -41,6 +43,8 @@ public class QuestUI : MonoBehaviour
 
     private void GetReward()
     {
+        AudioController.PlayClipAtPosition(_getClip, transform.position);
+
         if (_quest.RewardType == CurrencyTypes.Coins)
             SLS.Data.Game.Coins.Value += _quest.Reward;
         else

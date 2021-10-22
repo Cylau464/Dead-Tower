@@ -1656,96 +1656,95 @@ MonoBehaviour:
     The Zombie
     vs Tower site is not a media outlet.
 
-    
 
-    By using the site, you agree
-    to the terms of this agreement.
 
-    If you do not agree with the terms of this
-    agreement, do not use the Zombie vs Tower app!
+    By using the site, you agree to the
+    terms of this agreement.
 
-    
+    If you do not agree with the terms of this agreement,
+    do not use the Zombie vs Tower app!
 
-    Rights and obligations
-    of the parties
 
-    The user has the right to:
 
-    - search for information
-    in the application
-
-    - receive information in the application
-
-    - copy
-    information to other sites indicating the source
-
-    - copy information to
-    other sites with the permission of the Application Administration
-
-    - copy
-    information to other sites with the permission of the copyright holder
-
-    -
-    use application information for personal non-commercial purposes
-
-    
+    Rights and obligations of the parties
 
     The
-    administration has the right:
+    user has the right to:
 
-    - at your discretion and the need to create,
-    change, cancel rules
-
-    - restrict access to any information in the application
-
-    
-
-    The
-    user undertakes:
-
-    - do not disrupt the performance of the application
+    - search for information in the application
 
     -
-    do not use scripts (programs) for automated collection of information and / or
-    interaction with the application and its Services
+    receive information in the application
 
-    
+    - copy information to other sites
+    indicating the source
+
+    - copy information to other sites with the permission
+    of the Application Administration
+
+    - copy information to other sites with
+    the permission of the copyright holder
+
+    - use application information for
+    personal non-commercial purposes
+
+
+
+    The administration has the right:
+
+    -
+    at your discretion and the need to create, change, cancel rules
+
+    - restrict
+    access to any information in the application
+
+
+
+    The user undertakes:
+
+    -
+    do not disrupt the performance of the application
+
+    - do not use scripts (programs)
+    for automated collection of information and / or interaction with the application
+    and its Services
+
+
+
+    The administration undertakes:
+
+    - maintain the site''s
+    performance, except in cases where it is impossible for reasons beyond the control
+    of the Administration.
+
+
+
+    Responsibility of the parties
+
+    - the administration
+    does not bear any responsibility for the services provided by third parties
+
+    -
+    in the event of a force majeure situation (military action, state of emergency,
+    natural disaster, etc.), the Administration does not guarantee the safety of
+    the information posted by the User, as well as the uninterrupted operation of
+    the information resource
+
+
+
+    Terms of the Agreement
+
+    This Agreement enters
+    into force with any use of this application.
+
+    The agreement ceases to be
+    valid when a new version of it appears.
+
+    The administration reserves the
+    right to unilaterally change this agreement at its discretion.
 
     The administration
-    undertakes:
-
-    - maintain the site''s performance, except in cases where it
-    is impossible for reasons beyond the control of the Administration.
-
-    
-
-    Responsibility
-    of the parties
-
-    - the administration does not bear any responsibility for
-    the services provided by third parties
-
-    - in the event of a force majeure
-    situation (military action, state of emergency, natural disaster, etc.), the
-    Administration does not guarantee the safety of the information posted by the
-    User, as well as the uninterrupted operation of the information resource
-
-    
-
-    Terms
-    of the Agreement
-
-    This Agreement enters into force with any use of this
-    application.
-
-    The agreement ceases to be valid when a new version of it
-    appears.
-
-    The administration reserves the right to unilaterally change this
-    agreement at its discretion.
-
-    The administration does not notify users about
-    the change in the Agreement.'
+    does not notify users about the change in the Agreement.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf64f91f518e227429348f7a4d1cdc49, type: 2}
   m_sharedMaterial: {fileID: -2741036063699812199, guid: cf64f91f518e227429348f7a4d1cdc49, type: 2}

@@ -44,9 +44,6 @@ public class SaveLoadSystem : MonoBehaviour
 			Data.Game.SelectedTower.Value = Data.Game.Towers.Value[Data.Game.SelectedTower.Value.Index];
         }
 
-		Data.Game.Coins.Value += 2000;
-		Data.Game.Diamonds.Value += 200;
-
 		DontDestroyOnLoad(this);
 	}
 

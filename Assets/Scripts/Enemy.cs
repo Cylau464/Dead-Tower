@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using System;
-using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IDamageTaker
 {
@@ -29,6 +28,8 @@ public class Enemy : MonoBehaviour, IDamageTaker
     protected int _attackParamID;
     private int _deadParamID;
     private int _takeDamageParamID;
+    private int _grabParamID;
+    private int _releaseParamID;
 
     private List<Projectile> _stuckProjectiles;
 
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
         _attackParamID = Animator.StringToHash("isAttack");
         _deadParamID = Animator.StringToHash("isDead");
         _takeDamageParamID = Animator.StringToHash("isTakeDamage");
+        
         _stuckProjectiles = new List<Projectile>();
 
         Bounds bounds = GetComponent<MeshFilter>().sharedMesh.bounds;
@@ -130,13 +132,26 @@ public class Enemy : MonoBehaviour, IDamageTaker
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
-        Spawned();
     }
 
     public virtual void Spawned()
     {
         AudioController.PlayClipAtPosition(_spawnClip, transform.position);
         Move();
+    }
+
+    public void Grab()
+    {
+        _grabParamID = Animator.StringToHash("isGrab");
+        _releaseParamID = Animator.StringToHash("isRelease");
+        _animator.SetTrigger(_grabParamID);
+        _rigidBody.simulated = false;
+    }
+
+    public void Release()
+    {
+        _animator.SetTrigger(_releaseParamID);
+        _rigidBody.simulated = true;
     }
 
     public void GiveDamage()
