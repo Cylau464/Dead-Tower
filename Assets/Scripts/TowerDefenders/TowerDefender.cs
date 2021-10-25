@@ -77,6 +77,7 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
 
         _canShoot = true;
         Game.Instance.OnLevelEnd += OnLevelEnd;
+        Game.Instance.OnLevelContinued += RestoreHealth;
     }
 
     private void Update()
@@ -100,8 +101,6 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
                     if (_modifierConfig.HasModifier(hit.collider.gameObject) == false
                         && Mathf.Abs(hit.collider.transform.position.x - _aimPosition.x) > _minAttackDistance)
                     {
-                        Debug.Log("DISTANCE TO TARGET: " + Mathf.Abs(hit.collider.transform.position.x - _aimPosition.x)
-                            + " MIN DISTANCE: " + _minAttackDistance);
                         _target = hit.collider.GetComponent<Rigidbody2D>();
                         break;
                     }
@@ -139,9 +138,12 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
 
     public bool TakeDamage(int damage)
     {
-        _stats.health -= damage;
+        if (_stats.Health <= 0) return true;
+
+        _stats.health = Mathf.Max(_stats.health - damage, -_stats.ExtraHealth);
         HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
         AudioController.PlayClipAtPosition(_hitClip, transform.position);
+
         if (_stats.Health <= 0)
             Dead();
 
@@ -167,6 +169,8 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
         {
             projectile.Unstuck(transform.position);
         }
+
+        _stuckProjectiles.Clear();
     }
 
     public void PullTheArrow()
@@ -199,8 +203,18 @@ public class TowerDefender : MonoBehaviour, IDamageTaker
             _animator.SetTrigger(_defeatParamID);
     }
 
+    private void RestoreHealth()
+    {
+        _stats.health = _maxHealth - _stats.ExtraHealth;
+        HealthChanged?.Invoke(this, (float)_stats.Health / _maxHealth);
+        _animator.SetTrigger(_respawnParamID);
+        _isDead = false;
+        _canShoot = true;
+    }
+
     private void OnDestroy()
     {
         Game.Instance.OnLevelEnd -= OnLevelEnd;
+        Game.Instance.OnLevelContinued -= RestoreHealth;
     }
 }

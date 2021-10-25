@@ -58,6 +58,7 @@ public class Weapon : MonoBehaviour
         _line.SetYLimit(_shootPointBone.GetWorldPosition(transform));
 
         Game.Instance.OnLevelEnd += OnLevelEnd;
+        Game.Instance.OnLevelContinued += OnLevelContinue;
         Vibration.Init();
     } 
 
@@ -93,6 +94,10 @@ public class Weapon : MonoBehaviour
                 if (_vibrateCor != null && _charge >= _stats.MaxCharge)
                     StopCoroutine(_vibrateCor);
             }
+        }
+        else if (_vibrateCor != null)
+        {
+            StopCoroutine(_vibrateCor);
         }
     }
 
@@ -178,6 +183,11 @@ public class Weapon : MonoBehaviour
         _collider.enabled = false;
     }
 
+    private void OnLevelContinue()
+    {
+        _collider.enabled = true;
+    }
+
     private IEnumerator Vibrate()
     {
         long time;
@@ -203,5 +213,6 @@ public class Weapon : MonoBehaviour
             _tower.OnTakeDamage -= TakeDamage;
 
         Game.Instance.OnLevelEnd -= OnLevelEnd;
+        Game.Instance.OnLevelContinued -= OnLevelContinue;
     }
 }

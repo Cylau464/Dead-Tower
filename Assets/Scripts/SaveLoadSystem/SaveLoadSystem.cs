@@ -16,6 +16,7 @@ public static class SLS
 public class SaveLoadSystem : MonoBehaviour
 {
 	[SerializeField] private float saveDelay = 1;
+	[SerializeField] private bool _resetSaves = false;
 	private float delay;
 	private bool needSave;
 
@@ -27,10 +28,17 @@ public class SaveLoadSystem : MonoBehaviour
 
 	private void Awake()
 	{
-		if (Instance == null)
-			Instance = this;
+		if (Instance != null && Instance != this)
+        {
+			Destroy(this);
+			return;
+        }
 
-		//PlayerPrefs.SetString(DataKey, "");
+		Instance = this;
+
+		if(_resetSaves == true)
+			PlayerPrefs.SetString(DataKey, "");
+
 		var ppData = PlayerPrefs.GetString(DataKey, "");
 
 		if (string.IsNullOrEmpty(ppData))

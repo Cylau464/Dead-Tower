@@ -24,7 +24,7 @@ MonoBehaviour:
   PurchaseStats:
     IsPurchased: 0
     CurrencyType: 1
-    Cost: 50
+    Cost: 200
     StatUpgradeCost: 1000
   DefensiveWeaponConfig: {fileID: 11400000, guid: 10fd32e3ffc556147b07c6e797258162, type: 2}
   WeaponConfig: {fileID: 11400000, guid: 20e83ae0fa5da174b810038361dc86ae, type: 2}

@@ -6,12 +6,13 @@ public class Game : MonoBehaviour
     [SerializeField] private AudioClip _victoryClip;
     [SerializeField] private AudioClip _defeatClip;
 
-    public bool _isLevelEnd { get; private set; }
+    public bool IsLevelEnd { get; private set; }
 
     public static Game Instance;
 
     //public event Action<int> OnLevelStart;
     public event Action<bool> OnLevelEnd;
+    public Action OnLevelContinued;
 
     private void Awake()
     {
@@ -33,12 +34,12 @@ public class Game : MonoBehaviour
 
     private void ResetLevelState()
     {
-        _isLevelEnd = false;
+        IsLevelEnd = false;
     }
 
 	public void LevelEnd(bool playerWin, bool forceEnd = false)
 	{
-        if (_isLevelEnd == true && forceEnd == false) return;
+        if (IsLevelEnd == true && forceEnd == false) return;
 
         if (playerWin == true)
             AudioController.PlayClipAtPosition(_victoryClip, transform.position);
@@ -46,7 +47,13 @@ public class Game : MonoBehaviour
             AudioController.PlayClipAtPosition(_defeatClip, transform.position);
 
 		OnLevelEnd?.Invoke(playerWin);
-        _isLevelEnd = true;
+        IsLevelEnd = true;
+    }
+
+    public void ContinueLevel()
+    {
+        OnLevelContinued?.Invoke();
+        IsLevelEnd = false;
     }
 
     private void OnDestroy()

@@ -41,7 +41,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 
     public void OnInitializationComplete()
     {
-        //Debug.Log("Unity Ads initialization complete.");
+        Debug.Log("Unity Ads initialization complete.");
         _rewardedAd.Init();
 
         if(SLS.Data.Settings.AdsEnabled.Value == true)

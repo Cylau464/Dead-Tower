@@ -3,24 +3,24 @@
 public class SlowingModifier : Modifier
 {
     private Rigidbody2D _targetRigidbody;
-    private EnemyStats _targetStats;
+    private Enemy _enemy;
 
     private void Start()
     {
         _targetRigidbody = GetComponent<Rigidbody2D>();
-        _targetStats = GetComponent<Enemy>().Stats;
+        _enemy = GetComponent<Enemy>();
     }
 
     protected override void ApplyEffect()
     {
         if (_targetRigidbody.velocity.magnitude > 0f)
-            _targetRigidbody.velocity = _targetRigidbody.velocity.normalized * (_targetStats.MoveSpeed / _value);
+            _targetRigidbody.velocity = _targetRigidbody.velocity.normalized * (_enemy.MoveSpeed / _value);
     }
 
     protected override void CancelEffect()
     {
         if (_targetRigidbody.velocity.magnitude > 0f)
-            _targetRigidbody.velocity = _targetRigidbody.velocity.normalized * _targetStats.MoveSpeed;
+            _targetRigidbody.velocity = _targetRigidbody.velocity.normalized * _enemy.MoveSpeed;
     }
 
     protected override void Timer()

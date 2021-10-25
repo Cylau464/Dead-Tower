@@ -25,6 +25,7 @@ public class GameplayUI : MonoBehaviour
     private Tower _tower;
     private int _startLevelPower;
     private int _levelProgress;
+    private int _progress;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class GameplayUI : MonoBehaviour
         EnemySpawner.OnEnemySpawned += OnEnemySpawned;
         _startLevelPower = EnemySpawner.LevelConfig.Difficulty.PowerReserve;
         Game.Instance.OnLevelEnd += OnLevelEnd;
+        Game.Instance.OnLevelContinued += OnLevelContinued;
     }
 
     public void SetTower(Tower tower)
@@ -64,7 +66,6 @@ public class GameplayUI : MonoBehaviour
 
     private void Pause()
     {
-        Time.timeScale = 0f;
         _pauseUI.Show();
     }
 
@@ -76,7 +77,7 @@ public class GameplayUI : MonoBehaviour
     private void OnEnemyDied(Rewards rewards, int value)
     {
         _levelProgress += value;
-        int progress = Mathf.Min(Mathf.CeilToInt((float)_levelProgress / _startLevelPower * 100), 100);
+        _progress = Mathf.Min(Mathf.CeilToInt((float)_levelProgress / _startLevelPower * 100), 100);
         _rewards += rewards;
         this.LerpCoroutine(
             time: .125f,
@@ -88,11 +89,11 @@ public class GameplayUI : MonoBehaviour
         this.LerpCoroutine(
             time: .25f,
             from: int.Parse(Regex.Match(_progressText.text, @"\d+").Value),
-            to: progress,
+            to: _progress,
             action: a => _progressText.text = Mathf.Round(a).ToString() + "%"
         );
 
-        if (progress >= 100)
+        if (_progress >= 100)
             Game.Instance.LevelEnd(true);
     }
 
@@ -101,12 +102,20 @@ public class GameplayUI : MonoBehaviour
         StartCoroutine(LevelEndDelay(victory));
     }
 
+    private void OnLevelContinued()
+    {
+        if (_progress >= 100)
+            this.DoAfterNextFrameCoroutine(() => Game.Instance.LevelEnd(true));
+    }
+
     private IEnumerator LevelEndDelay(bool victory)
     {
         _winUI.Hide();
         _loseUI.Hide();
 
         yield return new WaitForSeconds(_levelEndDelay);
+
+        Time.timeScale = 0f;
 
         if (victory == true)
             _winUI.Show(_rewards);
@@ -133,13 +142,20 @@ public class GameplayUI : MonoBehaviour
         _projectileShortageUI.Show();
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause == true && Time.timeScale > 0f && Game.Instance.IsLevelEnd == false)
+            Pause();
+    }
+
     private void OnDestroy()
     {
         SLS.Data.Game.ProjectilesCount.OnValueChanged -= UpdateProjectileCount;
         _tower.OnTakeDamage -= OnTowerTakeDamage;
         EnemySpawner.OnEnemySpawned -= OnEnemySpawned;
-        Game.Instance.OnLevelEnd -= OnLevelEnd;
         _tower.Weapon.OnProjectilesEnd -= OpenProjectileShortage;
         _winUI.OnProjectilesEnd -= OpenProjectileShortage;
+        Game.Instance.OnLevelEnd -= OnLevelEnd;
+        Game.Instance.OnLevelContinued -= OnLevelContinued;
     }
 }

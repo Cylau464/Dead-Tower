@@ -17,7 +17,7 @@ MonoBehaviour:
   Index: 7
   LevelsCount: 10
   MinEnemyPower: 1
-  MaxEnemyPower: 3
-  MinPowerReserve: 75
-  MaxPowerReserve: 85
+  MaxEnemyPower: 4
+  MinPowerReserve: 152
+  MaxPowerReserve: 170
   BossInterval: 10

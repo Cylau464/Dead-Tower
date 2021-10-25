@@ -6,8 +6,8 @@ using System;
 public class CanvasGroupUI : MonoBehaviour
 {
 	[SerializeField] private CanvasGroup canvasGroup;
-	[SerializeField] private float _fadeTime = 0.2f;
-	[SerializeField] private bool _lerpOnPause = false;
+	[SerializeField] protected float _fadeTime = 0.2f;
+	[SerializeField] protected bool _lerpOnPause = false;
 	[Space]
 	[SerializeField] protected AudioClip _buttonClip;
 
@@ -64,7 +64,10 @@ public class CanvasGroupUI : MonoBehaviour
 				from: canvasGroup.alpha,
 				to: 0f,
 				action: a => canvasGroup.alpha = a,
-				onEnd: () => gameObject.SetActive(false)
+				onEnd: () => gameObject.SetActive(false),
+				settings: new CoroutineTemplate.Settings(
+					lerpOnPause: _lerpOnPause
+					)
 			);
 		}
 		else

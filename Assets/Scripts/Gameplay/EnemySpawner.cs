@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int _powerReserve;
     private Transform _spawnPoint;
+    private bool _isLevelEnd;
 
     public static LevelConfig LevelConfig;
 
@@ -42,6 +43,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
 
         Game.Instance.OnLevelEnd += OnLevelEnd;
+        Game.Instance.OnLevelContinued += OnLevelContinued;
     }
 
     private IEnumerator SpawnEnemy()
@@ -50,22 +52,25 @@ public class EnemySpawner : MonoBehaviour
 
         while(_powerReserve > 0)
         {
-            Enemy enemy = _factory.Get(
-                Mathf.Min(LevelConfig.Difficulty.MaxEnemyPower, _powerReserve),
-                LevelConfig.Difficulty);
-
-            if(SkullRandomizer.Instance.SkullEnabled == false)
+            if (_isLevelEnd == false)
             {
-                enemy.transform.position = _spawnPoint.position;
-                enemy.Spawned();
-            }
-            else
-            {
-                _skull.SetEnemy(enemy);
-            }
+                Enemy enemy = _factory.Get(
+                    Mathf.Min(LevelConfig.Difficulty.MaxEnemyPower, _powerReserve),
+                    LevelConfig.Difficulty);
 
-            _powerReserve -= enemy.Stats.Power;
-            OnEnemySpawned?.Invoke(enemy);
+                if (SkullRandomizer.Instance.SkullEnabled == false)
+                {
+                    enemy.transform.position = _spawnPoint.position;
+                    enemy.Spawned();
+                }
+                else
+                {
+                    _skull.SetEnemy(enemy);
+                }
+
+                _powerReserve -= enemy.Stats.Power;
+                OnEnemySpawned?.Invoke(enemy);
+            }
 
             yield return new WaitForSeconds(_respawnCooldown);
         }
@@ -75,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnLevelEnd(bool victory)
     {
-        StopAllCoroutines();
+        _isLevelEnd = true;
 
         if(victory == true)
         {
@@ -86,12 +91,17 @@ public class EnemySpawner : MonoBehaviour
             List<LevelConfig[]> levels = SLS.Data.Game.Levels.Value;
             LevelConfig nextLevel = SLS.Data.Game.GetNextLevel();
             nextLevel.Status = nextLevel.Status == LevelStatus.Closed ? LevelStatus.Opened : nextLevel.Status;
-
         }
+    }
+
+    private void OnLevelContinued()
+    {
+        _isLevelEnd = false;
     }
 
     private void OnDestroy()
     {
         Game.Instance.OnLevelEnd -= OnLevelEnd;
+        Game.Instance.OnLevelContinued -= OnLevelContinued;
     }
 }

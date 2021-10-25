@@ -24,6 +24,7 @@ public class Tower : MonoBehaviour
     public Weapon Weapon => _weapon;
     private DefensiveWeaponConfig _defensiveWeaponConfig;
     private bool _defensiveWeaponActivated;
+    private int _maxHealth;
     private TowerStats _stats;
     public TowerStats Stats => _stats;
 
@@ -41,12 +42,15 @@ public class Tower : MonoBehaviour
         _closeParamID = Animator.StringToHash("close");
         _aimParamID = Animator.StringToHash("isAim");
         _defensiveWeaponButton.onClick.AddListener(OpenGate);
+
+        Game.Instance.OnLevelContinued += RestoreHealth;
     }
 
     public void Init(TowerConfig config, TowerData data, bool inMenu)
     {
         _defensiveWeaponConfig = config.DefensiveWeaponConfig;
         _stats = data.Stats;
+        _maxHealth = data.Stats.health;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
         _skeletonMecanim.Initialize(true);
         _animator.runtimeAnimatorController = config.AnimatorController;
@@ -89,15 +93,6 @@ public class Tower : MonoBehaviour
         _animator.SetBool(_aimParamID, false);
     }
 
-    private void OnDestroy()
-    {
-        if(_weapon != null)
-        {
-            _weapon.OnAimStart -= OnAimStart;
-            _weapon.OnAimEnd -= OnAimEnd;
-        }
-    }
-
     private void OpenGate()
     {
         if (_defensiveWeaponActivated == true) return;
@@ -128,5 +123,22 @@ public class Tower : MonoBehaviour
         {
             CloseGate();
         }
+    }
+
+    private void RestoreHealth()
+    {
+        _stats.health = _maxHealth;
+        OnTakeDamage?.Invoke(_stats.Health);
+    }
+
+    private void OnDestroy()
+    {
+        if(_weapon != null)
+        {
+            _weapon.OnAimStart -= OnAimStart;
+            _weapon.OnAimEnd -= OnAimEnd;
+        }
+
+        Game.Instance.OnLevelContinued -= RestoreHealth;
     }
 }

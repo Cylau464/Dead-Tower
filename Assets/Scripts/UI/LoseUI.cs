@@ -14,12 +14,25 @@ public class LoseUI : CanvasGroupUI
         _skipBtn.onClick.AddListener(Skip);
         _restartBtn.onClick.AddListener(SceneLoader.LoadLevel);
         _exitBtn.onClick.AddListener(SceneLoader.LoadMenu);
+        _skipLevelUI.OnSkip += Hide;
 
         base.Init();
+    }
+
+    public override void Hide()
+    {
+        Time.timeScale = 1f;
+
+        base.Hide();
     }
 
     private void Skip()
     {
         _skipLevelUI.Show();
+    }
+
+    private void OnDestroy()
+    {
+        _skipLevelUI.OnSkip -= Hide;
     }
 }

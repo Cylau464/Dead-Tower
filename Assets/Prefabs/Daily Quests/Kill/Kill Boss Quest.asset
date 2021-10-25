@@ -16,6 +16,6 @@ MonoBehaviour:
   MinAmount: 1
   MaxAmount: 3
   RewardType: 0
-  MinReward: 300
-  MaxReward: 900
+  MinReward: 50
+  MaxReward: 200
   Target: 5

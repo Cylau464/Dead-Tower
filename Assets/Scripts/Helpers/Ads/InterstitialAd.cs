@@ -31,7 +31,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     public void LoadAd()
     {
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-        //Debug.Log("Loading Ad: " + _adUnitId);
+        Debug.Log("Loading Ad: " + _adUnitId);
         _isLoaded = false;
         Advertisement.Load(_adUnitId, this);
     }
@@ -57,6 +57,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         // Optionally execute code if the Ad Unit successfully loads content.
+        Debug.Log("Interstitial Ad Loaded: " + _adUnitId);
         _isLoaded = true;
     }
 

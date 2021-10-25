@@ -75,7 +75,7 @@ public class Arrow : Projectile
         if (activateTimer == true)
             StartCoroutine(Dissolve());
 
-        transform.parent = target.transform;
+        transform.SetParent(target.transform);
         Vector2 boundsSize = _collider.bounds.size;
         _collider.enabled = false;
 

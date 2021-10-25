@@ -16,6 +16,7 @@ public static class SceneLoader
 
     public static void LoadMenu()
     {
+        Time.timeScale = 1f;
         Load(_menuSceneIndex);
         MenuSwitcher.OpenMapAfterLoad = true;
     }

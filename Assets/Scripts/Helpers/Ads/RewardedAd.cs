@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
 using System;
+using System.Collections;
 
 public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -9,9 +10,20 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     
     public bool IsLoaded { get; private set; }
     private string _adUnitId;
+    private bool _isAdShowComplete;
 
     public Action OnAdLoaded;
     public Action OnAdComplete;
+
+    private void Update()
+    {
+        if(_isAdShowComplete == true)
+        {
+            Debug.Log("INVOKE");
+            OnAdComplete?.Invoke();
+            _isAdShowComplete = false;
+        }
+    }
 
     public void Init()
     {
@@ -65,7 +77,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
-            OnAdComplete?.Invoke();
+            _isAdShowComplete = true;
             // Load another ad:
             LoadAd();
         }

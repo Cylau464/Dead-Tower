@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Kill Archer Quest
   m_EditorClassIdentifier: 
   Type: 0
-  MinAmount: 3
-  MaxAmount: 5
+  MinAmount: 5
+  MaxAmount: 20
   RewardType: 0
-  MinReward: 125
-  MaxReward: 1000
+  MinReward: 50
+  MaxReward: 200
   Target: 2

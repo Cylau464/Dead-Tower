@@ -25,6 +25,7 @@ public class PauseUI : CanvasGroupUI
 
     public override void Show()
     {
+        Time.timeScale = 0f;
         base.Show();
         _animator.SetTrigger(_showParamID);
     }

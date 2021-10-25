@@ -32,6 +32,7 @@ public class ProjectilesShortageUI : CanvasGroupUI
         _countText.text = SLS.Data.Game.ProjectilesCount.Value[index].ToString();
         _titleText.text = _title;
         _closeBtn.onClick.AddListener(Close);
+        _closeBtn.interactable = false;
 
         if(_inMenu == true)
         {
@@ -48,7 +49,6 @@ public class ProjectilesShortageUI : CanvasGroupUI
             _diamondsPayBtn.interactable = SLS.Data.Game.Diamonds.Value >= _diamondsPayCost;
             _diamondsPayText.text = _diamondsPayCost.ToString();
             _viewAdBtn.interactable = AdsInitializer.Instance.RewardedAd.IsLoaded;
-            AdsInitializer.Instance.RewardedAd.OnAdComplete += OnAdComplete;
             AdsInitializer.Instance.RewardedAd.OnAdLoaded += OnAdLoaded;
 
             _forgeBtn.gameObject.SetActive(false);
@@ -58,9 +58,12 @@ public class ProjectilesShortageUI : CanvasGroupUI
 
     public override void Show()
     {
+        if (gameObject.activeInHierarchy == true) return;
+
         base.Show();
 
-        this.DoAfterNextFrameCoroutine(() => _closeBtn.interactable = true);
+        this.WaitAndDoCoroutine(_fadeTime, () => _closeBtn.interactable = true);
+        AdsInitializer.Instance.RewardedAd.OnAdComplete += OnAdComplete;
 
         if (_inMenu == false)
             Time.timeScale = 0f;
@@ -70,6 +73,7 @@ public class ProjectilesShortageUI : CanvasGroupUI
     {
         base.Hide();
         _closeBtn.interactable = false;
+        AdsInitializer.Instance.RewardedAd.OnAdComplete -= OnAdComplete;
 
         if (_inMenu == false)
             Time.timeScale = 1f;
@@ -116,7 +120,9 @@ public class ProjectilesShortageUI : CanvasGroupUI
 
     private void OnAdComplete()
     {
-        Game.Instance.LevelEnd(true, true);
+        int[] projectilesCount = SLS.Data.Game.ProjectilesCount.Value.ToArray();
+        projectilesCount[SLS.Data.Game.SelectedTower.Value.Index] += _projectileCount;
+        SLS.Data.Game.ProjectilesCount.Value = projectilesCount;
         Hide();
     }
 

@@ -23,6 +23,13 @@ public class WinUI : CanvasGroupUI
         base.Init();
     }
 
+    public override void Hide()
+    {
+        Time.timeScale = 1f;
+
+        base.Hide();
+    }
+
     public void Show(Rewards rewards)
     {
         base.Show();
@@ -56,6 +63,7 @@ public class WinUI : CanvasGroupUI
             return;
         }
 
+        Time.timeScale = 1f;
         LevelConfig nextLevel = SLS.Data.Game.GetNextLevel();
         EnemySpawner.LevelConfig = nextLevel;
         SLS.Data.Game.LastLevel.Value = nextLevel;

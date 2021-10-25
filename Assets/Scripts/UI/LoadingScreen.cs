@@ -46,8 +46,9 @@ public class LoadingScreen : CanvasGroupUI
 
         while (true)
         {
-            t += Time.deltaTime;
-            delay -= Time.deltaTime;
+            float delta = _lerpOnPause == true ? Time.unscaledDeltaTime : Time.deltaTime;
+            t += delta;
+            delay -= delta;
             float glowOffset = Mathf.PingPong(t, glowMax - glowMin);
             _textMaterial.SetFloat("_GlowPower", Mathf.Max(glowMin, glowMin + glowOffset));
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using System;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IDamageTaker
 {
@@ -21,6 +22,8 @@ public class Enemy : MonoBehaviour, IDamageTaker
     protected EnemyStats _stats;
     public EnemyStats Stats => _stats;
     private int _maxHealth;
+    private int _health;
+    public float MoveSpeed { get; private set; }
     private Rewards _rewards;
     private bool _isDead;
 
@@ -50,11 +53,12 @@ public class Enemy : MonoBehaviour, IDamageTaker
         _collider.size = bounds.size;
 
         Game.Instance.OnLevelEnd += OnLevelEnd;
+        Game.Instance.OnLevelContinued += OnLevelContinue;
     }
 
     private void LateUpdate()
     {
-        float normalizedSpeed = _rigidBody.velocity.magnitude / _stats.MoveSpeed;
+        float normalizedSpeed = _rigidBody.velocity.magnitude / MoveSpeed;
         _animator.SetFloat(_speedParamID, normalizedSpeed);
     }
 
@@ -63,11 +67,11 @@ public class Enemy : MonoBehaviour, IDamageTaker
         if(damage < 0)
             throw new Exception("Attempt to deal negative damage");
 
-        _stats.Health -= damage;
-        HealthChanged?.Invoke(this, (float) _stats.Health / _maxHealth);
+        _health -= damage;
+        HealthChanged?.Invoke(this, (float)_health / _maxHealth);
         AudioController.PlayClipAtPosition(_hitClip, transform.position);
 
-        if (_stats.Health <= 0)
+        if (_health <= 0)
         {
             AudioController.PlayClipAtPosition(_deathClip, transform.position);
             Dead();
@@ -97,7 +101,7 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     protected virtual void Move()
     {
-        _rigidBody.velocity = Vector2.left * _stats.MoveSpeed;
+        _rigidBody.velocity = Vector2.left * MoveSpeed;
     }
 
     protected virtual void StopMove()
@@ -126,7 +130,9 @@ public class Enemy : MonoBehaviour, IDamageTaker
     {
         Type = config.Type;
         _stats = config.Stats;
-        _maxHealth = _stats.Health;
+        int index = Random.Range(0, _stats.Health.Length);
+        _health = _maxHealth = _stats.Health[index];
+        MoveSpeed = _stats.MoveSpeed[index];
         _rewards = config.Rewards;
         gameObject.name = config.Name;
         _skeletonMecanim.skeletonDataAsset = config.Skeleton;
@@ -227,8 +233,14 @@ public class Enemy : MonoBehaviour, IDamageTaker
             StopMove();
     }
 
+    private void OnLevelContinue()
+    {
+        Move();
+    }
+
     private void OnDestroy()
     {
         Game.Instance.OnLevelEnd -= OnLevelEnd;
+        Game.Instance.OnLevelContinued -= OnLevelContinue;
     }
 }

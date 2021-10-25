@@ -26,8 +26,8 @@ MonoBehaviour:
     Gold: 500
     Resources:
     - Type: 1
-      Count: 100
+      Count: 20
     - Type: 2
-      Count: 50
+      Count: 10
     - Type: 3
-      Count: 50
+      Count: 10

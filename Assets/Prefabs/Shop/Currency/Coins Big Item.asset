@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Coins Big Item
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4458001817964966202, guid: 1a5c197c97ee9be4580710f71782eae7, type: 3}
-  Icon: {fileID: 21300000, guid: cbb45b736682797449e7a4b9bd5bfc9d, type: 3}
+  Icon: {fileID: 21300000, guid: ce4b49c061c48ea45829c5d8fcab54b6, type: 3}
   Stats:
     IsPurchased: 0
     CurrencyType: 1
     Cost: 150
+    StatUpgradeCost: 0
   Category: 3
   Count: 12000
   Type: 0

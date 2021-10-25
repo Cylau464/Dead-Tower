@@ -33,7 +33,10 @@ public class SkullRandomizer : MonoBehaviour
                 _bgRenderer.sprite = _bgSprite;
 
                 foreach (SpriteRenderer renderer in _groundRenderers)
+                {
                     renderer.sprite = _groundSprite;
+                    renderer.size = new Vector2(renderer.size.x, _groundSprite.bounds.size.y);
+                }
             } 
         }
     }

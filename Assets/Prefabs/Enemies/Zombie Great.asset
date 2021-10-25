@@ -19,13 +19,16 @@ MonoBehaviour:
   AnimatorController: {fileID: 9100000, guid: 19c30c1d45a06174ba220ecf7c2cda84, type: 2}
   Stats:
     Damage: 1
-    Health: 2
-    MoveSpeed: 0.8
+    Health: 020000000300000004000000
+    MoveSpeed:
+    - 0.75
+    - 1
+    - 1.25
     Power: 2
   Rewards:
     Gold: 20
     Resources:
     - Type: 1
-      Count: 5
+      Count: 2
     - Type: 2
-      Count: 5
+      Count: 2

@@ -17,4 +17,4 @@ MonoBehaviour:
   MaxAmount: 300
   RewardType: 1
   MinReward: 5
-  MaxReward: 50
+  MaxReward: 10

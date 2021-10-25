@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   MinAmount: 3
-  MaxAmount: 5
+  MaxAmount: 7
   RewardType: 0
-  MinReward: 225
-  MaxReward: 1125
+  MinReward: 50
+  MaxReward: 200
   Target: 4
